@@ -1,23 +1,46 @@
 # Python
 __pycache__/
 *.py[cod]
+*.pyc
 *.pyo
+*.pyd
+*.egg
 *.egg-info/
+dist/
+build/
 .build/
+*.so
 
 # Environments
 .venv/
+venv/
+ENV/
+env/
 .env
+.python-version
 
 # uv
 .uv/
 
+# Ruff
+.ruff_cache/
+
 # Test & coverage
 .cache/
-.coverage*
+.pytest_cache/
+.coverage
+.coverage.*
 htmlcov/
+.tox/
+*.cover
 
 # IDE/editor
-.vscode/
 *.swp
+*.swo
+*~
 .DS_Store
+.idea/
+.vscode/
+
+# OS
+Thumbs.db

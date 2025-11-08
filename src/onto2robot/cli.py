@@ -1,6 +1,9 @@
 """Command line interface for onto2robot."""
+
 from __future__ import annotations
+
 import argparse
+
 from .core import add
 
 
@@ -23,6 +26,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     parser.print_help()
     return 1
+
 
 if __name__ == "__main__":  # pragma: no cover
     raise SystemExit(main())
