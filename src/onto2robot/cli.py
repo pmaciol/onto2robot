@@ -1,30 +1,46 @@
 """Command line interface for onto2robot."""
 
-from __future__ import annotations
-
 import argparse
+from pathlib import Path
 
-from .core import add
+from core import MobileOntologyMeta, load_ontology
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="onto2robot", description="Ontology to robot utilities")
-    sub = parser.add_subparsers(dest="command")
-
-    sum_p = sub.add_parser("sum", help="Add two integers")
-    sum_p.add_argument("a", type=int)
-    sum_p.add_argument("b", type=int)
+    parser.add_argument("-input", type=str, help="Ontology to parse", required=True)
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
-    if args.command == "sum":
-        result = add(args.a, args.b)
-        print(result)
+    print(f"Selected ontology: {args.input}")
+    if Path(args.input).is_file():
+        ontology = load_ontology(args.input)
+        ont = MobileOntologyMeta(ontology)
+        rules = ont.get_rules()
+        for rule in rules:
+            print(
+                f"Rule {rule.label[0]}\n \
+                hasPremise: \
+                    {
+                    [
+                        [value.name for value in prop[rule]]
+                        for prop in rule.get_properties()
+                        if prop.name == 'hasPremise'
+                    ]
+                } hasConclusion: \
+                    {
+                    [
+                        [value.name for value in prop[rule]]
+                        for prop in rule.get_properties()
+                        if prop.name == 'hasConclusion'
+                    ]
+                }"
+            )
         return 0
-    parser.print_help()
+    print(f"Failed to process with ontology from path {args.input}")
     return 1
 
 
