@@ -9,7 +9,15 @@ from simpful import (
     Triangular_MF,
 )
 
-from onto2robot.core import load_ontology
+from onto2robot.core import (
+    MobileOntologyMeta,
+    OntologyIndividualSuperclass,
+    _get_conclusions,
+    _get_premises,
+    _get_property_values,
+    load_ontology,
+    rule_to_string,
+)
 
 
 def test_load_sumo_ontology():
@@ -17,6 +25,7 @@ def test_load_sumo_ontology():
     all_classes = list(onto.classes())
     print(f"SUMO classes {all_classes}")
     assert len(all_classes) > 0
+    onto.destroy()
 
 
 def test_load_mobile_robot_ontology():
@@ -24,6 +33,69 @@ def test_load_mobile_robot_ontology():
     all_classes = list(onto.classes())
     print(f"MOBILE ROBOT classes {all_classes}")
     assert len(all_classes) > 0
+    onto.destroy()
+
+
+def test_read_rules():
+    ontology = load_ontology("tests")
+    ont = MobileOntologyMeta(ontology)
+    rules = ont.get_rules()
+    assert len(rules) == 9
+    first_rule = rules[0]
+    assert first_rule is not None
+    premises = _get_premises(first_rule)
+    assert len(premises) == 2
+    conclusions = _get_conclusions(first_rule)
+
+    assert len(conclusions) == 1
+    ontology.destroy()
+
+
+def test_single_premise():
+    ontology = load_ontology("tests")
+    premise01 = ontology.premise01
+    assert premise01 is not None
+    assert premise01.name == "premise01"
+    ontology.destroy()
+
+
+def test_premise_left_right():
+    ontology = load_ontology("tests")
+    premise01 = ontology.premise01
+    leftHand = _get_property_values(premise01, "hasLeftHand")
+    assert len(leftHand) == 1
+    assert isinstance(leftHand[0], OntologyIndividualSuperclass)
+    rightHand = _get_property_values(premise01, "hasRightHand")
+    assert len(rightHand) == 1
+    ontology.destroy()
+
+
+def test_whole_rule():
+    ont = MobileOntologyMeta("tests")
+    rule = ont.get_rules()[0]
+    stringified_rule = rule_to_string(rule)
+    expected_rule = "IF (sFL IS low) AND (sFR IS low) THEN (sFassessment IS low);"
+
+    assert stringified_rule == expected_rule
+
+
+def test_all_rules():
+    ont = MobileOntologyMeta("tests")
+    rules = ont.get_rules()
+    stringified_rules = [rule_to_string(rule) for rule in rules]
+    expected_rules = [
+        "IF (sFL IS low) AND (sFR IS low) THEN (sFassessment IS low);",
+        "IF (sFL IS low) AND (sFR IS middle) THEN (sFassessment IS low);",
+        "IF (sFR IS high) AND (sFL IS low) THEN (sFassessment IS middle);",
+        "IF (sFL IS middle) AND (sFR IS low) THEN (sFassessment IS middle);",
+        "IF (sFL IS middle) AND (sFR IS middle) THEN (sFassessment IS middle);",
+        "IF (sFR IS high) AND (sFL IS middle) THEN (sFassessment IS high);",
+        "IF (sFL IS high) AND (sFR IS low) THEN (sFassessment IS middle);",
+        "IF (sFL IS high) AND (sFR IS middle) THEN (sFassessment IS high);",
+        "IF (sFR IS high) AND (sFL IS high) THEN (sFassessment IS high);",
+    ]
+
+    assert stringified_rules == expected_rules
 
 
 def test_basic_simpful():
