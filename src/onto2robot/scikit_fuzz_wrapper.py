@@ -116,5 +116,6 @@ class ScikitFuzzyWrapper:
         for var_name in layer_var_names:
             if var_name in self.sim.output:
                 output_value = self.sim.output[var_name]
+                print(f" Inferred {var_name} = {output_value}")
                 if var_name in self.antecedents:
                     self.sim.input[var_name] = output_value

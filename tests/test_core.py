@@ -104,7 +104,7 @@ def test_all_rules():
 
 
 def test_full_ontology():
-    ont = MobileOntologyMeta("extendedAM")
+    ont = MobileOntologyMeta("mobile_robot_ontology")
     rules = ont.get_rules()
     stringified_rules = [rule_to_string(rule) for rule in rules]
     with open("results.txt", "w") as f:
@@ -126,7 +126,7 @@ def test_full_ontology():
 
 
 def test_lingustiic_values():
-    ont = MobileOntologyMeta("extendedAM")
+    ont = MobileOntologyMeta("mobile_robot_ontology")
     lvals = ont.linguistic_values()
     print("Linguistic values:")
     for k, v in lvals.items():
@@ -137,7 +137,7 @@ def test_lingustiic_values():
 
 
 def test_backward_chain_tree():
-    ont = MobileOntologyMeta("extendedAM")
+    ont = MobileOntologyMeta("mobile_robot_ontology")
     reasoning_order, source_variables = ont.get_possible_chains([ont.get_individual_by_name("finalMove")])
     for layer in reasoning_order:
         print(f"Required targets: {layer}")
@@ -304,7 +304,7 @@ def test_layered_robot():
     FS.add_linguistic_variable("sRS", LinguisticVariable([low, middle, high], universe_of_discourse=[0, 40]))
     FS.add_linguistic_variable("sFL", LinguisticVariable([low, middle, high], universe_of_discourse=[0, 40]))
 
-    ont = MobileOntologyMeta("extendedAM01")
+    ont = MobileOntologyMeta("mobile_robot_ontology")
     rules = ont.get_rules()
     stringified_rules = [rule_to_string(rule) for rule in rules]
     FS.add_rules(stringified_rules)
@@ -321,7 +321,7 @@ def test_layered_robot():
 
 
 def test_full_robot():
-    ont = MobileOntologyMeta("extendedAM04")
+    ont = MobileOntologyMeta("mobile_robot_ontology")
     rules = ont.get_rules()
     goal = "finalMove"
     # TODO: replace with proper extraction from ontology

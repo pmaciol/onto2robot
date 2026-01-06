@@ -31,7 +31,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     print(f"Selected ontology: {args.input}")
     if Path(args.input).is_file():
-        ont = MobileOntologyMeta("extendedAM04")
+        ont = MobileOntologyMeta("mobile_robot_ontology")
         rules = ont.get_rules()
         goal = args.goal
         # TODO: replace with proper extraction from ontology
