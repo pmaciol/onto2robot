@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl" uri="file:/C:/TEMP/Piotr/cora.owl"/>
+    <uri id="User Entered Import Resolution" name="http://www.semanticweb.org/amaci/ontologies/2026/0/amro" uri="file:/C:/TEMP/Piotr/amro.rdf"/>
+    <uri id="User Entered Import Resolution" name="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01" uri="file:/C:/TEMP/Piotr/amro_uc01.rdf"/>
+    <group id="Folder Repository, directory=file:////wsl.localhost/Ubuntu-24.04/home/pmaciol/src/onto2robot/ontologies/, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1771527766066" name="http://purl.org/ieee1872-owl/cora" uri="cora.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1771527766066" name="duplicate:http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl" uri="mobile_robot_ontology.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1771527766066" name="duplicate:http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl" uri="tests.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1771527766066" name="duplicate:http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl" uri="amro_uc01_01.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1771527766066" name="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl" uri="coraX.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1771527766066" name="duplicate:http://www.semanticweb.org/amaci/ontologies/2026/0/amro/" uri="amro_uc01.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1771527766066" name="duplicate:http://www.semanticweb.org/amaci/ontologies/2026/0/amro/" uri="amro.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1771527766066" name="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01/" uri="amro_uc01_v01.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1771527766066" name="http://www.semanticweb.org/ontologies/2013/7/RobotsAutomation.owl" uri="sumo.owl"/>
+    </group>
+</catalog>

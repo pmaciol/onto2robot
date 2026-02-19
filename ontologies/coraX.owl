@@ -119,12 +119,6 @@
 
 
 
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Process -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Process"/>
-
-
-
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region -->
 
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>

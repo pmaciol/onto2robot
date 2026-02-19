@@ -7,10 +7,33 @@ OntologyClassSuperclass = EntityClass
 OntologyClass = ThingClass
 
 
+def _get_class_by_name(ontology: Ontology, class_name: str) -> OntologyClassSuperclass | None:
+    for cls in ontology.classes():
+        if cls.name == class_name:
+            return cls
+    for imported_onto in ontology.imported_ontologies:
+        cls = _get_class_by_name(imported_onto, class_name)
+        if cls:
+            return cls
+    return None
+
+
 def _get_property_values(
     entity: OntologyIndividualSuperclass, property_name: str
 ) -> list[OntologyIndividualSuperclass]:
-    return [prop[entity] for prop in entity.get_properties() if prop.name == property_name][0]
+    try:
+        return [prop[entity] for prop in entity.get_properties() if prop.name == property_name][0]
+    except IndexError:
+        # print(f"Property '{property_name}' not found for entity '{entity.name}'. Available {entity.get_properties()}")
+        return []
+
+
+def _get_sorted_domain(linguistic_variable_space: OntologyIndividualSuperclass) -> list[OntologyIndividualSuperclass]:
+    unsorted = set(_get_property_values(linguistic_variable_space, "hasValues"))
+    with_order: list[tuple[int, OntologyIndividualSuperclass]] = [
+        tuple([_get_property_values(value, "hasOrder")[0], value]) for value in unsorted
+    ]
+    return [v for _, v in sorted(with_order, key=lambda x: x[0])]
 
 
 def _get_left_right_hands(
@@ -59,21 +82,66 @@ def load_ontology(ontology_name: str) -> Ontology:
     project_root = Path(__file__).resolve().parents[2]
     onto_path.append(project_root / "ontologies")
     path_to_file = (project_root / "ontologies" / Path(ontology_name)).with_suffix(".owl")
-    return get_ontology(path_to_file.resolve().as_uri()).load()
+
+    main_onto: Ontology | None = get_ontology(path_to_file.resolve().as_uri()).load()
+    path_to_file_1 = (project_root / "ontologies" / Path("amro_uc01")).with_suffix(".owl")
+    amro_uc01: Ontology | None = get_ontology(path_to_file_1.resolve().as_uri()).load()
+    path_to_file_2 = (project_root / "ontologies" / Path("amro")).with_suffix(".owl")
+    amro: Ontology | None = get_ontology(path_to_file_2.resolve().as_uri()).load()
+    path_to_sumo = (project_root / "ontologies" / Path("sumo")).with_suffix(".owl")
+    sumo: Ontology | None = get_ontology(path_to_sumo.resolve().as_uri()).load()
+    # amro.imported_ontologies.append(sumo)
+    # amro.imported_ontologies.append(amro_uc01)
+    # amro_uc01.imported_ontologies.append(amro)
+    # main_onto.imported_ontologies.append(amro_uc01)
+    # print(f"imported to main {list(main_onto.imported_ontologies[0].classes())} classes")
+
+    # print(f"All sumo classes {list(sumo.classes())} classes")
+    # print(f"All amro classes {list(amro.classes())} classes")
+    # print(f"All amro_uc01 classes {list(amro_uc01.classes())} classes")
+    # print(f"All main classes {list(main_onto.classes())} classes")
+
+    # print(f"Loaded ontology {main_onto.base_iri} with {list(main_onto.classes())} classes")
+    # print(f"Loaded ontology {import1.base_iri} with {list(import1.classes())} classes")
+    # print(f"Loaded ontology {import2.base_iri} with {list(import2.classes())} classes")
+    # print(f"Loaded ontology {sumo.base_iri} with {list(sumo.classes())} classes")
+    main_onto.imported_ontologies.append(sumo)
+    main_onto.imported_ontologies.append(amro)
+    main_onto.imported_ontologies.append(amro_uc01)
+
+    # print(f"All Loaded classes {list(main_onto.classes())} classes")
+    return main_onto
+    # if main_onto:
+
+
+class LinguisticVariableSpaces:
+    def __init__(self, linguistic_class: OntologyIndividualSuperclass, fuzzy_points: list[float]):
+        self.linguistic_class = linguistic_class
+        self.fuzzy_points = fuzzy_points
+
+
+class LinguisticVariableDomain:
+    def __init__(self, linguistic_domain: list[OntologyIndividualSuperclass], fuzzy_points: list[float]):
+        self.linguistic_domain = linguistic_domain
+        self.fuzzy_points = fuzzy_points
 
 
 class MobileOntologyMeta:
     def __init__(self, ontology: Ontology | str) -> None:
         if isinstance(ontology, str):
             ontology = load_ontology(ontology).load()
-        self.ontology = ontology
+        if not isinstance(ontology, Ontology):
+            raise ValueError(f"Failed to load ontology from {ontology}")
+        self.ontology: Ontology = ontology
 
     def __del__(self):
         self.ontology.destroy()
 
     def get_rules(self) -> list[OntologyIndividualSuperclass]:
-        rules_class: ThingClass = self.ontology.RuleHeader
-        return list(rules_class.instances())
+        rules_class: OntologyClassSuperclass | None = _get_class_by_name(self.ontology, "RuleHeader")
+        if rules_class:
+            return list(rules_class.instances())  # pyright: ignore[reportAttributeAccessIssue]; works properly in runtime, but pyright cannot detect it
+        return []
 
     def destroy(self) -> None:
         self.ontology.destroy()
@@ -87,44 +155,69 @@ class MobileOntologyMeta:
                 return individual
         return None
 
-    def linguistic_values(self) -> dict[OntologyIndividualSuperclass, set[OntologyIndividualSuperclass]]:
-        lv_dict = {}
-        rules = self.get_rules()
-        for rule in rules:
-            premises = _get_premises(rule)
-            conclusions = _get_conclusions(rule)
-            for premise in premises:
-                left, right = _get_left_right_hands(premise)
-                if left not in lv_dict:
-                    lv_dict[left] = set()
-                if right not in lv_dict[left]:
-                    lv_dict[left].add(right)
-            for conclusion in conclusions:
-                left, right = _get_left_right_hands(conclusion)
-                if left not in lv_dict:
-                    lv_dict[left] = set()
-                if right not in lv_dict[left]:
-                    lv_dict[left].add(right)
-        return lv_dict
+    def get_linguistic_variable_spaces(self) -> dict[OntologyIndividualSuperclass, LinguisticVariableSpaces]:
+        fi_class = _get_class_by_name(self.ontology, "FuzzyInstances")
+        if not fi_class:
+            print("FuzzyInstances class not found in the ontology.")
+            return {}
+        linguistic_variable_classes: list[OntologyIndividualSuperclass] = list(fi_class.instances())  # pyright: ignore[reportAttributeAccessIssue]
 
-    def linguistic_value_spaces(
-        self, linguistic_spaces: list[list[str]]
-    ) -> dict[str, dict[str, OntologyIndividualSuperclass]]:
-        lvals = self.linguistic_values()
-        lv_space = {}
-        for lvalue, items in lvals.items():
-            for space in linguistic_spaces:
-                if any([it in space for it in [v.name for v in items]]):
-                    print(f" Mapping LV {lvalue.name} to space {space}")
-                    lv_space[lvalue.name] = space
-                    continue
-        return lv_space
+        linguistic_variable_spaces: dict[OntologyIndividualSuperclass, LinguisticVariableSpaces] = {}
+        for linguistic_variable_class in linguistic_variable_classes:
+            has_parameters = int(_get_property_values(linguistic_variable_class, "hasParameters")[0])
+            param_values: list[float] = []
+            for i in range(1, has_parameters + 1):
+                param_values.append(float(_get_property_values(linguistic_variable_class, f"has{i}.Parameter")[0]))
+
+            linguistic_variable_spaces[linguistic_variable_class] = LinguisticVariableSpaces(
+                _get_property_values(linguistic_variable_class, "isTypeOf")[0]
+                if _get_property_values(linguistic_variable_class, "isTypeOf")
+                else None,
+                param_values,
+            )
+
+            # print(f"Linguistic variable class {linguistic_variable_class.name} has parameters values: {param_values}")
+
+        print("Linguistic variables classes spaces:")
+        for var_class, spaces in linguistic_variable_spaces.items():
+            print(
+                f" - {var_class.name}: {spaces.linguistic_class.name if spaces else 'None'} {spaces.fuzzy_points if spaces else []}"
+            )
+
+        return linguistic_variable_spaces
+
+    def get_linguistic_variable_domains(self) -> dict[OntologyIndividualSuperclass, LinguisticVariableDomain]:
+        linguistic_variable_spaces = self.get_linguistic_variable_spaces()
+        linguistic_variable_domains: dict[OntologyIndividualSuperclass, LinguisticVariableDomain] = {}
+        for linguistic_variable_class, linguistic_variable_space in linguistic_variable_spaces.items():
+            domain = _get_sorted_domain(linguistic_variable_space.linguistic_class)
+            linguistic_variables_of_class = _get_property_values(linguistic_variable_class, "represents") or []
+            print(f"Linguistic variable class {linguistic_variable_class} represents: {linguistic_variables_of_class}")
+            for linguistic_variable in linguistic_variables_of_class:
+                variables_extending = _get_property_values(linguistic_variable, "support")
+                if variables_extending:
+                    # TODO we get amro_uc01.InfActSens02: ['middle', 'low', 'right'] in results -
+                    for l_val in variables_extending:
+                        linguistic_variable_domains[l_val] = LinguisticVariableDomain(
+                            domain, linguistic_variable_space.fuzzy_points
+                        )
+                else:
+                    linguistic_variable_domains[linguistic_variable] = LinguisticVariableDomain(
+                        domain, linguistic_variable_space.fuzzy_points
+                    )
+
+        print("Final linguistic variable domains mapping:")
+        for domain, values in linguistic_variable_domains.items():
+            print(
+                f" - variable: {domain.name} -> domain values{[v.name for v in values.linguistic_domain]} with fuzzy points {values.fuzzy_points}"
+            )
+        return linguistic_variable_domains
 
     def get_possible_chains(
         self, goals: list[OntologyIndividualSuperclass]
     ) -> tuple[list[set[OntologyIndividualSuperclass]], set[OntologyIndividualSuperclass]]:
         def get_precedents(goal):
-            rules_class: ThingClass = self.ontology.RuleHeader
+            rules_class: ThingClass = _get_class_by_name(self.ontology, "RuleHeader")
             precedents = set()
             input_individuals = set()
             for rule in rules_class.instances():
@@ -163,4 +256,5 @@ class MobileOntologyMeta:
                     cleaned_layer.add(item)
             if cleaned_layer:
                 cleaned_layer_inputs.append(cleaned_layer)
+
         return cleaned_layer_inputs, source_variables

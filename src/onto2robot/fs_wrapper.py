@@ -1,3 +1,5 @@
+from pprint import pprint
+
 import simpful
 from simpful import LinguisticVariable, TriangleFuzzySet
 
@@ -44,7 +46,8 @@ class SimpfulFuzzyWrapper:
 
     def __init__(
         self,
-        linguistic_variables_spaces: dict[str, dict[str, OntologyIndividualSuperclass]],
+        linguistic_variables_spaces: dict[OntologyIndividualSuperclass, set[OntologyIndividualSuperclass]],
+        # dict[str, dict[str, OntologyIndividualSuperclass]],
         # TODO: The universe for each variable should be taken from the target system specification
         universe: tuple[float, float],
         rules: list[OntologyIndividualSuperclass],
@@ -60,6 +63,7 @@ class SimpfulFuzzyWrapper:
         self._add_linguistic_variables()
 
         stringified_rules = [rule_to_string(rule) for rule in rules]
+        pprint(stringified_rules)
 
         rnames = {}
         for r in rules:

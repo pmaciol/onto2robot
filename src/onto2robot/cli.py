@@ -34,12 +34,7 @@ def main(argv: list[str] | None = None) -> int:
         ont = MobileOntologyMeta("mobile_robot_ontology")
         rules = ont.get_rules()
         goal = args.goal
-        # TODO: replace with proper extraction from ontology
-        linguistic_spaces = [
-            ["low", "middle", "high"],
-            ["left", "forward", "right"],
-        ]
-        linguistic_variables_spaces = ont.linguistic_value_spaces(linguistic_spaces)
+        linguistic_variables_spaces = ont.get_linguistic_variable_domains()
         reasoning_order, source_variables = ont.get_possible_chains([ont.get_individual_by_name(goal)])
 
         if args.fuzzy_model == "scikit-fuzzy":

@@ -1,4 +1,5 @@
 from math import isclose
+from pprint import pprint
 
 from simpful import (
     FuzzySet,
@@ -96,6 +97,14 @@ def test_add_premise():
     ontology.destroy()
 
 
+def test_get_fuzzy_parameters():
+    ont = MobileOntologyMeta("amro_uc01_01")
+    lvals = ont.get_linguistic_variable_spaces()
+    pprint(lvals)
+    assert "sFL" in lvals
+    assert lvals["sFL"] == ["low", "middle", "high"]
+
+
 def test_all_rules():
     ont = MobileOntologyMeta("tests")
     rules = ont.get_rules()
@@ -104,7 +113,7 @@ def test_all_rules():
 
 
 def test_full_ontology():
-    ont = MobileOntologyMeta("mobile_robot_ontology")
+    ont = MobileOntologyMeta("amro_uc01_01")
     rules = ont.get_rules()
     stringified_rules = [rule_to_string(rule) for rule in rules]
     with open("results.txt", "w") as f:
@@ -127,7 +136,7 @@ def test_full_ontology():
 
 def test_lingustiic_values():
     ont = MobileOntologyMeta("mobile_robot_ontology")
-    lvals = ont.linguistic_values()
+    lvals = ont.get_linguistic_variable_spaces()
     print("Linguistic values:")
     for k, v in lvals.items():
         print(f" - {k}: {v}")
@@ -321,19 +330,14 @@ def test_layered_robot():
 
 
 def test_full_robot():
-    ont = MobileOntologyMeta("mobile_robot_ontology")
+    ont = MobileOntologyMeta("amro_uc01_v01")
     rules = ont.get_rules()
     goal = "finalMove"
-    # TODO: replace with proper extraction from ontology
-    linguistic_spaces = [
-        ["low", "middle", "high"],
-        ["left", "forward", "right"],
-    ]
-    linguistic_variables_spaces = ont.linguistic_value_spaces(linguistic_spaces)
+    linguistic_variables_domains = ont.get_linguistic_variable_domains()
     reasoning_order, source_variables = ont.get_possible_chains([ont.get_individual_by_name(goal)])
 
     fs = SimpfulFuzzyWrapper(
-        linguistic_variables_spaces,
+        linguistic_variables_domains,
         universe=(0, 40),
         rules=rules,
     )
@@ -351,3 +355,4 @@ def test_full_robot():
     for layer in reversed(reasoning_order):
         fs.compute(layer)
     assert goal in fs.goals_inferred
+    assert False

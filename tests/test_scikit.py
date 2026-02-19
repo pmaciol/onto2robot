@@ -7,22 +7,21 @@ from onto2robot.scikit_fuzz_wrapper import ScikitFuzzyWrapper
 
 
 def scikit_fuzzy_full(input_values: dict[str, float]):
-    ont = MobileOntologyMeta("mobile_robot_ontology")
+    ont = MobileOntologyMeta("amro_uc01_v01")
     rules = ont.get_rules()
     goal = "finalMove"
 
-    linguistic_spaces = [
-        ["low", "middle", "high"],
-        ["left", "forward", "right"],
-    ]
-    linguistic_variables_spaces = ont.linguistic_value_spaces(linguistic_spaces)
+    linguistic_variables_domains = ont.get_linguistic_variable_domains()
     reasoning_order, source_variables = ont.get_possible_chains([ont.get_individual_by_name(goal)])
+    print(f"Reasoning order: {reasoning_order}")
 
-    universe = np.arange(0, 40, 1)
-    fs = ScikitFuzzyWrapper(linguistic_variables_spaces, goal, universe, rules)
-    fs.set_start_values(input_values)
+    fs = ScikitFuzzyWrapper(linguistic_variables_domains, goal, rules)
+    fs.set_start_values(input_values, fs.antecedents)
 
     # Perform inference layer by layer in reverse order
+    print("Source variables:")
+    for var, val in input_values.items():
+        print(f"  {var}:\t {val}")
     for layer in reversed(reasoning_order):
         fs.compute(layer)
 
@@ -32,14 +31,14 @@ def scikit_fuzzy_full(input_values: dict[str, float]):
 def test_scikit_fuzzy_1():
     results = scikit_fuzzy_full(
         {
-            "sLF": 1,
-            "sLS": 20,
-            "sFL": 1,
-            "sFR": 1,
-            "sRF": 1,
-            "sRS": 20,
-            "bl": 20,
-            "bR": 20,
+            "R01sLF": 1,
+            "R01sLS": 20,
+            "R01sFL": 1,
+            "R01sFR": 1,
+            "R01sRF": 1,
+            "R01sRS": 20,
+            "R01sBL": 20,
+            "R01sBR": 20,
         }
     )
 
@@ -48,19 +47,20 @@ def test_scikit_fuzzy_1():
     assert math.isclose(results.get("sRassessment"), 1, abs_tol=1)
     assert math.isclose(results.get("move"), 20, abs_tol=1)
     assert math.isclose(results.get("finalMove"), 40, abs_tol=1)
+    assert False
 
 
 def test_scikit_fuzzy_2():
     results = scikit_fuzzy_full(
         {
-            "sLF": 1,
-            "sLS": 39,
-            "sFL": 20,
-            "sFR": 20,
-            "sRF": 39,
-            "sRS": 1,
-            "bl": 20,
-            "bR": 20,
+            "R01sLF": 1,
+            "R01sLS": 39,
+            "R01sFL": 20,
+            "R01sFR": 20,
+            "R01sRF": 39,
+            "R01sRS": 1,
+            "R01sBL": 20,
+            "R01sBR": 20,
         }
     )
 
@@ -74,14 +74,14 @@ def test_scikit_fuzzy_2():
 def test_scikit_fuzzy_3():
     results = scikit_fuzzy_full(
         {
-            "sLF": 39,
-            "sLS": 1,
-            "sFL": 20,
-            "sFR": 20,
-            "sRF": 1,
-            "sRS": 39,
-            "bl": 20,
-            "bR": 20,
+            "R01sLF": 39,
+            "R01sLS": 1,
+            "R01sFL": 20,
+            "R01sFR": 20,
+            "R01sRF": 1,
+            "R01sRS": 39,
+            "R01sBL": 20,
+            "R01sBR": 20,
         }
     )
 
@@ -90,19 +90,20 @@ def test_scikit_fuzzy_3():
     assert math.isclose(results.get("sRassessment"), 1, abs_tol=1)
     assert math.isclose(results.get("move"), 39, abs_tol=1)
     assert math.isclose(results.get("finalMove"), 39, abs_tol=1.0)
+    assert False
 
 
 def test_scikit_fuzzy_4():
     results = scikit_fuzzy_full(
         {
-            "sLF": 39,
-            "sLS": 1,
-            "sFL": 1,
-            "sFR": 39,
-            "sRF": 1,
-            "sRS": 39,
-            "bl": 20,
-            "bR": 20,
+            "R01sLF": 39,
+            "R01sLS": 1,
+            "R01sFL": 1,
+            "R01sFR": 39,
+            "R01sRF": 1,
+            "R01sRS": 39,
+            "R01sBL": 20,
+            "R01sBR": 20,
         }
     )
 
@@ -111,20 +112,20 @@ def test_scikit_fuzzy_4():
     assert math.isclose(results.get("sRassessment"), 1, abs_tol=1)
     assert math.isclose(results.get("move"), 39, abs_tol=1)
     assert math.isclose(results.get("finalMove"), 39, abs_tol=1.0)
-    ##assert False
+    assert False
 
 
 def test_scikit_fuzzy_5():
     results = scikit_fuzzy_full(
         {
-            "sLF": 20,
-            "sLS": 20,
-            "sFL": 1,
-            "sFR": 1,
-            "sRF": 1,
-            "sRS": 1,
-            "bl": 20,
-            "bR": 20,
+            "R01sLF": 20,
+            "R01sLS": 20,
+            "R01sFL": 1,
+            "R01sFR": 1,
+            "R01sRF": 1,
+            "R01sRS": 1,
+            "R01sBL": 20,
+            "R01sBR": 20,
         }
     )
 
@@ -133,19 +134,20 @@ def test_scikit_fuzzy_5():
     assert math.isclose(results.get("sRassessment"), 1, abs_tol=1)
     assert math.isclose(results.get("move"), 39, abs_tol=1)
     assert math.isclose(results.get("finalMove"), 39, abs_tol=1.0)
+    assert False
 
 
 def test_scikit_fuzzy_6():
     results = scikit_fuzzy_full(
         {
-            "sLF": 20,
-            "sLS": 1,
-            "sFL": 1,
-            "sFR": 1,
-            "sRF": 20,
-            "sRS": 20,
-            "bl": 10,
-            "bR": 30,
+            "R01sLF": 20,
+            "R01sLS": 1,
+            "R01sFL": 1,
+            "R01sFR": 1,
+            "R01sRF": 20,
+            "R01sRS": 20,
+            "R01sBL": 10,
+            "R01sBR": 30,
         }
     )
 
@@ -159,14 +161,14 @@ def test_scikit_fuzzy_6():
 def test_scikit_fuzzy_7():
     results = scikit_fuzzy_full(
         {
-            "sLF": 20,
-            "sLS": 1,
-            "sFL": 1,
-            "sFR": 1,
-            "sRF": 20,
-            "sRS": 20,
-            "bl": 30,
-            "bR": 10,
+            "R01sLF": 20,
+            "R01sLS": 1,
+            "R01sFL": 1,
+            "R01sFR": 1,
+            "R01sRF": 20,
+            "R01sRS": 20,
+            "R01sBL": 30,
+            "R01sBR": 10,
         }
     )
 
@@ -175,19 +177,20 @@ def test_scikit_fuzzy_7():
     assert math.isclose(results.get("sRassessment"), 20, abs_tol=1)
     assert math.isclose(results.get("move"), 20, abs_tol=1)
     assert math.isclose(results.get("finalMove"), 5, abs_tol=1.0)
+    assert False
 
 
 def test_scikit_fuzzy_8():
     results = scikit_fuzzy_full(
         {
-            "sLF": 40,
-            "sLS": 20,
-            "sFL": 20,
-            "sFR": 20,
-            "sRF": 20,
-            "sRS": 20,
-            "bl": 20,
-            "bR": 20,
+            "R01sLF": 40,
+            "R01sLS": 20,
+            "R01sFL": 20,
+            "R01sFR": 20,
+            "R01sRF": 20,
+            "R01sRS": 20,
+            "R01sBL": 20,
+            "R01sBR": 20,
         }
     )
 
@@ -196,19 +199,20 @@ def test_scikit_fuzzy_8():
     assert math.isclose(results.get("sRassessment"), 20, abs_tol=1)
     assert math.isclose(results.get("move"), 39, abs_tol=1)
     assert math.isclose(results.get("finalMove"), 39, abs_tol=1.0)
+    assert False
 
 
 def test_scikit_fuzzy_9():
     results = scikit_fuzzy_full(
         {
-            "sLF": 10,
-            "sLS": 15,
-            "sFL": 5,
-            "sFR": 4,
-            "sRF": 10,
-            "sRS": 25,
-            "bl": 25,
-            "bR": 18,
+            "R01sLF": 10,
+            "R01sLS": 15,
+            "R01sFL": 5,
+            "R01sFR": 4,
+            "R01sRF": 10,
+            "R01sRS": 25,
+            "R01sBL": 25,
+            "R01sBR": 18,
         }
     )
 
@@ -222,14 +226,14 @@ def test_scikit_fuzzy_9():
 def test_scikit_fuzzy_10():
     results = scikit_fuzzy_full(
         {
-            "sLF": 15,
-            "sLS": 5,
-            "sFL": 10,
-            "sFR": 5,
-            "sRF": 25,
-            "sRS": 15,
-            "bl": 30,
-            "bR": 10,
+            "R01sLF": 15,
+            "R01sLS": 5,
+            "R01sFL": 10,
+            "R01sFR": 5,
+            "R01sRF": 25,
+            "R01sRS": 15,
+            "R01sBL": 30,
+            "R01sBR": 10,
         }
     )
 
@@ -243,14 +247,14 @@ def test_scikit_fuzzy_10():
 def test_scikit_fuzzy_11():
     results = scikit_fuzzy_full(
         {
-            "sLF": 22,
-            "sLS": 10,
-            "sFL": 25,
-            "sFR": 18,
-            "sRF": 7,
-            "sRS": 35,
-            "bl": 8,
-            "bR": 35,
+            "R01sLF": 22,
+            "R01sLS": 10,
+            "R01sFL": 25,
+            "R01sFR": 18,
+            "R01sRF": 7,
+            "R01sRS": 35,
+            "R01sBL": 8,
+            "R01sBR": 35,
         }
     )
 
@@ -264,14 +268,14 @@ def test_scikit_fuzzy_11():
 def test_scikit_fuzzy_12():
     results = scikit_fuzzy_full(
         {
-            "sLF": 19,
-            "sLS": 21,
-            "sFL": 3,
-            "sFR": 2,
-            "sRF": 2,
-            "sRS": 22,
-            "bl": 22,
-            "bR": 19,
+            "R01sLF": 19,
+            "R01sLS": 21,
+            "R01sFL": 3,
+            "R01sFR": 2,
+            "R01sRF": 2,
+            "R01sRS": 22,
+            "R01sBL": 22,
+            "R01sBR": 19,
         }
     )
 
@@ -285,14 +289,14 @@ def test_scikit_fuzzy_12():
 def test_scikit_fuzzy_13():
     results = scikit_fuzzy_full(
         {
-            "sLF": 2,
-            "sLS": 15,
-            "sFL": 2,
-            "sFR": 3,
-            "sRF": 2,
-            "sRS": 15,
-            "bl": 38,
-            "bR": 3,
+            "R01sLF": 2,
+            "R01sLS": 15,
+            "R01sFL": 2,
+            "R01sFR": 3,
+            "R01sRF": 2,
+            "R01sRS": 15,
+            "R01sBL": 38,
+            "R01sBR": 3,
         }
     )
 
