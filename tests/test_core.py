@@ -1,6 +1,7 @@
 from math import isclose
 from pprint import pprint
 
+from owlready2 import World
 from simpful import (
     FuzzySet,
     FuzzySystem,
@@ -23,7 +24,7 @@ from onto2robot.fs_wrapper import SimpfulFuzzyWrapper
 
 
 def test_load_sumo_ontology():
-    onto = load_ontology("sumo")
+    onto = load_ontology("sumo", world=World())
     all_classes = list(onto.classes())
     print(f"SUMO classes {all_classes}")
     assert len(all_classes) > 0
@@ -31,7 +32,7 @@ def test_load_sumo_ontology():
 
 
 def test_load_mobile_robot_ontology():
-    onto = load_ontology("mobile_robot_ontology")
+    onto = load_ontology("mobile_robot_ontology", world=World())
     all_classes = list(onto.classes())
     print(f"MOBILE ROBOT classes {all_classes}")
     assert len(all_classes) > 0
@@ -39,7 +40,7 @@ def test_load_mobile_robot_ontology():
 
 
 def test_read_rules():
-    ontology = load_ontology("tests")
+    ontology = load_ontology("tests", world=World())
     ont = MobileOntologyMeta(ontology)
     rules = ont.get_rules()
     assert len(rules) == 9
@@ -54,7 +55,7 @@ def test_read_rules():
 
 
 def test_single_premise():
-    ontology = load_ontology("tests")
+    ontology = load_ontology("tests", world=World())
     premise01 = ontology.premise01
     assert premise01 is not None
     assert premise01.name == "premise01"
@@ -62,7 +63,7 @@ def test_single_premise():
 
 
 def test_premise_left_right():
-    ontology = load_ontology("tests")
+    ontology = load_ontology("tests", world=World())
     premise01 = ontology.premise01
     leftHand = _get_property_values(premise01, "hasLeftHand")
     assert len(leftHand) == 1
@@ -82,7 +83,7 @@ def test_whole_rule():
 
 
 def test_add_premise():
-    ontology = load_ontology("tests")
+    ontology = load_ontology("tests", world=World())
     rule01 = ontology.R01
     premises_before = _get_premises(rule01)
     assert len(premises_before) == 2
@@ -355,4 +356,4 @@ def test_full_robot():
     for layer in reversed(reasoning_order):
         fs.compute(layer)
     assert goal in fs.goals_inferred
-    assert False
+    # assert False

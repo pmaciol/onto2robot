@@ -9,10 +9,10 @@
     <owl:Ontology rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl">
         <owl:imports rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl"/>
     </owl:Ontology>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Datatypes
@@ -20,16 +20,16 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#langString -->
 
     <rdfs:Datatype rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Object Properties
@@ -37,7 +37,7 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#OWLObjectProperty_d4faad39_b8c6_4ba1_b13e_9464302fa27e -->
@@ -45,7 +45,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#OWLObjectProperty_d4faad39_b8c6_4ba1_b13e_9464302fa27e">
         <rdfs:label xml:lang="pl">precedes</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#automatedRobot -->
@@ -53,7 +53,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#automatedRobot">
         <rdfs:subPropertyOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#robotprocesslink"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#consistsOf -->
@@ -61,7 +61,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#consistsOf">
         <rdfs:label xml:lang="pl">consistsOf</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#contains -->
@@ -69,7 +69,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#contains">
         <rdfs:label xml:lang="pl">contains</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#equippedWith -->
@@ -79,7 +79,7 @@
         <rdfs:domain rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#RoboticEnvironment"/>
         <rdfs:range rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#RoboticSystem"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#fullyautonomousRobot -->
@@ -87,7 +87,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#fullyautonomousRobot">
         <rdfs:subPropertyOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#robotprocesslink"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasConclusion -->
@@ -95,7 +95,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasConclusion">
         <rdfs:label xml:lang="pl">hasConclusion</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasLeftHand -->
@@ -103,13 +103,13 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasLeftHand">
         <rdfs:label xml:lang="pl">hasLeftHand</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasLinguisticValue -->
 
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasLinguisticValue"/>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasPremise -->
@@ -117,7 +117,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasPremise">
         <rdfs:label xml:lang="pl">hasPremise</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasRightHand -->
@@ -125,7 +125,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasRightHand">
         <rdfs:label xml:lang="pl">hasRightHand</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasSIgnal -->
@@ -133,7 +133,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasSIgnal">
         <rdfs:label xml:lang="pl">hasSignal</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasState -->
@@ -141,7 +141,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasState">
         <rdfs:label xml:lang="pl">hasState</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasValues -->
@@ -149,7 +149,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasValues">
         <rdfs:label xml:lang="pl">hasValue</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isConnectedTo -->
@@ -157,7 +157,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isConnectedTo">
         <rdfs:label xml:lang="pl">isConnectedTo</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isFuzzyTermOf -->
@@ -165,7 +165,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isFuzzyTermOf">
         <rdfs:label xml:lang="pl">isFuzzyTermOf</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isLocatedIn -->
@@ -173,7 +173,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isLocatedIn">
         <rdfs:label xml:lang="pl">isLocatedIn</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isOneOff -->
@@ -181,7 +181,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isOneOff">
         <rdfs:label xml:lang="pl">isOneOf</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isPartOf -->
@@ -189,7 +189,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isPartOf">
         <rdfs:label xml:lang="pl">isPartOf</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isRepresentedBy -->
@@ -198,7 +198,7 @@
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:label xml:lang="pl">isRepresentedBy</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isSupportedBy -->
@@ -206,7 +206,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isSupportedBy">
         <owl:inverseOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#support"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isTypeOf -->
@@ -214,7 +214,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isTypeOf">
         <rdfs:label xml:lang="pl">isTypeOf</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isUsedIn -->
@@ -222,7 +222,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isUsedIn">
         <rdfs:label xml:lang="pl">IsUsedIn</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isValueOf -->
@@ -230,7 +230,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isValueOf">
         <rdfs:label xml:lang="pl">isValueOf</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#remotecontrolledRobot -->
@@ -238,7 +238,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#remotecontrolledRobot">
         <rdfs:subPropertyOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#robotprocesslink"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#resultsIn -->
@@ -246,7 +246,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#resultsIn">
         <rdfs:label xml:lang="pl">resultsIn</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#robotPart -->
@@ -257,7 +257,7 @@
         <rdfs:domain rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
         <rdfs:range rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Robot"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#robotprocesslink -->
@@ -268,7 +268,7 @@
         <rdfs:range rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Process"/>
         <rdfs:label xml:lang="en">agentRobot</rdfs:label>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#semiautonomousRobot -->
@@ -276,7 +276,7 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#semiautonomousRobot">
         <rdfs:subPropertyOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#robotprocesslink"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#support -->
@@ -285,7 +285,7 @@
         <rdfs:domain rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
         <rdfs:range rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#RoboticSystem"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#teleoperatedRobot -->
@@ -293,34 +293,34 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#teleoperatedRobot">
         <rdfs:subPropertyOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#robotprocesslink"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#agent -->
 
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#agent"/>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#hasPart -->
 
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#hasPart"/>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#member -->
 
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#member"/>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#part -->
 
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#part"/>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Data properties
@@ -328,7 +328,7 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#direction -->
@@ -336,7 +336,7 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#direction">
         <rdfs:label xml:lang="pl">direction</rdfs:label>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has1.Parameter -->
@@ -344,7 +344,7 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has1.Parameter">
         <rdfs:label xml:lang="pl">has1.Parameter</rdfs:label>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has2.Parameter -->
@@ -352,7 +352,7 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has2.Parameter">
         <rdfs:label xml:lang="pl">has2.Parameter</rdfs:label>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has3.Parameter -->
@@ -360,7 +360,7 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has3.Parameter">
         <rdfs:label xml:lang="pl">has3.Parameter</rdfs:label>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has4.Parameter -->
@@ -368,7 +368,7 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has4.Parameter">
         <rdfs:label xml:lang="pl">has4.Parameter</rdfs:label>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has5.Parameter -->
@@ -376,7 +376,7 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has5.Parameter">
         <rdfs:label xml:lang="pl">has5.Parameter</rdfs:label>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has6.Parameter -->
@@ -384,7 +384,7 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has6.Parameter">
         <rdfs:label xml:lang="pl">has6.Parameter</rdfs:label>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has7.Parameter -->
@@ -392,7 +392,7 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has7.Parameter">
         <rdfs:label xml:lang="pl">has7.Parameter</rdfs:label>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has8.Parameter -->
@@ -400,7 +400,7 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has8.Parameter">
         <rdfs:label xml:lang="pl">has8.Parameter</rdfs:label>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has9.Parameter -->
@@ -408,7 +408,7 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#has9.Parameter">
         <rdfs:label xml:lang="pl">has9.Parameter</rdfs:label>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasParameter -->
@@ -416,7 +416,7 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasParameter">
         <rdfs:label xml:lang="pl">hasParameters</rdfs:label>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasValue -->
@@ -424,7 +424,7 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#hasValue">
         <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isEvaluated -->
@@ -432,7 +432,7 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#isEvaluated">
         <rdfs:label xml:lang="pl">isEvaluated</rdfs:label>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#linguistic -->
@@ -440,7 +440,7 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#linguistic">
         <rdfs:label xml:lang="pl">linguistic</rdfs:label>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#signal -->
@@ -448,10 +448,10 @@
     <owl:DatatypeProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#signal">
         <rdfs:label xml:lang="pl">signal</rdfs:label>
     </owl:DatatypeProperty>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Classes
@@ -459,7 +459,7 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Action -->
@@ -469,7 +469,7 @@
         <owl:disjointWith rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#ConclusionsAssessment"/>
         <rdfs:label xml:lang="pl">Action</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#ActiveSensor -->
@@ -478,7 +478,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Sensor"/>
         <rdfs:label xml:lang="pl">ActiveSensors</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Back -->
@@ -487,7 +487,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
         <rdfs:label xml:lang="pl">Back</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Bottom -->
@@ -496,7 +496,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
         <rdfs:label xml:lang="pl">Bottom</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Camera -->
@@ -505,7 +505,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#ActiveSensor"/>
         <rdfs:label xml:lang="pl">Camera</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#CollectiveRoboticSystem -->
@@ -528,7 +528,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#SingleRoboticSystem"/>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Conclusion -->
@@ -537,7 +537,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Rules"/>
         <rdfs:label xml:lang="pl">Conclusion</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#ConclusionsAssessment -->
@@ -560,7 +560,7 @@
         </rdfs:subClassOf>
         <rdfs:label xml:lang="pl">ConclusionsAssessments</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Front -->
@@ -569,7 +569,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
         <rdfs:label xml:lang="pl">Front</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#FuzzyInstances -->
@@ -578,7 +578,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#FuzzyVariable"/>
         <rdfs:label xml:lang="pl">FuzzyInstances</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#FuzzyVariable -->
@@ -587,7 +587,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Abstract"/>
         <rdfs:label xml:lang="pl">FuzzyVariable</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#FuzzyVariablesTypes -->
@@ -596,7 +596,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#FuzzyVariable"/>
         <rdfs:label xml:lang="pl">FuzzyVariablesTypes</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#InfraredSensors -->
@@ -605,7 +605,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#ActiveSensor"/>
         <rdfs:label xml:lang="pl">InfraredSensors</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LeftSide -->
@@ -614,7 +614,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
         <rdfs:label xml:lang="pl">LeftSide</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LinguisticTerms -->
@@ -623,7 +623,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Abstract"/>
         <rdfs:label xml:lang="pl">LinguisticTerms</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LinguisticValues -->
@@ -632,7 +632,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#FuzzyVariable"/>
         <rdfs:label xml:lang="pl">LinguisticValues</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Premise -->
@@ -647,7 +647,7 @@
         </rdfs:subClassOf>
         <rdfs:label>Premise</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Project -->
@@ -655,7 +655,7 @@
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Project">
         <rdfs:label xml:lang="pl">Project</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#RightSide -->
@@ -664,7 +664,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
         <rdfs:label xml:lang="pl">RightSide</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Rob01 -->
@@ -672,7 +672,7 @@
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Rob01">
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Robot"/>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Robot -->
@@ -681,7 +681,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Agent"/>
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#RobotGroup -->
@@ -695,7 +695,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#RobotInterface -->
@@ -703,7 +703,7 @@
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#RobotInterface">
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Robot"/>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#RoboticEnvironment -->
@@ -718,7 +718,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#RoboticSystem -->
@@ -765,7 +765,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#RobotsRegion -->
@@ -781,7 +781,7 @@
         </rdfs:subClassOf>
         <rdfs:label xml:lang="pl">RobotsRegion</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#RuleHeader -->
@@ -803,7 +803,7 @@
         </rdfs:subClassOf>
         <rdfs:label xml:lang="pl">RuleHeader</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Rules -->
@@ -811,7 +811,7 @@
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Rules">
         <rdfs:label xml:lang="pl">Rules</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#RulesSets -->
@@ -820,7 +820,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Rules"/>
         <rdfs:label xml:lang="pl">RulesSets</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Sensor -->
@@ -829,7 +829,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Artifact"/>
         <rdfs:label xml:lang="pl">Sensor</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#SensorInstances -->
@@ -838,7 +838,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Sensor"/>
         <rdfs:label xml:lang="pl">SensorInstances</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#SensorUsed -->
@@ -868,7 +868,7 @@
         </rdfs:subClassOf>
         <rdfs:label xml:lang="pl">SensorUsed</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#SingleRoboticSystem -->
@@ -883,7 +883,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Turn -->
@@ -899,7 +899,7 @@
         </rdfs:subClassOf>
         <rdfs:label xml:lang="pl">Turn</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Upper -->
@@ -908,64 +908,64 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
         <rdfs:label xml:lang="pl">Upper</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#ArtificialSystem -->
 
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#ArtificialSystem"/>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#PhysicalEnvironment -->
 
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#PhysicalEnvironment"/>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Abstract -->
 
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Abstract"/>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Agent -->
 
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Agent"/>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Artifact -->
 
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Artifact"/>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device -->
 
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Group -->
 
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Group"/>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Process -->
 
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Process"/>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region -->
 
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Individuals
@@ -973,7 +973,7 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#FV01 -->
@@ -983,7 +983,7 @@
         <consistsOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#FuzzyTerm_LMH_low"/>
         <rdfs:label xml:lang="pl">FV01</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#FinalMove -->
@@ -1001,7 +1001,7 @@
         <contains rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R41"/>
         <rdfs:label xml:lang="pl">FinalMoving</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#FrontSensors -->
@@ -1017,7 +1017,7 @@
         <contains rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R07"/>
         <rdfs:label xml:lang="pl">FrontSensors</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#FuzzyTerm02 -->
@@ -1030,7 +1030,7 @@
         <has3.Parameter rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1500.0</has3.Parameter>
         <rdfs:label xml:lang="pl">FuzzyTerm02</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#FuzzyTerm_LMH_low -->
@@ -1043,7 +1043,7 @@
         <has3.Parameter rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">500.0</has3.Parameter>
         <rdfs:label xml:lang="pl">FuzzyTerm_LMH_low</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#InfraredSensor02 -->
@@ -1060,7 +1060,7 @@
         <isRepresentedBy rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LFR01"/>
         <rdfs:label xml:lang="pl">InfraredSensor02</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LFR01 -->
@@ -1080,7 +1080,7 @@
         <rdfs:comment>triangular [0, 0, 20]; [0; 20; 40]; [20, 40, 40]</rdfs:comment>
         <rdfs:label xml:lang="pl">LFR01</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LFR02 -->
@@ -1099,7 +1099,7 @@
         <has9.Parameter rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</has9.Parameter>
         <rdfs:label xml:lang="pl">LFR02</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LHT01 -->
@@ -1107,7 +1107,7 @@
     <owl:NamedIndividual rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LHT01">
         <rdfs:label xml:lang="pl">LHT01</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LHT02 -->
@@ -1115,7 +1115,7 @@
     <owl:NamedIndividual rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LHT02">
         <rdfs:label xml:lang="pl">LHT02</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LMH01 -->
@@ -1135,7 +1135,7 @@
         <rdfs:comment>triangular [0, 0, 20]; [0; 20; 40]; [20, 40, 40]</rdfs:comment>
         <rdfs:label xml:lang="pl">LMH01</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LMH02 -->
@@ -1154,7 +1154,7 @@
         <has9.Parameter rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</has9.Parameter>
         <rdfs:label xml:lang="pl">LMH02</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LeftForwardRight -->
@@ -1166,7 +1166,7 @@
         <hasValues rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#right"/>
         <rdfs:label xml:lang="pl">LeftForwardRight</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LeftSensors -->
@@ -1180,7 +1180,7 @@
         <contains rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R12"/>
         <rdfs:label xml:lang="pl">LeftSensors</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LowMiddleHigh -->
@@ -1191,7 +1191,7 @@
         <hasValues rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <hasValues rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#middle"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Moving -->
@@ -1215,7 +1215,7 @@
         <contains rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R31"/>
         <rdfs:label>Moving</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#OWLNamedIndividual_4848350b_e947_4d72_9064_853b5a9f53cc -->
@@ -1232,7 +1232,7 @@
         <isRepresentedBy rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LFR02"/>
         <rdfs:label xml:lang="pl">InfraredSensor04</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#OWLNamedIndividual_659a6e84_534e_4af6_a50a_45b5e6349eff -->
@@ -1241,7 +1241,7 @@
         <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LinguisticTerms"/>
         <rdfs:label xml:lang="pl">gaussian</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#OWLNamedIndividual_66ccc6c6_afb5_452e_b333_f651aa47e0b9 -->
@@ -1258,7 +1258,7 @@
         <isRepresentedBy rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LMH01"/>
         <rdfs:label xml:lang="pl">InfraredSensor01</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#OWLNamedIndividual_852e0ca2_0e76_4435_abee_c197a3a89693 -->
@@ -1266,7 +1266,7 @@
     <owl:NamedIndividual rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#OWLNamedIndividual_852e0ca2_0e76_4435_abee_c197a3a89693">
         <rdfs:label xml:lang="pl">LMH</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#OWLNamedIndividual_adbf0415_00c9_4d3d_8c6d_4844d88cee8e -->
@@ -1283,7 +1283,7 @@
         <isRepresentedBy rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LMH02"/>
         <rdfs:label xml:lang="pl">InfraredSensor03</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#OWLNamedIndividual_b8b683f0_b783_4d80_a71d_b0de462ad395 -->
@@ -1292,7 +1292,7 @@
         <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LinguisticTerms"/>
         <rdfs:label xml:lang="pl">sigmoid</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#OWLNamedIndividual_da249854_c4b8_4da0_9157_585f4d747166 -->
@@ -1300,7 +1300,7 @@
     <owl:NamedIndividual rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#OWLNamedIndividual_da249854_c4b8_4da0_9157_585f4d747166">
         <rdfs:label xml:lang="pl">InfraredSensor03</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R01 -->
@@ -1312,7 +1312,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise04"/>
         <rdfs:label xml:lang="pl">R01</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R01bottom -->
@@ -1335,7 +1335,7 @@
         </rdf:type>
         <rdfs:label xml:lang="pl">R01bottom</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R01front -->
@@ -1359,7 +1359,7 @@
         <isPartOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Rob01"/>
         <rdfs:label xml:lang="pl">R01front</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R01left -->
@@ -1382,7 +1382,7 @@
         </rdf:type>
         <rdfs:label xml:lang="pl">R01left</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R01right -->
@@ -1405,7 +1405,7 @@
         </rdf:type>
         <rdfs:label xml:lang="pl">R01right</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R01sBL -->
@@ -1417,7 +1417,7 @@
         <direction>left</direction>
         <rdfs:label xml:lang="pl">R01sBL</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R01sFL -->
@@ -1429,7 +1429,7 @@
         <direction>left</direction>
         <rdfs:label xml:lang="pl">R01sFL</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R01sFR -->
@@ -1441,7 +1441,7 @@
         <direction>right</direction>
         <rdfs:label xml:lang="pl">R01sFR</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R01sLF -->
@@ -1453,7 +1453,7 @@
         <direction>left</direction>
         <rdfs:label xml:lang="pl">R01sLF</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R01sLS -->
@@ -1472,7 +1472,7 @@
         <direction>side</direction>
         <rdfs:label xml:lang="pl">R01sLS</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R01sRF -->
@@ -1484,7 +1484,7 @@
         <direction>front</direction>
         <rdfs:label xml:lang="pl">R01sRF</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R01sRS -->
@@ -1503,7 +1503,7 @@
         <direction>side</direction>
         <rdfs:label xml:lang="pl">R01sRS</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R02 -->
@@ -1515,7 +1515,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise05"/>
         <rdfs:label xml:lang="pl">R02</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R03 -->
@@ -1527,7 +1527,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise06"/>
         <rdfs:label xml:lang="pl">R03</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R04 -->
@@ -1539,7 +1539,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise04"/>
         <rdfs:label xml:lang="pl">R04</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R05 -->
@@ -1551,7 +1551,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise05"/>
         <rdfs:label xml:lang="pl">R05</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R06 -->
@@ -1563,7 +1563,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise06"/>
         <rdfs:label xml:lang="pl">R06</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R07 -->
@@ -1574,7 +1574,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise03"/>
         <rdfs:label xml:lang="pl">R07</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R08 -->
@@ -1585,7 +1585,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise07"/>
         <rdfs:label xml:lang="pl">R08</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R09 -->
@@ -1597,7 +1597,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise10"/>
         <rdfs:label xml:lang="pl">R09</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R10 -->
@@ -1609,7 +1609,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise11"/>
         <rdfs:label xml:lang="pl">R10</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R11 -->
@@ -1621,7 +1621,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise12"/>
         <rdfs:label xml:lang="pl">R11</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R12 -->
@@ -1632,7 +1632,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise09"/>
         <rdfs:label xml:lang="pl">R12</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R13 -->
@@ -1643,7 +1643,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise13"/>
         <rdfs:label>R13</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R14 -->
@@ -1655,7 +1655,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise16"/>
         <rdfs:label>R14</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R15 -->
@@ -1667,7 +1667,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise17"/>
         <rdfs:label>R15</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R16 -->
@@ -1679,7 +1679,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise18"/>
         <rdfs:label xml:lang="pl">R16</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R17 -->
@@ -1690,7 +1690,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise15"/>
         <rdfs:label>R17</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R18 -->
@@ -1703,7 +1703,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise25"/>
         <rdfs:label>R18</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R19 -->
@@ -1716,7 +1716,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise26"/>
         <rdfs:label>R19</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R20 -->
@@ -1729,7 +1729,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise25"/>
         <rdfs:label>R20</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R21 -->
@@ -1742,7 +1742,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise26"/>
         <rdfs:label>R21</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R22 -->
@@ -1755,7 +1755,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise25"/>
         <rdfs:label>R22</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R23 -->
@@ -1768,7 +1768,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise26"/>
         <rdfs:label>R23</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R24 -->
@@ -1781,7 +1781,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise25"/>
         <rdfs:label>R24</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R25 -->
@@ -1794,7 +1794,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise26"/>
         <rdfs:label>R25</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R26 -->
@@ -1807,7 +1807,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise25"/>
         <rdfs:label>R26</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R27 -->
@@ -1820,7 +1820,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise26"/>
         <rdfs:label>R27</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R28 -->
@@ -1833,7 +1833,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise25"/>
         <rdfs:label>R28</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R29 -->
@@ -1846,7 +1846,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise26"/>
         <rdfs:label>R29</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R30 -->
@@ -1857,7 +1857,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise24"/>
         <rdfs:label>R30</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R31 -->
@@ -1869,7 +1869,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise27"/>
         <rdfs:label>R31</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R32 -->
@@ -1881,7 +1881,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise27"/>
         <rdfs:label xml:lang="pl">R32</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R33 -->
@@ -1893,7 +1893,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise34"/>
         <rdfs:label xml:lang="pl">R33</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R34 -->
@@ -1906,7 +1906,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise34"/>
         <rdfs:label xml:lang="pl">R34</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R35 -->
@@ -1919,7 +1919,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise34"/>
         <rdfs:label xml:lang="pl">R35</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R36 -->
@@ -1932,7 +1932,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise34"/>
         <rdfs:label xml:lang="pl">R36</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R37 -->
@@ -1945,7 +1945,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise34"/>
         <rdfs:label xml:lang="pl">R37</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R38 -->
@@ -1958,7 +1958,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise34"/>
         <rdfs:label xml:lang="pl">R38</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R39 -->
@@ -1971,7 +1971,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise34"/>
         <rdfs:label xml:lang="pl">R39</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R40 -->
@@ -1982,7 +1982,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise35"/>
         <rdfs:label xml:lang="pl">R40</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R41 -->
@@ -1993,7 +1993,7 @@
         <hasPremise rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise36"/>
         <rdfs:label xml:lang="pl">R41</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#RightSensors -->
@@ -2007,7 +2007,7 @@
         <contains rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#R17"/>
         <rdfs:label>RightSensors</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Ro1bR -->
@@ -2019,7 +2019,7 @@
         <direction>right</direction>
         <rdfs:label xml:lang="pl">R01sBR</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Rob01 -->
@@ -2027,7 +2027,7 @@
     <owl:NamedIndividual rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Rob01">
         <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Robot"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#bLlinguistic -->
@@ -2035,7 +2035,7 @@
     <owl:NamedIndividual rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#bLlinguistic">
         <rdfs:label xml:lang="pl">bLlinguistic</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#bLsignal -->
@@ -2044,7 +2044,7 @@
         <signal rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</signal>
         <rdfs:label xml:lang="pl">bLsignal</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion01 -->
@@ -2055,7 +2055,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#forward"/>
         <rdfs:label xml:lang="pl">conclusion01</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion02 -->
@@ -2066,7 +2066,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#left"/>
         <rdfs:label xml:lang="pl">conclusion02</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion03 -->
@@ -2077,7 +2077,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#right"/>
         <rdfs:label xml:lang="pl">conclusion03</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion04 -->
@@ -2088,7 +2088,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label xml:lang="pl">conclusion04</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion05 -->
@@ -2099,7 +2099,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#middle"/>
         <rdfs:label xml:lang="pl">conclusion05</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion06 -->
@@ -2110,7 +2110,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#high"/>
         <rdfs:label xml:lang="pl">conclusion06</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion07 -->
@@ -2121,7 +2121,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label>conclusion07</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion08 -->
@@ -2132,7 +2132,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#middle"/>
         <rdfs:label>conclusion08</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion09 -->
@@ -2143,7 +2143,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#high"/>
         <rdfs:label>conclusion09</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion10 -->
@@ -2154,7 +2154,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#forward"/>
         <rdfs:label>conclusion10</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion11 -->
@@ -2165,7 +2165,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#left"/>
         <rdfs:label>conclusion11</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion12 -->
@@ -2176,7 +2176,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#right"/>
         <rdfs:label>conclusion12</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion13 -->
@@ -2187,7 +2187,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#forward"/>
         <rdfs:label xml:lang="pl">conclusion13</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion14 -->
@@ -2198,7 +2198,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#left"/>
         <rdfs:label xml:lang="pl">conclusion14</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#conclusion15 -->
@@ -2209,7 +2209,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#right"/>
         <rdfs:label xml:lang="pl">conclusion15</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#finalMove -->
@@ -2218,7 +2218,7 @@
         <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Turn"/>
         <rdfs:label xml:lang="pl">finalMove</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#forward -->
@@ -2227,7 +2227,7 @@
         <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LinguisticValues"/>
         <rdfs:label xml:lang="pl">forward</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#generalized_bell -->
@@ -2236,7 +2236,7 @@
         <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LinguisticTerms"/>
         <rdfs:label xml:lang="pl">generalized_bell</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#high -->
@@ -2245,7 +2245,7 @@
         <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LinguisticValues"/>
         <rdfs:label xml:lang="pl">high</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#left -->
@@ -2253,7 +2253,7 @@
     <owl:NamedIndividual rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#left">
         <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LinguisticValues"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#linguisticValue -->
@@ -2261,7 +2261,7 @@
     <owl:NamedIndividual rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#linguisticValue">
         <rdfs:label xml:lang="pl">linquisticValue</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low -->
@@ -2270,7 +2270,7 @@
         <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LinguisticValues"/>
         <rdfs:label xml:lang="pl">low</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#middle -->
@@ -2279,7 +2279,7 @@
         <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LinguisticValues"/>
         <rdfs:label xml:lang="pl">middle</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#move -->
@@ -2288,7 +2288,7 @@
         <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Turn"/>
         <rdfs:label xml:lang="pl">move</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise01 -->
@@ -2299,7 +2299,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label xml:lang="pl">premise01</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise02 -->
@@ -2310,7 +2310,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#middle"/>
         <rdfs:label xml:lang="pl">premise02</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise03 -->
@@ -2321,7 +2321,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#high"/>
         <rdfs:label xml:lang="pl">premise03</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise04 -->
@@ -2332,7 +2332,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label xml:lang="pl">premise04</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise05 -->
@@ -2343,7 +2343,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#middle"/>
         <rdfs:label xml:lang="pl">premise05</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise06 -->
@@ -2354,7 +2354,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#high"/>
         <rdfs:label xml:lang="pl">premise06</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise07 -->
@@ -2365,7 +2365,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label xml:lang="pl">premise07</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise08 -->
@@ -2376,7 +2376,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#middle"/>
         <rdfs:label xml:lang="pl">premise08</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise09 -->
@@ -2387,7 +2387,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#high"/>
         <rdfs:label xml:lang="pl">premise09</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise10 -->
@@ -2398,7 +2398,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label xml:lang="pl">premise10</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise11 -->
@@ -2409,7 +2409,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#middle"/>
         <rdfs:label xml:lang="pl">premise11</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise12 -->
@@ -2420,7 +2420,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#high"/>
         <rdfs:label xml:lang="pl">premise12</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise13 -->
@@ -2431,7 +2431,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label>premise13</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise14 -->
@@ -2442,7 +2442,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#middle"/>
         <rdfs:label>premise14</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise15 -->
@@ -2453,7 +2453,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#high"/>
         <rdfs:label>premise15</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise16 -->
@@ -2464,7 +2464,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label>premise16</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise17 -->
@@ -2475,7 +2475,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#middle"/>
         <rdfs:label>premise17</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise18 -->
@@ -2486,7 +2486,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#high"/>
         <rdfs:label>premise18</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise19 -->
@@ -2497,7 +2497,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#forward"/>
         <rdfs:label>premise19</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise20 -->
@@ -2508,7 +2508,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#right"/>
         <rdfs:label>premise20</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise21 -->
@@ -2519,7 +2519,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#left"/>
         <rdfs:label>premise21</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise22 -->
@@ -2530,7 +2530,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label>premise22</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise23 -->
@@ -2541,7 +2541,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#middle"/>
         <rdfs:label>premise23</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise24 -->
@@ -2552,7 +2552,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#high"/>
         <rdfs:label>premise24</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise25 -->
@@ -2563,7 +2563,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label>premise25</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise26 -->
@@ -2574,7 +2574,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#middle"/>
         <rdfs:label>premise26</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise27 -->
@@ -2585,7 +2585,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#high"/>
         <rdfs:label>premise27</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise28 -->
@@ -2596,7 +2596,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label xml:lang="pl">premise28</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise29 -->
@@ -2608,7 +2608,7 @@
         <rdfs:label xml:lang="pl">premise28</rdfs:label>
         <rdfs:label xml:lang="pl">premise29</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise30 -->
@@ -2619,7 +2619,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#high"/>
         <rdfs:label xml:lang="pl">premise30</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise31 -->
@@ -2630,7 +2630,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label xml:lang="pl">premise31</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise32 -->
@@ -2641,7 +2641,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#middle"/>
         <rdfs:label xml:lang="pl">premise32</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise33 -->
@@ -2652,7 +2652,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#high"/>
         <rdfs:label xml:lang="pl">premise33</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise34 -->
@@ -2663,7 +2663,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#forward"/>
         <rdfs:label xml:lang="pl">premise34</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise35 -->
@@ -2674,7 +2674,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#left"/>
         <rdfs:label xml:lang="pl">premise35</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#premise36 -->
@@ -2684,7 +2684,7 @@
         <hasRightHand rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#right"/>
         <rdfs:label xml:lang="pl">premise36</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#right -->
@@ -2693,7 +2693,7 @@
         <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#LinguisticValues"/>
         <rdfs:label xml:lang="pl">right</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#sFLlinguistic -->
@@ -2702,7 +2702,7 @@
         <hasLinguisticValue rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label xml:lang="pl">sFLlinguistic</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#sFLsignal -->
@@ -2711,7 +2711,7 @@
         <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</hasValue>
         <rdfs:label xml:lang="pl">sFLsignal</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#sFRlinguistic -->
@@ -2720,7 +2720,7 @@
         <hasLinguisticValue rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label xml:lang="pl">sFRlinguistic</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#sFassessment -->
@@ -2730,7 +2730,7 @@
         <isRepresentedBy rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#FV01"/>
         <rdfs:label xml:lang="pl">sFassessment</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#sLassessment -->
@@ -2739,7 +2739,7 @@
         <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#ConclusionsAssessment"/>
         <rdfs:label xml:lang="pl">sLassessment</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#sRLsignal -->
@@ -2748,7 +2748,7 @@
         <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</hasValue>
         <rdfs:label xml:lang="pl">sRLsignal</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#sRassessment -->
@@ -2757,7 +2757,7 @@
         <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#ConclusionsAssessment"/>
         <rdfs:label xml:lang="pl">sRassessment</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#sRlinguistic -->
@@ -2766,7 +2766,7 @@
         <hasLinguisticValue rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#low"/>
         <rdfs:label xml:lang="pl">sRlinguistic</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#trapezoidal -->
@@ -2776,7 +2776,7 @@
         <hasParameter rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4</hasParameter>
         <rdfs:label xml:lang="pl">trapezoidal</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#triangular -->
@@ -2786,10 +2786,10 @@
         <hasParameter rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</hasParameter>
         <rdfs:label xml:lang="pl">triangular</rdfs:label>
     </owl:NamedIndividual>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Annotations
@@ -2805,4 +2805,3 @@
 
 
 <!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
-

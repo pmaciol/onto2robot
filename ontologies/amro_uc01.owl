@@ -12,10 +12,10 @@
     <owl:Ontology rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01">
         <owl:imports rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro"/>
     </owl:Ontology>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Annotation properties
@@ -23,16 +23,16 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#isPartOf -->
 
     <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#isPartOf"/>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Object Properties
@@ -40,7 +40,7 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#OWLObjectProperty_a777ce78_bea7_4442_afe3_b83bf1738406 -->
@@ -48,10 +48,10 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#OWLObjectProperty_a777ce78_bea7_4442_afe3_b83bf1738406">
         <rdfs:label xml:lang="pl">hasPremise</rdfs:label>
     </owl:ObjectProperty>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Data properties
@@ -59,70 +59,70 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has1.Parameter -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has1.Parameter"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has2.Parameter -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has2.Parameter"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has3.Parameter -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has3.Parameter"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has4.Parameter -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has4.Parameter"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has5.Parameter -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has5.Parameter"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has6.Parameter -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has6.Parameter"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has7.Parameter -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has7.Parameter"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has8.Parameter -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has8.Parameter"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has9.Parameter -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#has9.Parameter"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#hasOrder -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#hasOrder"/>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Classes
@@ -130,25 +130,25 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#FuzzyInstances -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#FuzzyInstances"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#FuzzyVariablesTypes -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#FuzzyVariablesTypes"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#LinguisticValues -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#LinguisticValues"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader -->
@@ -161,7 +161,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#Back -->
@@ -170,7 +170,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
         <rdfs:label xml:lang="pl">Back</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#Bottom -->
@@ -179,7 +179,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
         <rdfs:label xml:lang="pl">Bottom</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#Front -->
@@ -188,7 +188,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
         <rdfs:label xml:lang="pl">Front</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#LeftSide -->
@@ -197,7 +197,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
         <rdfs:label xml:lang="pl">LeftSide</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#RightSide -->
@@ -206,7 +206,7 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
         <rdfs:label xml:lang="pl">RightSide</rdfs:label>
     </owl:Class>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#Upper -->
@@ -215,10 +215,10 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
         <rdfs:label xml:lang="pl">Upper</rdfs:label>
     </owl:Class>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Individuals
@@ -226,7 +226,7 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#LFR01 -->
@@ -249,7 +249,7 @@
         <rdfs:comment>triangular [0, 0, 20]; [0; 20; 40]; [20, 40, 40]</rdfs:comment>
         <rdfs:label xml:lang="pl">LFR01</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#LFR02 -->
@@ -271,7 +271,7 @@
         <amro:hasParameters rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</amro:hasParameters>
         <rdfs:label xml:lang="pl">LFR02</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#LMH01 -->
@@ -294,7 +294,7 @@
         <rdfs:comment>triangular [0, 0, 20]; [0; 20; 40]; [20, 40, 40]</rdfs:comment>
         <rdfs:label xml:lang="pl">LMH01</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#LMH02 -->
@@ -316,7 +316,7 @@
         <amro:hasParameters rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</amro:hasParameters>
         <rdfs:label xml:lang="pl">LMH02</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#LeftForwardRight -->
@@ -328,7 +328,7 @@
         <amro:hasValues rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#right"/>
         <rdfs:label xml:lang="pl">LeftForwardRight</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#LowMiddleHigh -->
@@ -339,7 +339,7 @@
         <amro:hasValues rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#low"/>
         <amro:hasValues rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#middle"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#R01bottom -->
@@ -350,7 +350,7 @@
         <amro:isPartOf rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#Rob01"/>
         <rdfs:label xml:lang="pl">R01bottom</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#R01front -->
@@ -361,7 +361,7 @@
         <amro:isPartOf rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#Rob01"/>
         <rdfs:label xml:lang="pl">R01front</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#R01left -->
@@ -372,7 +372,7 @@
         <amro:isPartOf rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#Rob01"/>
         <rdfs:label xml:lang="pl">R01left</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#R01right -->
@@ -383,7 +383,7 @@
         <amro:isPartOf rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#Rob01"/>
         <rdfs:label xml:lang="pl">R01right</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#forward -->
@@ -393,7 +393,7 @@
         <amro:hasOrder rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</amro:hasOrder>
         <rdfs:label xml:lang="pl">forward</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#high -->
@@ -403,7 +403,7 @@
         <amro:hasOrder rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</amro:hasOrder>
         <rdfs:label xml:lang="pl">high</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#left -->
@@ -412,7 +412,7 @@
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#LinguisticValues"/>
         <amro:hasOrder rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</amro:hasOrder>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#low -->
@@ -422,7 +422,7 @@
         <amro:hasOrder rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</amro:hasOrder>
         <rdfs:label xml:lang="pl">low</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#middle -->
@@ -432,7 +432,7 @@
         <amro:hasOrder rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</amro:hasOrder>
         <rdfs:label xml:lang="pl">middle</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#right -->
@@ -442,7 +442,7 @@
         <amro:hasOrder rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</amro:hasOrder>
         <rdfs:label xml:lang="pl">right</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#InfActSens01 -->
@@ -453,7 +453,7 @@
         <amro:isRepresentedBy rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#LMH01"/>
         <rdfs:label xml:lang="pl">InfActSens01</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#InfActSens02 -->
@@ -464,7 +464,7 @@
         <amro:isRepresentedBy rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#LMH02"/>
         <rdfs:label xml:lang="pl">InfActSens02</rdfs:label>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#Rob01 -->
@@ -478,4 +478,3 @@
 
 
 <!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
-

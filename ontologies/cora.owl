@@ -15,7 +15,7 @@
         <owl:imports rdf:resource="http://purl.org/ieee1872-owl/cora-bare"/>
         <rdfs:seeAlso>https://github.com/srfiorini/IEEE1872-owl</rdfs:seeAlso>
         <dc:contributor xml:lang="en">Vitor Fortes Rey</dc:contributor>
-        <rdfs:comment xml:lang="en">This is the OWL implementation of CORA in IEEE 1872-2015. It only includes  the taxonomy of concepts and relations, with some few axioms reggarding disjointness, property characteristics and property ranges/domains. 
+        <rdfs:comment xml:lang="en">This is the OWL implementation of CORA in IEEE 1872-2015. It only includes  the taxonomy of concepts and relations, with some few axioms reggarding disjointness, property characteristics and property ranges/domains.
 
 The OWL implementation is an underspecified version of the SUO-KIF implementation in IEEE 1872-2015. That is, the set of allowed models of the SUO-KIF implementation is a proper subset of the allowed models by the OWL implementation.
 
@@ -25,10 +25,10 @@ Concept definitions in natural language and othe clarifications can be found in 
 
 The ontologies in IEEE1872-owl are CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/)</dc:rights>
     </owl:Ontology>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Object Properties
@@ -36,7 +36,7 @@ The ontologies in IEEE1872-owl are CC-BY-4.0 (https://creativecommons.org/licens
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://purl.org/ieee1872-owl/cora-bare#agentRobot -->
@@ -57,7 +57,7 @@ The ontologies in IEEE1872-owl are CC-BY-4.0 (https://creativecommons.org/licens
         <owl:annotatedTarget rdf:resource="http://purl.org/ieee1872-owl/sumo-cora#Process"/>
         <rdfs:comment>7.4.3</rdfs:comment>
     </owl:Axiom>
-    
+
 
 
     <!-- http://purl.org/ieee1872-owl/cora-bare#robotPart -->
@@ -78,7 +78,7 @@ The ontologies in IEEE1872-owl are CC-BY-4.0 (https://creativecommons.org/licens
         <owl:annotatedTarget rdf:resource="http://purl.org/ieee1872-owl/sumo-cora#Device"/>
         <annotation:ieee18722015AxiomNumber>7.2.2</annotation:ieee18722015AxiomNumber>
     </owl:Axiom>
-    
+
 
 
     <!-- http://purl.org/ieee1872-owl/cora-bare#support -->
@@ -92,10 +92,10 @@ The ontologies in IEEE1872-owl are CC-BY-4.0 (https://creativecommons.org/licens
         <owl:annotatedTarget rdf:resource="http://purl.org/ieee1872-owl/sumo-cora#Device"/>
         <annotation:ieee18722015AxiomNumber>7.6.3</annotation:ieee18722015AxiomNumber>
     </owl:Axiom>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Classes
@@ -103,7 +103,7 @@ The ontologies in IEEE1872-owl are CC-BY-4.0 (https://creativecommons.org/licens
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://purl.org/ieee1872-owl/cora-bare#CollectiveRoboticSystem -->
@@ -117,7 +117,7 @@ The ontologies in IEEE1872-owl are CC-BY-4.0 (https://creativecommons.org/licens
         <owl:annotatedTarget rdf:resource="http://purl.org/ieee1872-owl/cora-bare#SingleRoboticSystem"/>
         <annotation:ieee18722015AxiomNumber>7.8.3</annotation:ieee18722015AxiomNumber>
     </owl:Axiom>
-    
+
 
 
     <!-- http://purl.org/ieee1872-owl/cora-bare#Robot -->
@@ -138,7 +138,7 @@ The ontologies in IEEE1872-owl are CC-BY-4.0 (https://creativecommons.org/licens
         <owl:annotatedTarget rdf:resource="http://purl.org/ieee1872-owl/sumo-cora#Device"/>
         <annotation:ieee18722015AxiomNumber>7.1.1</annotation:ieee18722015AxiomNumber>
     </owl:Axiom>
-    
+
 
 
     <!-- http://purl.org/ieee1872-owl/cora-bare#RobotGroup -->
@@ -152,7 +152,7 @@ The ontologies in IEEE1872-owl are CC-BY-4.0 (https://creativecommons.org/licens
         <owl:annotatedTarget rdf:resource="http://purl.org/ieee1872-owl/sumo-cora#Group"/>
         <annotation:ieee18722015AxiomNumber>7.5.1</annotation:ieee18722015AxiomNumber>
     </owl:Axiom>
-    
+
 
 
     <!-- http://purl.org/ieee1872-owl/cora-bare#RobotInterface -->
@@ -166,7 +166,7 @@ The ontologies in IEEE1872-owl are CC-BY-4.0 (https://creativecommons.org/licens
         <owl:annotatedTarget rdf:resource="http://purl.org/ieee1872-owl/sumo-cora#Device"/>
         <annotation:ieee18722015AxiomNumber>7.3.1</annotation:ieee18722015AxiomNumber>
     </owl:Axiom>
-    
+
 
 
     <!-- http://purl.org/ieee1872-owl/cora-bare#RoboticEnvironment -->
@@ -180,7 +180,7 @@ The ontologies in IEEE1872-owl are CC-BY-4.0 (https://creativecommons.org/licens
         <owl:annotatedTarget rdf:resource="http://purl.org/ieee1872-owl/corax#PhysicalEnvironment"/>
         <annotation:ieee18722015AxiomNumber>7.7.1</annotation:ieee18722015AxiomNumber>
     </owl:Axiom>
-    
+
 
 
     <!-- http://purl.org/ieee1872-owl/cora-bare#RoboticSystem -->
@@ -215,7 +215,7 @@ The ontologies in IEEE1872-owl are CC-BY-4.0 (https://creativecommons.org/licens
         <owl:annotatedTarget rdf:resource="http://purl.org/ieee1872-owl/corax#ArtificialSystem"/>
         <annotation:ieee18722015AxiomNumber>7.6.1</annotation:ieee18722015AxiomNumber>
     </owl:Axiom>
-    
+
 
 
     <!-- http://purl.org/ieee1872-owl/cora-bare#SingleRoboticSystem -->
@@ -232,4 +232,3 @@ The ontologies in IEEE1872-owl are CC-BY-4.0 (https://creativecommons.org/licens
 
 
 <!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
-

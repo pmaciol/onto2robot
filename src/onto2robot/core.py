@@ -1,6 +1,7 @@
+import contextlib
 from pathlib import Path
 
-from owlready2 import EntityClass, Ontology, Thing, ThingClass, get_ontology, onto_path
+from owlready2 import EntityClass, Ontology, Thing, ThingClass, World, onto_path
 
 OntologyIndividualSuperclass = Thing
 OntologyClassSuperclass = EntityClass
@@ -78,18 +79,30 @@ def _get_conclusions(rule: OntologyIndividualSuperclass) -> list[OntologyIndivid
     return _get_property_values(rule, "hasConclusion")
 
 
-def load_ontology(ontology_name: str) -> Ontology:
+def load_ontology(ontology_name: str, world: World) -> Ontology:
     project_root = Path(__file__).resolve().parents[2]
     onto_path.append(project_root / "ontologies")
-    path_to_file = (project_root / "ontologies" / Path(ontology_name)).with_suffix(".owl")
+    ontology_getter = world.get_ontology
 
-    main_onto: Ontology | None = get_ontology(path_to_file.resolve().as_uri()).load()
+    path_to_file = (project_root / "ontologies" / Path(ontology_name)).with_suffix(".owl")
+    main_onto: Ontology = ontology_getter(path_to_file.resolve().as_uri()).load()
+    if main_onto is None:
+        raise ValueError(f"Failed to load ontology: {ontology_name}")
+
     path_to_file_1 = (project_root / "ontologies" / Path("amro_uc01")).with_suffix(".owl")
-    amro_uc01: Ontology | None = get_ontology(path_to_file_1.resolve().as_uri()).load()
+    amro_uc01: Ontology = ontology_getter(path_to_file_1.resolve().as_uri()).load()
+    if amro_uc01 is None:
+        raise ValueError("Failed to load ontology: amro_uc01")
+
     path_to_file_2 = (project_root / "ontologies" / Path("amro")).with_suffix(".owl")
-    amro: Ontology | None = get_ontology(path_to_file_2.resolve().as_uri()).load()
+    amro: Ontology = ontology_getter(path_to_file_2.resolve().as_uri()).load()
+    if amro is None:
+        raise ValueError("Failed to load ontology: amro")
+
     path_to_sumo = (project_root / "ontologies" / Path("sumo")).with_suffix(".owl")
-    sumo: Ontology | None = get_ontology(path_to_sumo.resolve().as_uri()).load()
+    sumo: Ontology = ontology_getter(path_to_sumo.resolve().as_uri()).load()
+    if sumo is None:
+        raise ValueError("Failed to load ontology: sumo")
     # amro.imported_ontologies.append(sumo)
     # amro.imported_ontologies.append(amro_uc01)
     # amro_uc01.imported_ontologies.append(amro)
@@ -129,13 +142,17 @@ class LinguisticVariableDomain:
 class MobileOntologyMeta:
     def __init__(self, ontology: Ontology | str) -> None:
         if isinstance(ontology, str):
-            ontology = load_ontology(ontology).load()
+            self._world = World()
+            ontology = load_ontology(ontology, world=self._world)
         if not isinstance(ontology, Ontology):
             raise ValueError(f"Failed to load ontology from {ontology}")
         self.ontology: Ontology = ontology
+        self._world = ontology.world
+        self._destroyed = False
 
     def __del__(self):
-        self.ontology.destroy()
+        with contextlib.suppress(Exception):
+            self.destroy()
 
     def get_rules(self) -> list[OntologyIndividualSuperclass]:
         rules_class: OntologyClassSuperclass | None = _get_class_by_name(self.ontology, "RuleHeader")
@@ -144,7 +161,19 @@ class MobileOntologyMeta:
         return []
 
     def destroy(self) -> None:
-        self.ontology.destroy()
+        if self._destroyed:
+            return
+
+        try:
+            self.ontology.destroy()
+        except KeyError:
+            pass
+        finally:
+            if self._world is not None:
+                with contextlib.suppress(Exception):
+                    self._world.close()
+                self._world = None
+            self._destroyed = True
 
     def rules_as_strings(self) -> list[str]:
         return [rule_to_string(rule) for rule in self.get_rules()]
@@ -179,10 +208,8 @@ class MobileOntologyMeta:
             # print(f"Linguistic variable class {linguistic_variable_class.name} has parameters values: {param_values}")
 
         print("Linguistic variables classes spaces:")
-        for var_class, spaces in linguistic_variable_spaces.items():
-            print(
-                f" - {var_class.name}: {spaces.linguistic_class.name if spaces else 'None'} {spaces.fuzzy_points if spaces else []}"
-            )
+        for vc, sp in linguistic_variable_spaces.items():
+            print(f" - {vc.name}: {sp.linguistic_class.name if sp else 'None'} {sp.fuzzy_points if sp else []}")
 
         return linguistic_variable_spaces
 
@@ -209,7 +236,8 @@ class MobileOntologyMeta:
         print("Final linguistic variable domains mapping:")
         for domain, values in linguistic_variable_domains.items():
             print(
-                f" - variable: {domain.name} -> domain values{[v.name for v in values.linguistic_domain]} with fuzzy points {values.fuzzy_points}"
+                f" - variable: {domain.name} -> domain values{[v.name for v in values.linguistic_domain]}"
+                f" with fuzzy points {values.fuzzy_points}"
             )
         return linguistic_variable_domains
 

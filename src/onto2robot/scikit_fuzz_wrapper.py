@@ -29,6 +29,7 @@ def make_antecedents(
                     and not use_auto_membership
                 ):
                     for id, ld in enumerate(set_of_values.linguistic_domain):
+                        # Only triangle membership functions are supported in this version
                         antecedents[variable][ld.name] = trimf(
                             universe, set_of_values.fuzzy_points[id * 3 : id * 3 + 3]
                         )
@@ -52,7 +53,9 @@ def make_consequents(
     membership_functions: dict[str, list[int]] | None = None,
     use_auto_membership: bool = False,
 ):
-    print(f"Creating consequents based on rules {rules}.")
+    print("Creating consequents based on rules:")
+    for rule in rules:
+        print(f" - {rule}")
     consequents: dict[OntologyIndividualSuperclass, ctrl.Consequent] = {}
 
     conclusion_variables: set[OntologyIndividualSuperclass] = set()
@@ -73,6 +76,7 @@ def make_consequents(
                     and not use_auto_membership
                 ):
                     for id, ld in enumerate(set_of_values.linguistic_domain):
+                        # Only triangle membership functions are supported in this version
                         consequents[variable][ld.name] = trimf(
                             universe, set_of_values.fuzzy_points[id * 3 : id * 3 + 3]
                         )
@@ -84,7 +88,9 @@ def make_consequents(
             else:
                 for term in set_of_values.linguistic_domain:
                     consequents[variable][term] = trimf(consequents[variable].universe, membership_functions[term.name])
-    # print(f"Consequents created for variables: {list(consequents.keys())}")
+    print("Created consequents")
+    for name, con in consequents.items():
+        print(f"Consequent '{name.name}' has terms: {list(con.terms.keys())}")
     return consequents
 
 
@@ -95,66 +101,43 @@ class ScikitFuzzyWrapper:
         goal_name: str,
         rules: list[OntologyIndividualSuperclass],
     ):
-        # mem_funcs = {
-        #     "low": [0, 0, 20],
-        #     "middle": [10, 20, 30],
-        #     "high": [20, 40, 40],
-        #     "left": [0, 0, 20],
-        #     "forward": [10, 20, 30],
-        #     "right": [20, 40, 40],
-        # }
         self.linguistic_variables_spaces = linguistic_variables_domains
-        self.antecedents = make_antecedents(linguistic_variables_domains, goal_name, use_auto_membership=False)
-        self.consequents = make_consequents(rules, linguistic_variables_domains, use_auto_membership=False)
+        self.antecedents = make_antecedents(linguistic_variables_domains, goal_name, use_auto_membership=True)
+        self.consequents = make_consequents(rules, linguistic_variables_domains, use_auto_membership=True)
         self._make_rules(rules)
         print(f"Created {len(self.scikit_rules)} rules for Scikit-Fuzzy model.")
         self.ctrl_system = ctrl.ControlSystem(self.scikit_rules)
         self.sim = ctrl.ControlSystemSimulation(self.ctrl_system)
 
     def _make_rules(self, rules: list[OntologyIndividualSuperclass]):
-        # print("Preparing rules")
         scikit_rules = []
 
         for rule in rules:
             premises = _get_premises(rule)
             conclusions = _get_conclusions(rule)
-            # print("Processing rule:", rule.name)
-            # print(f" * premises: {[premise.name for premise in premises]}")
-            # print(f" * conclusions: {[conclusion.name for conclusion in conclusions]}")
-
-            # Build antecedent conditions (premises)
             antecedent_conditions = None
             for premise in premises:
                 left, right = _get_left_right_hands(premise)
                 fuzzy_variable = left
                 fuzzy_value = right
 
-                # print(f" ** Processing premise '{premise.name}'")
-
                 if fuzzy_variable not in self.antecedents:
                     raise ValueError(
                         f"Variable '{fuzzy_variable}' in premise '{premise.name}' is not defined as an antecedent."
                     )
-                # print(f" ***  variable '{fuzzy_variable.name}'")
                 condition = self.antecedents[fuzzy_variable][fuzzy_value.name]
                 if antecedent_conditions is None:
                     antecedent_conditions = condition
                 else:
                     antecedent_conditions = antecedent_conditions & condition
-            # print(f" ** Built antecedent conditions: {antecedent_conditions}")
-
-            # Build consequent (conclusion)
             if conclusions:
-                # print(f" ** Processing conclusion '{conclusions[0].name}'")
                 conclusion = conclusions[0]
                 left, right = _get_left_right_hands(conclusion)
                 fuzzy_variable = left
                 fuzzy_value = right
 
                 if fuzzy_variable in self.consequents:
-                    # print(f" ***  variable '{fuzzy_variable.name}'")
                     consequent = self.consequents[fuzzy_variable][fuzzy_value.name]
-                    # print(f" ** Built consequent: {consequent.label} is {fuzzy_value.name}")
 
                     if antecedent_conditions is not None:
                         scikit_rules.append(ctrl.Rule(antecedent_conditions, consequent))
@@ -175,7 +158,8 @@ class ScikitFuzzyWrapper:
                 if ant:
                     self.sim.input[var_name] = (antecedents[ant].universe[0] + antecedents[ant].universe[-1]) / 2
                     print(
-                        f"Input value for '{var_name}' not provided. Setting to default value {(antecedents[ant].universe[0] + antecedents[ant].universe[-1]) / 2}."
+                        f"Input value for '{var_name}' not provided. Setting to default value "
+                        f"{(antecedents[ant].universe[0] + antecedents[ant].universe[-1]) / 2}."
                     )
                 else:
                     self.sim.input[var_name] = 0

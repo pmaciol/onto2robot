@@ -2,7 +2,7 @@ from pathlib import Path
 from pprint import pprint
 
 import openpyxl
-from owlready2 import Ontology
+from owlready2 import Ontology, World
 
 from onto2robot.core import (
     load_ontology,
@@ -96,11 +96,11 @@ def get_rules(ontology: Ontology, imports: dict[str, list[tuple]], drop: int = 2
 
 
 def load():
-    return load_ontology("mobile_robot_ontology")
+    return load_ontology("mobile_robot_ontology", world=World())
 
 
 def run_import():
-    ontology = load_ontology("mobile_robot_ontology")
+    ontology = load_ontology("mobile_robot_ontology", world=World())
     imports = import_worksheets_from_excel()
     rulesets = get_rulesests(ontology, imports)
     pprint(rulesets)
