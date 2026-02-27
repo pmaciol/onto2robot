@@ -32,7 +32,6 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#about">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-        <rdfs:range rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Entity"/>
     </owl:ObjectProperty>
 
 
@@ -61,7 +60,6 @@
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#idealizes">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-        <rdfs:range rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Artifact"/>
     </owl:ObjectProperty>
 
 
@@ -92,30 +90,6 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Abstract -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Abstract"/>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Artifact -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Artifact"/>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Entity -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Entity"/>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
 
 
 

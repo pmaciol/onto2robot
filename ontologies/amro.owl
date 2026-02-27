@@ -201,7 +201,6 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#robotPart">
         <rdfs:subPropertyOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#part"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdfs:domain rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
     </owl:ObjectProperty>
 
 
@@ -210,7 +209,6 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#robotprocesslink">
         <rdfs:subPropertyOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#agent"/>
-        <rdfs:range rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Process"/>
         <rdfs:label xml:lang="en">agentRobot</rdfs:label>
     </owl:ObjectProperty>
 
@@ -226,10 +224,7 @@
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#support -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#support">
-        <rdfs:domain rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RoboticSystem"/>
-    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#support"/>
 
 
 
@@ -307,46 +302,10 @@
 
 
 
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#ArtificialSystem -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#ArtificialSystem"/>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#PhysicalEnvironment -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#PhysicalEnvironment"/>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Agent -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Agent"/>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Group -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Group"/>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Process -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Process"/>
-
-
-
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region -->
 
     <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region">
-        <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ieee1872-owl/sumo-cora#Device"/>
     </owl:Class>
 
 
@@ -354,7 +313,7 @@
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Action -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Action">
-        <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Process"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ieee1872-owl/sumo-cora#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#isRepresentedBy"/>
@@ -400,22 +359,6 @@
     <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Centroid">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#DefuzzificationMethods"/>
         <rdfs:label xml:lang="pl">Centroid</rdfs:label>
-    </owl:Class>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#CollectiveRoboticSystem -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#CollectiveRoboticSystem">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RoboticSystem"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#hasPart"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RobotGroup"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#SingleRoboticSystem"/>
     </owl:Class>
 
 
@@ -478,7 +421,7 @@
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Fuzzy -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Fuzzy">
-        <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Abstract"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ieee1872-owl/sumo-cora#Abstract"/>
         <rdfs:label xml:lang="pl">Fuzzy</rdfs:label>
     </owl:Class>
 
@@ -628,15 +571,6 @@
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#OWLClass_06178252_fb19_4c10_b3c3_18cee3bce184 -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#OWLClass_06178252_fb19_4c10_b3c3_18cee3bce184">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Robot"/>
-        <rdfs:label xml:lang="pl">RobotInterface</rdfs:label>
-    </owl:Class>
-
-
-
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#OWLClass_1061fade_86be_4b0b_ac4a_4fb14a4e40d0 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#OWLClass_1061fade_86be_4b0b_ac4a_4fb14a4e40d0">
@@ -714,55 +648,22 @@
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Robot -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Robot">
-        <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Agent"/>
-        <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
-    </owl:Class>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RobotGroup -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RobotGroup">
-        <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Group"/>
-    </owl:Class>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RoboticEnvironment -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RoboticEnvironment">
-        <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#PhysicalEnvironment"/>
-    </owl:Class>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RoboticSystem -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RoboticSystem">
-        <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#ArtificialSystem"/>
-    </owl:Class>
-
-
-
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RobotsRegion -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RobotsRegion">
-        <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Artifact"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ieee1872-owl/sumo-cora#Device"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#isOneOf"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://purl.org/ieee1872-owl/cora-bare#Robot"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#isOneOf"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#isPartOf"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Robot"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label xml:lang="pl">RobotsRegion</rdfs:label>
@@ -824,7 +725,7 @@
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Sensor -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Sensor">
-        <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Artifact"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ieee1872-owl/sumo-cora#Device"/>
         <rdfs:label xml:lang="pl">Sensor</rdfs:label>
     </owl:Class>
 
@@ -856,7 +757,7 @@
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#SensorTypes -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#SensorTypes">
-        <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Sensor"/>
         <rdfs:label xml:lang="pl">SensorTypes</rdfs:label>
     </owl:Class>
 
@@ -897,14 +798,6 @@
     <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Sigmoid">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#FuzzyficationMethods"/>
         <rdfs:label xml:lang="pl">Sigmoid</rdfs:label>
-    </owl:Class>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#SingleRoboticSystem -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#SingleRoboticSystem">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RoboticSystem"/>
     </owl:Class>
 
 
