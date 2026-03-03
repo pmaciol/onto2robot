@@ -17,23 +17,6 @@ class FuzzySystem:
 
 
 class SimpfulFuzzyWrapper:
-    @staticmethod
-    def _get_triangle_fuzzy_points(
-        set_of_values: LinguisticVariableDomain, universe: list[float]
-    ) -> dict[str, TriangleFuzzySet]:
-        terms = [value.name for value in set_of_values.linguistic_domain]
-        sets_no = len(terms)
-        if sets_no != 3:
-            raise ValueError("Currently only 3-term spaces are supported.")
-        first_points = set_of_values.fuzzy_points[:3]
-        middle_points = set_of_values.fuzzy_points[3:6]
-        last_points = set_of_values.fuzzy_points[6:]
-        return {
-            terms[0]: TriangleFuzzySet(*first_points, term=terms[0]),
-            terms[1]: TriangleFuzzySet(*middle_points, term=terms[1]),
-            terms[2]: TriangleFuzzySet(*last_points, term=terms[2]),
-        }
-
     def __init__(
         self,
         linguistic_variables_domains: dict[OntologyIndividualSuperclass, LinguisticVariableDomain],
@@ -63,6 +46,33 @@ class SimpfulFuzzyWrapper:
             print(f"{k} .  {v}")
         self.fs.fs.add_rules(stringified_rules)
 
+    def set_start_values(
+        self,
+        input_values: dict[str, float],
+    ):
+        for var_name, value in input_values.items():
+            self.fs.fs.set_variable(var_name, value)
+
+    def compute(self, layer: set[OntologyIndividualSuperclass]):
+        self._do_reasoning([ind.name for ind in layer])
+
+    @staticmethod
+    def _get_triangle_fuzzy_points(
+        set_of_values: LinguisticVariableDomain, universe: list[float]
+    ) -> dict[str, TriangleFuzzySet]:
+        terms = [value.name for value in set_of_values.linguistic_domain]
+        sets_no = len(terms)
+        if sets_no != 3:
+            raise ValueError("Currently only 3-term spaces are supported.")
+        first_points = set_of_values.fuzzy_points[:3]
+        middle_points = set_of_values.fuzzy_points[3:6]
+        last_points = set_of_values.fuzzy_points[6:]
+        return {
+            terms[0]: TriangleFuzzySet(*first_points, term=terms[0]),
+            terms[1]: TriangleFuzzySet(*middle_points, term=terms[1]),
+            terms[2]: TriangleFuzzySet(*last_points, term=terms[2]),
+        }
+
     def _add_linguistic_variables(self):
         for variable, set_of_values in self.linguistic_variables_spaces.items():
             terms = [value.name for value in set_of_values.linguistic_domain]
@@ -73,17 +83,7 @@ class SimpfulFuzzyWrapper:
             )
             print(f"Added linguistic variable {variable.name} with terms {terms}")
 
-    def set_start_values(
-        self,
-        input_values: dict[str, float],
-    ):
-        for var_name, value in input_values.items():
-            self.fs.fs.set_variable(var_name, value)
-
-    def compute(self, layer: set[OntologyIndividualSuperclass]):
-        self.do_reasoning([ind.name for ind in layer])
-
-    def do_reasoning(self, goals: list[str]):
+    def _do_reasoning(self, goals: list[str]):
         goals_inferred = self.fs.fs.Mamdani_inference(goals)  # returns crisp value(s)
         for goal in goals:
             goal_value = goals_inferred[goal]

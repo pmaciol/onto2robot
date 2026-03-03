@@ -25,8 +25,8 @@ def scikit_fuzzy_full(input_values: dict[str, float]):
         reasoning_order, source_variables = ont.get_possible_chains([ont.get_individual_by_name(goal)])
         print(f"Reasoning order: {reasoning_order}")
 
-        fs = ScikitFuzzyWrapper(linguistic_variables_domains, goal, rules)
-        fs.set_start_values(input_values, fs.antecedents)
+        fs = ScikitFuzzyWrapper(linguistic_variables_domains, rules, goal)
+        fs.set_start_values(input_values)
 
         # Perform inference layer by layer in reverse order
         print("Source variables:")

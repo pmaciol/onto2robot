@@ -98,8 +98,8 @@ class ScikitFuzzyWrapper:
     def __init__(
         self,
         linguistic_variables_domains: dict[OntologyIndividualSuperclass, LinguisticVariableDomain],
-        goal_name: str,
         rules: list[OntologyIndividualSuperclass],
+        goal_name: str,
     ):
         self.linguistic_variables_spaces = linguistic_variables_domains
         self.antecedents = make_antecedents(linguistic_variables_domains, goal_name, use_auto_membership=True)
@@ -108,6 +108,43 @@ class ScikitFuzzyWrapper:
         print(f"Created {len(self.scikit_rules)} rules for Scikit-Fuzzy model.")
         self.ctrl_system = ctrl.ControlSystem(self.scikit_rules)
         self.sim = ctrl.ControlSystemSimulation(self.ctrl_system)
+
+    def set_start_values(self, input_values: dict[str, float]):
+        for input in self.sim._get_inputs().items():
+            var_name = input[0]
+            if var_name in input_values:
+                self.sim.input[var_name] = input_values[var_name]
+            else:
+                ant = next(x for x in self.antecedents if x.name == var_name)
+                if ant:
+                    self.sim.input[var_name] = (
+                        self.antecedents[ant].universe[0] + self.antecedents[ant].universe[-1]
+                    ) / 2
+                    print(
+                        f"Input value for '{var_name}' not provided. Setting to default value "
+                        f"{(self.antecedents[ant].universe[0] + self.antecedents[ant].universe[-1]) / 2}."
+                    )
+                else:
+                    self.sim.input[var_name] = 0
+
+    def compute(self, layer: set[OntologyIndividualSuperclass]):
+        layer_var_names = [ind.name for ind in layer]
+        print(f"Processing layer with targets: {layer_var_names}")
+        print(
+            "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        )
+
+        # Compute inference for this layer
+        self.sim.compute()
+        print(f" Layer output: {self.sim.output}")
+
+        # Capture and set output values from this layer
+        for var_name in layer_var_names:
+            if var_name in self.sim.output:
+                output_value = self.sim.output[var_name]
+                print(f" Inferred {var_name} = {output_value}")
+                if var_name in [ant.name for ant in self.antecedents]:
+                    self.sim.input[var_name] = output_value
 
     def _make_rules(self, rules: list[OntologyIndividualSuperclass]):
         scikit_rules = []
@@ -143,43 +180,3 @@ class ScikitFuzzyWrapper:
                         scikit_rules.append(ctrl.Rule(antecedent_conditions, consequent))
 
         self.scikit_rules = scikit_rules
-
-    def set_start_values(
-        self,
-        input_values: dict[str, float],
-        antecedents: dict[OntologyIndividualSuperclass, ctrl.Antecedent],
-    ):
-        for input in self.sim._get_inputs().items():
-            var_name = input[0]
-            if var_name in input_values:
-                self.sim.input[var_name] = input_values[var_name]
-            else:
-                ant = next(x for x in antecedents if x.name == var_name)
-                if ant:
-                    self.sim.input[var_name] = (antecedents[ant].universe[0] + antecedents[ant].universe[-1]) / 2
-                    print(
-                        f"Input value for '{var_name}' not provided. Setting to default value "
-                        f"{(antecedents[ant].universe[0] + antecedents[ant].universe[-1]) / 2}."
-                    )
-                else:
-                    self.sim.input[var_name] = 0
-
-    def compute(self, layer: set[OntologyIndividualSuperclass]):
-        layer_var_names = [ind.name for ind in layer]
-        print(f"Processing layer with targets: {layer_var_names}")
-        print(
-            "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-        )
-
-        # Compute inference for this layer
-        self.sim.compute()
-        # self.sim.print_state()
-        print(f" Layer output: {self.sim.output}")
-
-        # Capture and set output values from this layer
-        for var_name in layer_var_names:
-            if var_name in self.sim.output:
-                output_value = self.sim.output[var_name]
-                print(f" Inferred {var_name} = {output_value}")
-                if var_name in [ant.name for ant in self.antecedents]:
-                    self.sim.input[var_name] = output_value

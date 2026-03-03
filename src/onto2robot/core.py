@@ -22,7 +22,6 @@ def _get_class_by_name(ontology: Ontology, class_name: str) -> OntologyClassSupe
 def _get_property_values(
     entity: OntologyIndividualSuperclass, property_name: str
 ) -> list[OntologyIndividualSuperclass]:
-    # TODO: check retuned type - proper only for data properties
     properties = [prop[entity] for prop in entity.get_properties() if prop.name == property_name]
     if properties:
         if any(not isinstance(prop, OntologyIndividualSuperclass) for prop in properties[0]):
@@ -33,7 +32,6 @@ def _get_property_values(
 
 
 def _get_data_property_value(entity: OntologyIndividualSuperclass, property_name: str) -> int | float | str:
-    # TODO: check retuned type - proper only for data properties
     properties = [prop[entity] for prop in entity.get_properties() if prop.name == property_name]
     if properties:
         if any(isinstance(prop, OntologyIndividualSuperclass) for prop in properties[0]):
@@ -93,34 +91,34 @@ def _get_conclusions(rule: OntologyIndividualSuperclass) -> list[OntologyIndivid
     return _get_property_values(rule, "hasConclusion")
 
 
-def load_ontology(ontology_name: str, world: World) -> Ontology:
-    project_root = Path(__file__).resolve().parents[2]
-    onto_path.append(project_root / "ontologies")
+def _load_ontology_from_file(ontology_name: str, world: World, ontologies_path: Path | None = None) -> Ontology:
+    project_root = ontologies_path if ontologies_path else Path(__file__).resolve().parents[2] / "ontologies"
+    onto_path.append(project_root)
     ontology_getter = world.get_ontology
-
-    path_to_file = (project_root / "ontologies" / Path(ontology_name)).with_suffix(".owl")
-    main_onto: Ontology = ontology_getter(path_to_file.resolve().as_uri()).load()
-    if main_onto is None:
+    path_to_file = (project_root / Path(ontology_name)).with_suffix(".owl")
+    uri = path_to_file.resolve().as_uri()
+    print(f"Loading ontology from file: {path_to_file}")
+    ontology: Ontology = ontology_getter(uri).load()
+    if ontology is None:
         raise ValueError(f"Failed to load ontology: {ontology_name}")
+    return ontology
 
-    path_to_file_1 = (project_root / "ontologies" / Path("amro_uc01")).with_suffix(".owl")
-    amro_uc01: Ontology = ontology_getter(path_to_file_1.resolve().as_uri()).load()
-    if amro_uc01 is None:
-        raise ValueError("Failed to load ontology: amro_uc01")
 
-    path_to_file_2 = (project_root / "ontologies" / Path("amro")).with_suffix(".owl")
-    amro: Ontology = ontology_getter(path_to_file_2.resolve().as_uri()).load()
-    if amro is None:
-        raise ValueError("Failed to load ontology: amro")
+def load_ontology(
+    ontology_name: str,
+    world: World,
+    ontologies_path: Path | None = None,
+    supporting_ontologies: list[str] | None = None,
+) -> Ontology:
+    if supporting_ontologies is None:
+        # Default set of ontologies for amro use case
+        supporting_ontologies = ["amro_uc01", "amro", "sumo"]
+    main_onto = _load_ontology_from_file(ontology_name, world, ontologies_path)
+    imported_ontologies = [_load_ontology_from_file(name, world, ontologies_path) for name in supporting_ontologies]
+    for imported_onto in imported_ontologies:
+        main_onto.imported_ontologies.append(imported_onto)
 
-    path_to_sumo = (project_root / "ontologies" / Path("sumo")).with_suffix(".owl")
-    sumo: Ontology = ontology_getter(path_to_sumo.resolve().as_uri()).load()
-    if sumo is None:
-        raise ValueError("Failed to load ontology: sumo")
-    main_onto.imported_ontologies.append(sumo)
-    main_onto.imported_ontologies.append(amro)
-    main_onto.imported_ontologies.append(amro_uc01)
-
+    print("Ontologies loaded successfully:")
     return main_onto
 
 
@@ -143,10 +141,14 @@ def _get_instances(cls: OntologyClassSuperclass) -> list[OntologyIndividualSuper
 
 
 class MobileOntologyMeta:
-    def __init__(self, ontology: Ontology | str) -> None:
+    def __init__(
+        self,
+        ontology: Ontology | str,
+        ontologies_path: Path | None = None,
+    ) -> None:
         if isinstance(ontology, str):
             self._world = World()
-            ontology = load_ontology(ontology, world=self._world)
+            ontology = load_ontology(ontology, world=self._world, ontologies_path=ontologies_path)
         if not isinstance(ontology, Ontology):
             raise ValueError(f"Failed to load ontology from {ontology}")
         self.ontology: Ontology = ontology
@@ -235,7 +237,6 @@ class MobileOntologyMeta:
             for linguistic_variable in linguistic_variables_of_class:
                 variables_extending = _get_property_values(linguistic_variable, "support")
                 if variables_extending:
-                    # TODO we get amro_uc01.InfActSens02: ['middle', 'low', 'right'] in results -
                     for l_val in variables_extending:
                         linguistic_variable_domains[l_val] = LinguisticVariableDomain(
                             domain, linguistic_variable_space.fuzzy_points
