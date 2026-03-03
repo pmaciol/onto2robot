@@ -4,6 +4,7 @@ import simpful
 from simpful import LinguisticVariable, TriangleFuzzySet
 
 from onto2robot.core import (
+    LinguisticVariableDomain,
     OntologyIndividualSuperclass,
     rule_to_pair,
     rule_to_string,
@@ -14,30 +15,19 @@ class FuzzySystem:
     def __init__(self):
         self.fs = simpful.FuzzySystem()
 
-    def add_fuzzy_set(
-        self, variable_name: str, points: list[float], set_type: simpful.FuzzySet = simpful.TriangleFuzzySet
-    ):
-        self.fs.add_linguistic_variable(
-            variable_name, simpful.LinguisticVariable(variable_name, universe_of_discourse=[0, 40])
-        )
-
 
 class SimpfulFuzzyWrapper:
     @staticmethod
     def _get_triangle_fuzzy_points(
-        terms: list[str],
-        universe: tuple[float, float],
-    ) -> list[TriangleFuzzySet]:
+        set_of_values: LinguisticVariableDomain, universe: list[float]
+    ) -> dict[str, TriangleFuzzySet]:
+        terms = [value.name for value in set_of_values.linguistic_domain]
         sets_no = len(terms)
         if sets_no != 3:
             raise ValueError("Currently only 3-term spaces are supported.")
-        first_points = [universe[0], universe[0], (universe[0] + universe[1]) / 3]
-        middle_points = [
-            universe[0],
-            (universe[0] + universe[1]) / 3,
-            universe[1],
-        ]
-        last_points = [(universe[0] + universe[1]) / 3, universe[1], universe[1]]
+        first_points = set_of_values.fuzzy_points[:3]
+        middle_points = set_of_values.fuzzy_points[3:6]
+        last_points = set_of_values.fuzzy_points[6:]
         return {
             terms[0]: TriangleFuzzySet(*first_points, term=terms[0]),
             terms[1]: TriangleFuzzySet(*middle_points, term=terms[1]),
@@ -46,19 +36,18 @@ class SimpfulFuzzyWrapper:
 
     def __init__(
         self,
-        linguistic_variables_spaces: dict[OntologyIndividualSuperclass, set[OntologyIndividualSuperclass]],
-        # dict[str, dict[str, OntologyIndividualSuperclass]],
-        # TODO: The universe for each variable should be taken from the target system specification
-        universe: tuple[float, float],
+        linguistic_variables_domains: dict[OntologyIndividualSuperclass, LinguisticVariableDomain],
         rules: list[OntologyIndividualSuperclass],
     ):
         self.fs = FuzzySystem()
         self.goals_inferred = {}
-        self.linguistic_variables_spaces = linguistic_variables_spaces
+        self.linguistic_variables_spaces = linguistic_variables_domains
 
         self.fuzzy_sets = {}
-        for terms in linguistic_variables_spaces.values():
-            fs_terms = self._get_triangle_fuzzy_points(terms, universe)
+
+        for _, set_of_values in self.linguistic_variables_spaces.items():
+            universe = [set_of_values.fuzzy_points[0], set_of_values.fuzzy_points[-1]]
+            fs_terms = self._get_triangle_fuzzy_points(set_of_values, universe)  # Here make matching triangles
             self.fuzzy_sets.update(fs_terms)
         self._add_linguistic_variables()
 
@@ -75,11 +64,14 @@ class SimpfulFuzzyWrapper:
         self.fs.fs.add_rules(stringified_rules)
 
     def _add_linguistic_variables(self):
-        for lv_name, terms in self.linguistic_variables_spaces.items():
+        for variable, set_of_values in self.linguistic_variables_spaces.items():
+            terms = [value.name for value in set_of_values.linguistic_domain]
             fs_list = [self.fuzzy_sets[term] for term in terms]
-            # TODO:replace with more generic method
-            self.fs.fs.add_linguistic_variable(lv_name, LinguisticVariable(fs_list, universe_of_discourse=[0, 40]))
-            print(f"Added linguistic variable {lv_name} with terms {terms}")
+            universe = [set_of_values.fuzzy_points[0], set_of_values.fuzzy_points[-1]]
+            self.fs.fs.add_linguistic_variable(
+                variable.name, LinguisticVariable(fs_list, universe_of_discourse=universe)
+            )
+            print(f"Added linguistic variable {variable.name} with terms {terms}")
 
     def set_start_values(
         self,

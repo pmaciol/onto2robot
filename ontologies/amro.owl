@@ -371,14 +371,14 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#hasLeftHand"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Action"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#hasLeftHand"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#ConclusionsAssessment"/>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Action"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#ConclusionsAssessment"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:onClass>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -404,6 +404,7 @@
                 <owl:onClass rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#FuzzyInstances"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#SensorUsed"/>
         <rdfs:label xml:lang="pl">ConclusionsAssessments</rdfs:label>
     </owl:Class>
 
@@ -620,14 +621,14 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#hasLeftHand"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#ConclusionsAssessment"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#hasLeftHand"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#SensorUsed"/>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#ConclusionsAssessment"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#SensorUsed"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:onClass>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -656,14 +657,14 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#isOneOf"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://purl.org/ieee1872-owl/cora-bare#Robot"/>
+                <owl:onClass rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#isOneOf"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#isPartOf"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
+                <owl:onClass rdf:resource="http://purl.org/ieee1872-owl/cora-bare#Robot"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label xml:lang="pl">RobotsRegion</rdfs:label>

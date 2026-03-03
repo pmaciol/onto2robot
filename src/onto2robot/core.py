@@ -1,7 +1,7 @@
 import contextlib
 from pathlib import Path
 
-from owlready2 import EntityClass, Ontology, Thing, ThingClass, World, onto_path
+from owlready2 import EntityClass, IndividualValueList, Ontology, Thing, ThingClass, World, onto_path
 
 OntologyIndividualSuperclass = Thing
 OntologyClassSuperclass = EntityClass
@@ -22,17 +22,31 @@ def _get_class_by_name(ontology: Ontology, class_name: str) -> OntologyClassSupe
 def _get_property_values(
     entity: OntologyIndividualSuperclass, property_name: str
 ) -> list[OntologyIndividualSuperclass]:
-    try:
-        return [prop[entity] for prop in entity.get_properties() if prop.name == property_name][0]
-    except IndexError:
-        # print(f"Property '{property_name}' not found for entity '{entity.name}'. Available {entity.get_properties()}")
-        return []
+    # TODO: check retuned type - proper only for data properties
+    properties = [prop[entity] for prop in entity.get_properties() if prop.name == property_name]
+    if properties:
+        if any(not isinstance(prop, OntologyIndividualSuperclass) for prop in properties[0]):
+            print(f"Warning: Property '{property_name}' of entity '{entity.name}' is not an object property.")
+        return properties[0]
+    print(f"Warning: Property '{property_name}' of entity '{entity.name}' not found. Returning empty list.")
+    return []
+
+
+def _get_data_property_value(entity: OntologyIndividualSuperclass, property_name: str) -> int | float | str:
+    # TODO: check retuned type - proper only for data properties
+    properties = [prop[entity] for prop in entity.get_properties() if prop.name == property_name]
+    if properties:
+        if any(isinstance(prop, OntologyIndividualSuperclass) for prop in properties[0]):
+            print(f"Warning: Property '{property_name}' of entity '{entity.name}' is not a data property.")
+        return properties[0][0] if isinstance(properties[0], IndividualValueList) else properties[0]
+    print(f"Warning: Property '{property_name}' of entity '{entity.name}' not found. Returning empty string.")
+    return ""
 
 
 def _get_sorted_domain(linguistic_variable_space: OntologyIndividualSuperclass) -> list[OntologyIndividualSuperclass]:
     unsorted = set(_get_property_values(linguistic_variable_space, "hasValues"))
     with_order: list[tuple[int, OntologyIndividualSuperclass]] = [
-        tuple([_get_property_values(value, "hasOrder")[0], value]) for value in unsorted
+        (int(_get_data_property_value(value, "hasOrder")), value) for value in unsorted
     ]
     return [v for _, v in sorted(with_order, key=lambda x: x[0])]
 
@@ -103,28 +117,11 @@ def load_ontology(ontology_name: str, world: World) -> Ontology:
     sumo: Ontology = ontology_getter(path_to_sumo.resolve().as_uri()).load()
     if sumo is None:
         raise ValueError("Failed to load ontology: sumo")
-    # amro.imported_ontologies.append(sumo)
-    # amro.imported_ontologies.append(amro_uc01)
-    # amro_uc01.imported_ontologies.append(amro)
-    # main_onto.imported_ontologies.append(amro_uc01)
-    # print(f"imported to main {list(main_onto.imported_ontologies[0].classes())} classes")
-
-    # print(f"All sumo classes {list(sumo.classes())} classes")
-    # print(f"All amro classes {list(amro.classes())} classes")
-    # print(f"All amro_uc01 classes {list(amro_uc01.classes())} classes")
-    # print(f"All main classes {list(main_onto.classes())} classes")
-
-    # print(f"Loaded ontology {main_onto.base_iri} with {list(main_onto.classes())} classes")
-    # print(f"Loaded ontology {import1.base_iri} with {list(import1.classes())} classes")
-    # print(f"Loaded ontology {import2.base_iri} with {list(import2.classes())} classes")
-    # print(f"Loaded ontology {sumo.base_iri} with {list(sumo.classes())} classes")
     main_onto.imported_ontologies.append(sumo)
     main_onto.imported_ontologies.append(amro)
     main_onto.imported_ontologies.append(amro_uc01)
 
-    # print(f"All Loaded classes {list(main_onto.classes())} classes")
     return main_onto
-    # if main_onto:
 
 
 class LinguisticVariableSpaces:
@@ -137,6 +134,12 @@ class LinguisticVariableDomain:
     def __init__(self, linguistic_domain: list[OntologyIndividualSuperclass], fuzzy_points: list[float]):
         self.linguistic_domain = linguistic_domain
         self.fuzzy_points = fuzzy_points
+
+
+def _get_instances(cls: OntologyClassSuperclass) -> list[OntologyIndividualSuperclass]:
+    if hasattr(cls, "instances"):
+        return list(cls.instances())  # pyright: ignore[reportAttributeAccessIssue]; works properly in runtime, but pyright cannot detect it
+    return []
 
 
 class MobileOntologyMeta:
@@ -157,7 +160,7 @@ class MobileOntologyMeta:
     def get_rules(self) -> list[OntologyIndividualSuperclass]:
         rules_class: OntologyClassSuperclass | None = _get_class_by_name(self.ontology, "RuleHeader")
         if rules_class:
-            return list(rules_class.instances())  # pyright: ignore[reportAttributeAccessIssue]; works properly in runtime, but pyright cannot detect it
+            return list(_get_instances(rules_class))
         return []
 
     def destroy(self) -> None:
@@ -189,21 +192,30 @@ class MobileOntologyMeta:
         if not fi_class:
             print("FuzzyInstances class not found in the ontology.")
             return {}
-        linguistic_variable_classes: list[OntologyIndividualSuperclass] = list(fi_class.instances())  # pyright: ignore[reportAttributeAccessIssue]
+        linguistic_variable_classes: list[OntologyIndividualSuperclass] = list(_get_instances(fi_class))
 
         linguistic_variable_spaces: dict[OntologyIndividualSuperclass, LinguisticVariableSpaces] = {}
         for linguistic_variable_class in linguistic_variable_classes:
-            has_parameters = int(_get_property_values(linguistic_variable_class, "hasParameters")[0])
+            has_parameters = int(_get_data_property_value(linguistic_variable_class, "hasParameters"))
             param_values: list[float] = []
             for i in range(1, has_parameters + 1):
-                param_values.append(float(_get_property_values(linguistic_variable_class, f"has{i}.Parameter")[0]))
+                param_values.append(float(_get_data_property_value(linguistic_variable_class, f"has{i}.Parameter")))
 
-            linguistic_variable_spaces[linguistic_variable_class] = LinguisticVariableSpaces(
+            is_type_of = (
                 _get_property_values(linguistic_variable_class, "isTypeOf")[0]
                 if _get_property_values(linguistic_variable_class, "isTypeOf")
-                else None,
-                param_values,
+                else None
             )
+            if is_type_of is not None:
+                linguistic_variable_spaces[linguistic_variable_class] = LinguisticVariableSpaces(
+                    is_type_of,
+                    param_values,
+                )
+            else:
+                print(
+                    f"Warning: Linguistic variable class '{linguistic_variable_class.name}' "
+                    "does not have 'isTypeOf' property. Skipping."
+                )
 
             # print(f"Linguistic variable class {linguistic_variable_class.name} has parameters values: {param_values}")
 
@@ -245,10 +257,12 @@ class MobileOntologyMeta:
         self, goals: list[OntologyIndividualSuperclass]
     ) -> tuple[list[set[OntologyIndividualSuperclass]], set[OntologyIndividualSuperclass]]:
         def get_precedents(goal):
-            rules_class: ThingClass = _get_class_by_name(self.ontology, "RuleHeader")
+            rules_class: OntologyClassSuperclass | None = _get_class_by_name(self.ontology, "RuleHeader")
+            if not rules_class:
+                raise ValueError("RuleHeader class not found in the ontology.")
             precedents = set()
             input_individuals = set()
-            for rule in rules_class.instances():
+            for rule in _get_instances(rules_class):
                 conclusions = _get_conclusions(rule)
                 for conclusion in conclusions:
                     left, _ = _get_left_right_hands(conclusion)
