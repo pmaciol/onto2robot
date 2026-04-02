@@ -50,26 +50,18 @@
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#OWLObjectProperty_c8034c22_9cc9_4a31_87d7_b8d60869ecbf -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#OWLObjectProperty_c8034c22_9cc9_4a31_87d7_b8d60869ecbf">
-        <rdfs:label xml:lang="pl">concerns</rdfs:label>
-    </owl:ObjectProperty>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#OWLObjectProperty_fa6166c4_87bf_4c39_89c1_7e186cccf750 -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#OWLObjectProperty_fa6166c4_87bf_4c39_89c1_7e186cccf750">
-        <rdfs:label xml:lang="pl">precedes</rdfs:label>
-    </owl:ObjectProperty>
-
-
-
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#automatedRobot -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#automatedRobot">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#robotprocesslink"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#concerns -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#concerns">
+        <rdfs:label xml:lang="pl">concerns</rdfs:label>
     </owl:ObjectProperty>
 
 
@@ -92,9 +84,7 @@
 
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#hasConclusion -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#hasConclusion">
-        <rdfs:label xml:lang="pl">hasConclusion</rdfs:label>
-    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#hasConclusion"/>
 
 
 
@@ -185,6 +175,14 @@
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#isValueOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#isValueOf"/>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#precedes -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#precedes">
+        <rdfs:label xml:lang="pl">precedes</rdfs:label>
+    </owl:ObjectProperty>
 
 
 
@@ -578,7 +576,7 @@
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Project"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#OWLObjectProperty_c8034c22_9cc9_4a31_87d7_b8d60869ecbf"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#concerns"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#SensorUsed"/>
             </owl:Restriction>
@@ -594,7 +592,7 @@
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Project"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#OWLObjectProperty_c8034c22_9cc9_4a31_87d7_b8d60869ecbf"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#concerns"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#ConclusionsAssessment"/>
             </owl:Restriction>
@@ -708,14 +706,14 @@
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Rules"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#OWLObjectProperty_fa6166c4_87bf_4c39_89c1_7e186cccf750"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RulesSets"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#contains"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#contains"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#precedes"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RulesSets"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label xml:lang="pl">RulesSets</rdfs:label>

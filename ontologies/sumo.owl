@@ -57,9 +57,7 @@
 
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#hasPart -->
 
-    <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#hasPart">
-        <owl:inverseOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#part"/>
-    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#hasPart"/>
 
 
 
@@ -89,26 +87,9 @@
 
 
 
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#measure -->
-
-    <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#measure">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-
-
-
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#member -->
 
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#member">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-    </owl:ObjectProperty>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#part -->
-
-    <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#part">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
     </owl:ObjectProperty>
 

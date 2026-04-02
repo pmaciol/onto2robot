@@ -37,25 +37,6 @@
     <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#OWLObjectProperty_a777ce78_bea7_4442_afe3_b83bf1738406 -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#OWLObjectProperty_a777ce78_bea7_4442_afe3_b83bf1738406">
-        <rdfs:label xml:lang="pl">hasPremise</rdfs:label>
-    </owl:ObjectProperty>
-
-
-
-    <!--
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
     // Data properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -150,19 +131,6 @@
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#LinguisticValues -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#LinguisticValues"/>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader -->
-
-    <rdf:Description rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#OWLObjectProperty_a777ce78_bea7_4442_afe3_b83bf1738406"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Premise"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </rdf:Description>
 
 
 
