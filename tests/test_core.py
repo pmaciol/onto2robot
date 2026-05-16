@@ -1,5 +1,7 @@
 from math import isclose
+from pprint import pprint
 
+from owlready2 import World
 from simpful import (
     FuzzySet,
     FuzzySystem,
@@ -11,6 +13,7 @@ from simpful import (
 
 from onto2robot.core import (
     MobileOntologyMeta,
+    OntologyClassSuperclass,
     OntologyIndividualSuperclass,
     _get_conclusions,
     _get_premises,
@@ -22,7 +25,7 @@ from onto2robot.fs_wrapper import SimpfulFuzzyWrapper
 
 
 def test_load_sumo_ontology():
-    onto = load_ontology("sumo")
+    onto = load_ontology("sumo", world=World())
     all_classes = list(onto.classes())
     print(f"SUMO classes {all_classes}")
     assert len(all_classes) > 0
@@ -30,7 +33,7 @@ def test_load_sumo_ontology():
 
 
 def test_load_mobile_robot_ontology():
-    onto = load_ontology("mobile_robot_ontology")
+    onto = load_ontology("mobile_robot_ontology", world=World())
     all_classes = list(onto.classes())
     print(f"MOBILE ROBOT classes {all_classes}")
     assert len(all_classes) > 0
@@ -38,7 +41,7 @@ def test_load_mobile_robot_ontology():
 
 
 def test_read_rules():
-    ontology = load_ontology("tests")
+    ontology = load_ontology("tests", world=World())
     ont = MobileOntologyMeta(ontology)
     rules = ont.get_rules()
     assert len(rules) == 9
@@ -53,7 +56,7 @@ def test_read_rules():
 
 
 def test_single_premise():
-    ontology = load_ontology("tests")
+    ontology = load_ontology("tests", world=World())
     premise01 = ontology.premise01
     assert premise01 is not None
     assert premise01.name == "premise01"
@@ -61,8 +64,8 @@ def test_single_premise():
 
 
 def test_premise_left_right():
-    ontology = load_ontology("tests")
-    premise01 = ontology.premise01
+    ontology = load_ontology("tests", world=World())
+    premise01: OntologyIndividualSuperclass = ontology.premise01  # pyright: ignore[reportAssignmentType]
     leftHand = _get_property_values(premise01, "hasLeftHand")
     assert len(leftHand) == 1
     assert isinstance(leftHand[0], OntologyIndividualSuperclass)
@@ -81,11 +84,11 @@ def test_whole_rule():
 
 
 def test_add_premise():
-    ontology = load_ontology("tests")
-    rule01 = ontology.R01
+    ontology = load_ontology("tests", world=World())
+    rule01: OntologyIndividualSuperclass = ontology.R01  # pyright: ignore[reportAssignmentType]
     premises_before = _get_premises(rule01)
     assert len(premises_before) == 2
-    new_premise = ontology.Premise()
+    new_premise: OntologyClassSuperclass = ontology.Premise()  # pyright: ignore[reportOptionalCall]
     new_premise.name = "premise07"
     new_premise.label = "premise07"
     new_premise.hasLeftHand = [ontology.sRF]
@@ -96,6 +99,16 @@ def test_add_premise():
     ontology.destroy()
 
 
+def test_get_fuzzy_space():
+    ont = MobileOntologyMeta("amro_uc01_v01")
+    lvals = ont.get_linguistic_variable_spaces()
+    pprint(lvals)
+    lmh01 = ont.get_individual_by_name("LMH01")
+    assert lmh01 in lvals
+    space = lvals[lmh01]
+    assert space.linguistic_class.name == "LowMiddleHigh"
+
+
 def test_all_rules():
     ont = MobileOntologyMeta("tests")
     rules = ont.get_rules()
@@ -104,36 +117,58 @@ def test_all_rules():
 
 
 def test_full_ontology():
-    ont = MobileOntologyMeta("mobile_robot_ontology")
+    ont = MobileOntologyMeta("amro_uc01_v01")
     rules = ont.get_rules()
     stringified_rules = [rule_to_string(rule) for rule in rules]
     with open("results.txt", "w") as f:
         for rule in stringified_rules:
             f.write(rule + "\n")
     expected_rules = [
-        "IF (sFL IS low) AND (sFR IS low) THEN (sFassessment IS low);",
-        "IF (sFL IS low) AND (sFR IS middle) THEN (sFassessment IS low);",
-        "IF (sFR IS high) AND (sFL IS low) THEN (sFassessment IS middle);",
-        "IF (sFL IS middle) AND (sFR IS low) THEN (sFassessment IS middle);",
-        "IF (sFL IS middle) AND (sFR IS middle) THEN (sFassessment IS middle);",
-        "IF (sFR IS high) AND (sFL IS middle) THEN (sFassessment IS high);",
-        "IF (sFL IS high) AND (sFR IS low) THEN (sFassessment IS middle);",
-        "IF (sFL IS high) AND (sFR IS middle) THEN (sFassessment IS high);",
-        "IF (sFR IS high) AND (sFL IS high) THEN (sFassessment IS high);",
+        "IF (R01sBL IS low) AND (move IS forward) THEN (finalMove IS right);",
+        "IF (R01sBL IS middle) AND (R01sBR IS low) AND (move IS forward) THEN (finalMove IS left);",
+        "IF (R01sBL IS middle) AND (R01sBR IS middle) AND (move IS forward) THEN (finalMove IS right);",
+        "IF (R01sBL IS middle) AND (R01sBR IS high) AND (move IS forward) THEN (finalMove IS right);",
+        "IF (R01sBL IS high) AND (R01sBR IS low) AND (move IS forward) THEN (finalMove IS left);",
+        "IF (R01sBL IS high) AND (R01sBR IS middle) AND (move IS forward) THEN (finalMove IS left);",
+        "IF (R01sBL IS high) AND (R01sBR IS high) AND (move IS forward) THEN (finalMove IS forward);",
+        "IF (move IS left) THEN (finalMove IS left);",
+        "IF (move IS right) THEN (finalMove IS right);",
+        "IF (R01sFL IS low) AND (R01sFR IS low) THEN (sFassessment IS forward);",
+        "IF (R01sFL IS low) AND (R01sFR IS middle) THEN (sFassessment IS left);",
+        "IF (R01sFL IS low) AND (R01sFR IS high) THEN (sFassessment IS left);",
+        "IF (R01sFL IS middle) AND (R01sFR IS low) THEN (sFassessment IS right);",
+        "IF (R01sFL IS middle) AND (R01sFR IS middle) THEN (sFassessment IS right);",
+        "IF (R01sFL IS middle) AND (R01sFR IS high) THEN (sFassessment IS left);",
+        "IF (R01sFL IS high) THEN (sFassessment IS right);",
+        "IF (R01sLF IS low) THEN (sLassessment IS low);",
+        "IF (R01sLF IS middle) AND (R01sLS IS low) THEN (sLassessment IS middle);",
+        "IF (R01sLF IS middle) AND (R01sLS IS middle) THEN (sLassessment IS middle);",
+        "IF (R01sLF IS middle) AND (R01sLS IS high) THEN (sLassessment IS high);",
+        "IF (R01sLF IS high) THEN (sLassessment IS high);",
+        "IF (sFassessment IS forward) AND (sLassessment IS low) AND (sRassessment IS low) THEN (move IS forward);",
+        "IF (sFassessment IS forward) AND (sLassessment IS low) AND (sRassessment IS middle) THEN (move IS left);",
+        "IF (sFassessment IS forward) AND (sLassessment IS middle) AND (sRassessment IS low) THEN (move IS right);",
+        "IF (sFassessment IS forward) AND (sLassessment IS middle) AND (sRassessment IS middle) THEN (move IS forward);",  # noqa: E501
+        "IF (sFassessment IS right) AND (sLassessment IS low) AND (sRassessment IS low) THEN (move IS right);",
+        "IF (sFassessment IS right) AND (sLassessment IS low) AND (sRassessment IS middle) THEN (move IS forward);",
+        "IF (sFassessment IS right) AND (sLassessment IS middle) AND (sRassessment IS low) THEN (move IS right);",
+        "IF (sFassessment IS right) AND (sLassessment IS middle) AND (sRassessment IS middle) THEN (move IS right);",
+        "IF (sFassessment IS left) AND (sLassessment IS low) AND (sRassessment IS low) THEN (move IS left);",
+        "IF (sFassessment IS left) AND (sLassessment IS low) AND (sRassessment IS middle) THEN (move IS left);",
+        "IF (sFassessment IS left) AND (sLassessment IS middle) AND (sRassessment IS low) THEN (move IS forward);",
+        "IF (sFassessment IS left) AND (sLassessment IS middle) AND (sRassessment IS middle) THEN (move IS left);",
+        "IF (sLassessment IS high) THEN (move IS right);",
+        "IF (sLassessment IS low) AND (sRassessment IS high) THEN (move IS left);",
+        "IF (R01sRF IS low) THEN (sRassessment IS low);",
+        "IF (R01sRF IS middle) AND (R01sRS IS low) THEN (sRassessment IS middle);",
+        "IF (R01sRF IS middle) AND (R01sRS IS middle) THEN (sRassessment IS middle);",
+        "IF (R01sRF IS middle) AND (R01sRS IS high) THEN (sRassessment IS high);",
+        "IF (R01sRF IS high) THEN (sRassessment IS high);",
+        "IF (sLassessment IS middle) AND (sRassessment IS high) THEN (move IS left);",
     ]
-
+    for rule in stringified_rules:
+        print(f'"{rule}",')
     assert stringified_rules == expected_rules
-
-
-def test_lingustiic_values():
-    ont = MobileOntologyMeta("mobile_robot_ontology")
-    lvals = ont.linguistic_values()
-    print("Linguistic values:")
-    for k, v in lvals.items():
-        print(f" - {k}: {v}")
-
-    for lv in lvals:
-        assert len(lvals[lv]) == 3
 
 
 def test_backward_chain_tree():
@@ -321,33 +356,28 @@ def test_layered_robot():
 
 
 def test_full_robot():
-    ont = MobileOntologyMeta("mobile_robot_ontology")
+    ont = MobileOntologyMeta("amro_uc01_v01")
     rules = ont.get_rules()
     goal = "finalMove"
-    # TODO: replace with proper extraction from ontology
-    linguistic_spaces = [
-        ["low", "middle", "high"],
-        ["left", "forward", "right"],
-    ]
-    linguistic_variables_spaces = ont.linguistic_value_spaces(linguistic_spaces)
+    linguistic_variables_domains = ont.get_linguistic_variable_domains()
     reasoning_order, source_variables = ont.get_possible_chains([ont.get_individual_by_name(goal)])
 
     fs = SimpfulFuzzyWrapper(
-        linguistic_variables_spaces,
-        universe=(0, 40),
+        linguistic_variables_domains,
         rules=rules,
     )
     input_values = {
-        "sRS": 5,
-        "sLF": 10,
-        "sLS": 15,
-        "sFR": 1,
-        "sRF": 1,
-        "sFL": 1,
-        "bl": 20,
-        "bR": 25,
+        "R01sLF": 39.0,
+        "R01sLS": 1.0,
+        "R01sFL": 20.0,
+        "R01sFR": 20.0,
+        "R01sRF": 1.0,
+        "R01sRS": 39.0,
+        "R01sBL": 20.0,
+        "R01sBR": 20.0,
     }
     fs.set_start_values(input_values)
     for layer in reversed(reasoning_order):
         fs.compute(layer)
     assert goal in fs.goals_inferred
+    # assert False

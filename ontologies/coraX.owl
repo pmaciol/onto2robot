@@ -27,41 +27,12 @@
 
 
 
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#about -->
-
-    <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#about">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-        <rdfs:range rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Entity"/>
-    </owl:ObjectProperty>
-
-
-
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#designAttribute -->
 
     <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#designAttribute">
         <rdfs:subPropertyOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#property"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#designMeasure -->
-
-    <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#designMeasure">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#idealizes -->
-
-    <owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#idealizes">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-        <rdfs:range rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Artifact"/>
     </owl:ObjectProperty>
 
 
@@ -92,36 +63,6 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Abstract -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Abstract"/>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Artifact -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Artifact"/>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Entity -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Entity"/>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
-
-
-
-    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Process -->
-
-    <owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Process"/>
 
 
 
