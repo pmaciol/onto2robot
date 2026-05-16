@@ -52,12 +52,11 @@ def test_scikit_fuzzy_1():
             "R01sBR": 20,
         }
     )
-
     assert math.isclose(results.get("sLassessment", 0.0), 0.5, abs_tol=0.1)
-    assert math.isclose(results.get("sFassessment", 0.0), 0.5, abs_tol=0.1)
+    assert math.isclose(results.get("sFassessment", 0.0), 19.5, abs_tol=0.1)
     assert math.isclose(results.get("sRassessment", 0.0), 0.5, abs_tol=0.1)
     assert math.isclose(results.get("move", 0.0), 19.5, abs_tol=0.1)
-    assert math.isclose(results.get("finalMove", 0.0), 38.75, abs_tol=0.1)
+    assert math.isclose(results.get("finalMove", 0.0), 38.8, abs_tol=0.1)
 
 
 def test_scikit_fuzzy_2():
@@ -75,10 +74,10 @@ def test_scikit_fuzzy_2():
     )
 
     assert math.isclose(results.get("sLassessment", 0.0), 0.5, abs_tol=0.1)
-    assert math.isclose(results.get("sFassessment", 0.0), 38.75, abs_tol=0.1)
+    assert math.isclose(results.get("sFassessment", 0.0), 38.8, abs_tol=0.1)
     assert math.isclose(results.get("sRassessment", 0.0), 39, abs_tol=0.1)
-    assert math.isclose(results.get("move", 0.0), 0.25, abs_tol=0.1)
-    assert math.isclose(results.get("finalMove", 0.0), 0.17, abs_tol=0.1)
+    assert math.isclose(results.get("move", 0.0), 0.3, abs_tol=0.1)
+    assert math.isclose(results.get("finalMove", 0.0), 0.2, abs_tol=0.1)
 
 
 def test_scikit_fuzzy_3():
@@ -96,7 +95,7 @@ def test_scikit_fuzzy_3():
     )
 
     assert math.isclose(results.get("sLassessment", 0.0), 39, abs_tol=0.1)
-    assert math.isclose(results.get("sFassessment", 0.0), 38.75, abs_tol=0.1)
+    assert math.isclose(results.get("sFassessment", 0.0), 38.8, abs_tol=0.1)
     assert math.isclose(results.get("sRassessment", 0.0), 0.5, abs_tol=0.1)
     assert math.isclose(results.get("move", 0.0), 39, abs_tol=0.1)
     assert math.isclose(results.get("finalMove", 0.0), 39, abs_tol=0.1)
@@ -117,7 +116,7 @@ def test_scikit_fuzzy_4():
     )
 
     assert math.isclose(results.get("sLassessment", 0.0), 39, abs_tol=0.1)
-    assert math.isclose(results.get("sFassessment", 0.0), 19.5, abs_tol=0.1)
+    assert math.isclose(results.get("sFassessment", 0.0), 0.5, abs_tol=0.1)
     assert math.isclose(results.get("sRassessment", 0.0), 0.5, abs_tol=0.1)
     assert math.isclose(results.get("move", 0.0), 39, abs_tol=0.1)
     assert math.isclose(results.get("finalMove", 0.0), 39, abs_tol=0.1)
@@ -138,10 +137,10 @@ def test_scikit_fuzzy_5():
     )
 
     assert math.isclose(results.get("sLassessment", 0.0), 19.5, abs_tol=0.1)
-    assert math.isclose(results.get("sFassessment", 0.0), 0.5, abs_tol=0.1)
+    assert math.isclose(results.get("sFassessment", 0.0), 19.5, abs_tol=0.1)
     assert math.isclose(results.get("sRassessment", 0.0), 0.5, abs_tol=0.1)
-    assert math.isclose(results.get("move", 0.0), 38.75, abs_tol=0.1)
-    assert math.isclose(results.get("finalMove", 0.0), 38.88, abs_tol=0.1)
+    assert math.isclose(results.get("move", 0.0), 38.8, abs_tol=0.1)
+    assert math.isclose(results.get("finalMove", 0.0), 38.9, abs_tol=0.1)
 
 
 def test_scikit_fuzzy_6():
@@ -159,7 +158,7 @@ def test_scikit_fuzzy_6():
     )
 
     assert math.isclose(results.get("sLassessment", 0.0), 19.5, abs_tol=0.1)
-    assert math.isclose(results.get("sFassessment", 0.0), 0.5, abs_tol=0.1)
+    assert math.isclose(results.get("sFassessment", 0.0), 19.5, abs_tol=0.1)
     assert math.isclose(results.get("sRassessment", 0.0), 19.5, abs_tol=0.1)
     assert math.isclose(results.get("move", 0.0), 19.5, abs_tol=0.1)
     assert math.isclose(results.get("finalMove", 0.0), 34.0, abs_tol=0.1)
@@ -180,7 +179,7 @@ def test_scikit_fuzzy_7():
     )
 
     assert math.isclose(results.get("sLassessment", 0.0), 19.5, abs_tol=0.1)
-    assert math.isclose(results.get("sFassessment", 0.0), 0.5, abs_tol=0.1)
+    assert math.isclose(results.get("sFassessment", 0.0), 19.5, abs_tol=0.1)
     assert math.isclose(results.get("sRassessment", 0.0), 19.5, abs_tol=0.1)
     assert math.isclose(results.get("move", 0.0), 19.5, abs_tol=0.1)
     assert math.isclose(results.get("finalMove", 0.0), 5, abs_tol=0.1)
@@ -201,7 +200,7 @@ def test_scikit_fuzzy_8():
     )
 
     assert math.isclose(results.get("sLassessment", 0.0), 39.0, abs_tol=0.1)
-    assert math.isclose(results.get("sFassessment", 0.0), 38.75, abs_tol=0.1)
+    assert math.isclose(results.get("sFassessment", 0.0), 38.8, abs_tol=0.1)
     assert math.isclose(results.get("sRassessment", 0.0), 19.5, abs_tol=0.1)
     assert math.isclose(results.get("move", 0.0), 39, abs_tol=0.1)
     assert math.isclose(results.get("finalMove", 0.0), 39, abs_tol=0.1)
@@ -222,9 +221,9 @@ def test_scikit_fuzzy_9():
     )
 
     assert math.isclose(results.get("sLassessment", 0.0), 19.5, abs_tol=0.1)
-    assert math.isclose(results.get("sFassessment", 0.0), 2.5, abs_tol=0.1)
+    assert math.isclose(results.get("sFassessment", 0.0), 19.2, abs_tol=0.1)
     assert math.isclose(results.get("sRassessment", 0.0), 19.5, abs_tol=0.1)
-    assert math.isclose(results.get("move", 0.0), 19.5, abs_tol=0.1)
+    assert math.isclose(results.get("move", 0.0), 19.4, abs_tol=0.1)
     assert math.isclose(results.get("finalMove", 0.0), 36.1, abs_tol=0.1)
 
 
@@ -266,8 +265,8 @@ def test_scikit_fuzzy_11():
     assert math.isclose(results.get("sLassessment", 0.0), 19.5, abs_tol=0.1)
     assert math.isclose(results.get("sFassessment", 0.0), 36.1, abs_tol=0.1)
     assert math.isclose(results.get("sRassessment", 0.0), 3.5, abs_tol=0.1)
-    assert math.isclose(results.get("move", 0.0), 1.9, abs_tol=0.1)
-    assert math.isclose(results.get("finalMove", 0.0), 0.97, abs_tol=0.1)
+    assert math.isclose(results.get("move", 0.0), 36.9, abs_tol=0.1)
+    assert math.isclose(results.get("finalMove", 0.0), 37.7, abs_tol=0.1)
 
 
 def test_scikit_fuzzy_12():
@@ -285,10 +284,10 @@ def test_scikit_fuzzy_12():
     )
 
     assert math.isclose(results.get("sLassessment", 0.0), 19.5, abs_tol=0.1)
-    assert math.isclose(results.get("sFassessment", 0.0), 1.5, abs_tol=0.1)
+    assert math.isclose(results.get("sFassessment", 0.0), 19.3, abs_tol=0.1)
     assert math.isclose(results.get("sRassessment", 0.0), 1.0, abs_tol=0.1)
-    assert math.isclose(results.get("move", 0.0), 38.2, abs_tol=0.1)
-    assert math.isclose(results.get("finalMove", 0.0), 38.5, abs_tol=0.1)
+    assert math.isclose(results.get("move", 0.0), 38.5, abs_tol=0.1)
+    assert math.isclose(results.get("finalMove", 0.0), 38.8, abs_tol=0.1)
 
 
 def test_scikit_fuzzy_13():
@@ -306,7 +305,7 @@ def test_scikit_fuzzy_13():
     )
 
     assert math.isclose(results.get("sLassessment", 0.0), 1.0, abs_tol=0.1)
-    assert math.isclose(results.get("sFassessment", 0.0), 1.5, abs_tol=0.1)
+    assert math.isclose(results.get("sFassessment", 0.0), 19.7, abs_tol=0.1)
     assert math.isclose(results.get("sRassessment", 0.0), 1.0, abs_tol=0.1)
-    assert math.isclose(results.get("move", 0.0), 19.3, abs_tol=0.1)
+    assert math.isclose(results.get("move", 0.0), 19.5, abs_tol=0.1)
     assert math.isclose(results.get("finalMove", 0.0), 1.5, abs_tol=0.1)

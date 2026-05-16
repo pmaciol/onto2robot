@@ -1,6 +1,10 @@
+from pathlib import Path
+
 import numpy as np
+from matplotlib import pyplot as plt
 from skfuzzy import control as ctrl
 from skfuzzy import trimf
+from skfuzzy.control import visualization as ctrl_visualization
 
 from onto2robot.core import (
     LinguisticVariableDomain,
@@ -9,6 +13,21 @@ from onto2robot.core import (
     _get_left_right_hands,
     _get_premises,
 )
+
+
+def _patch_broken_control_system_visualizer() -> None:
+    """Patch skfuzzy bug where ControlSystemVisualizer.__init__ forgets self.ctrl."""
+
+    def _fixed_init(self, control_system):
+        if not ctrl_visualization.matplotlib_present:
+            raise ImportError("`ControlSystemVisualizer` can only be used with `matplotlib` present in the system.")
+        self.ctrl = control_system
+        self.fig, self.ax = plt.subplots()
+
+    ctrl_visualization.ControlSystemVisualizer.__init__ = _fixed_init
+
+
+_patch_broken_control_system_visualizer()
 
 
 def make_antecedents(
@@ -109,10 +128,23 @@ class ScikitFuzzyWrapper:
         self.ctrl_system = ctrl.ControlSystem(self.scikit_rules)
         self.sim = ctrl.ControlSystemSimulation(self.ctrl_system)
 
+    def _print_fired_rules(self, eps: float = 1e-12) -> dict[int, ctrl.Rule]:
+        print("Fired rules:")
+        fired_rules = {}
+        for _, rule in enumerate(self.scikit_rules, start=1):
+            firing = float(rule.aggregate_firing[self.sim])
+            if firing > eps:
+                print(f"  R{rule.label}: firing={firing:.6f} :: {rule}")
+                fired_rules[rule.label] = rule
+        if not fired_rules:
+            print("  none")
+        return fired_rules
+
     def set_start_values(self, input_values: dict[str, float]):
         for input in self.sim._get_inputs().items():
             var_name = input[0]
             if var_name in input_values:
+                print(f"Setting input value for '{var_name}'.")
                 self.sim.input[var_name] = input_values[var_name]
             else:
                 ant = next(x for x in self.antecedents if x.name == var_name)
@@ -127,7 +159,7 @@ class ScikitFuzzyWrapper:
                 else:
                     self.sim.input[var_name] = 0
 
-    def compute(self, layer: set[OntologyIndividualSuperclass]):
+    def compute(self, layer: set[OntologyIndividualSuperclass]) -> dict[str, float] | None:
         layer_var_names = [ind.name for ind in layer]
         print(f"Processing layer with targets: {layer_var_names}")
         print(
@@ -136,15 +168,19 @@ class ScikitFuzzyWrapper:
 
         # Compute inference for this layer
         self.sim.compute()
-        print(f" Layer output: {self.sim.output}")
+        self.fired_rules = self._print_fired_rules(eps=0.5)
 
         # Capture and set output values from this layer
+        results: dict[str, float] = {}
         for var_name in layer_var_names:
             if var_name in self.sim.output:
                 output_value = self.sim.output[var_name]
                 print(f" Inferred {var_name} = {output_value}")
                 if var_name in [ant.name for ant in self.antecedents]:
                     self.sim.input[var_name] = output_value
+                results[var_name] = output_value
+
+        return results
 
     def _make_rules(self, rules: list[OntologyIndividualSuperclass]):
         scikit_rules = []
@@ -177,6 +213,24 @@ class ScikitFuzzyWrapper:
                     consequent = self.consequents[fuzzy_variable][fuzzy_value.name]
 
                     if antecedent_conditions is not None:
-                        scikit_rules.append(ctrl.Rule(antecedent_conditions, consequent))
+                        scikit_rules.append(ctrl.Rule(antecedent_conditions, consequent, label=rule.name))
 
         self.scikit_rules = scikit_rules
+
+    def save_rules_as_figures(self, path: Path):
+        for _, r in self.fired_rules.items():
+            r.view_n()
+            figure = plt.gcf()
+            figure.suptitle(f"Rule {r.label}")
+            plt.savefig(f"{path / f'rule_{r.label}.png'}")
+            plt.clf()
+
+    def save_consequents_as_figures(self, path: Path):
+        for _, v in self.consequents.items():
+            v.view(
+                sim=self.sim,
+            )
+            figure = plt.gcf()
+            figure.suptitle(f"consequent {v.label}")
+            plt.savefig(f"{path / f'consequent_{v.label}.png'}")
+            plt.clf()
