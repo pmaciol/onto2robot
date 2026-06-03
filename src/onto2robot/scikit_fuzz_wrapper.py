@@ -120,6 +120,7 @@ class ScikitFuzzyWrapper:
         rules: list[OntologyIndividualSuperclass],
         goal_name: str,
     ):
+        self.goal_name = goal_name
         self.linguistic_variables_spaces = linguistic_variables_domains
         self.antecedents = make_antecedents(linguistic_variables_domains, goal_name, use_auto_membership=True)
         self.consequents = make_consequents(rules, linguistic_variables_domains, use_auto_membership=True)
@@ -171,16 +172,19 @@ class ScikitFuzzyWrapper:
         self.fired_rules = self._print_fired_rules(eps=0.5)
 
         # Capture and set output values from this layer
-        results: dict[str, float] = {}
+        self.results: dict[str, float] = {}
         for var_name in layer_var_names:
             if var_name in self.sim.output:
                 output_value = self.sim.output[var_name]
                 print(f" Inferred {var_name} = {output_value}")
                 if var_name in [ant.name for ant in self.antecedents]:
                     self.sim.input[var_name] = output_value
-                results[var_name] = output_value
+                self.results[var_name] = output_value
 
-        return results
+        return self.results
+
+    def get_goal_value(self) -> float | None:
+        return self.results.get(self.goal_name)
 
     def _make_rules(self, rules: list[OntologyIndividualSuperclass]):
         scikit_rules = []

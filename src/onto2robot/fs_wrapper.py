@@ -21,10 +21,12 @@ class SimpfulFuzzyWrapper:
         self,
         linguistic_variables_domains: dict[OntologyIndividualSuperclass, LinguisticVariableDomain],
         rules: list[OntologyIndividualSuperclass],
+        goal_name: str,
     ):
         self.fs = FuzzySystem()
         self.goals_inferred = {}
         self.linguistic_variables_spaces = linguistic_variables_domains
+        self.goal_name = goal_name
 
         self.fuzzy_sets = {}
 
@@ -55,6 +57,10 @@ class SimpfulFuzzyWrapper:
 
     def compute(self, layer: set[OntologyIndividualSuperclass]):
         self._do_reasoning([ind.name for ind in layer])
+        return self.goals_inferred
+
+    def get_goal_value(self) -> float | None:
+        return self.goals_inferred.get(self.goal_name)
 
     @staticmethod
     def _get_triangle_fuzzy_points(

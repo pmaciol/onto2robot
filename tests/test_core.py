@@ -365,6 +365,7 @@ def test_full_robot():
     fs = SimpfulFuzzyWrapper(
         linguistic_variables_domains,
         rules=rules,
+        goal_name=goal,
     )
     input_values = {
         "R01sLF": 39.0,
@@ -380,4 +381,5 @@ def test_full_robot():
     for layer in reversed(reasoning_order):
         fs.compute(layer)
     assert goal in fs.goals_inferred
+    assert fs.goals_inferred[goal] > 30.0
     # assert False
