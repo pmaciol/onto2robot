@@ -19,9 +19,7 @@ def _get_class_by_name(ontology: Ontology, class_name: str) -> OntologyClassSupe
     return None
 
 
-def _get_property_values(
-    entity: OntologyIndividualSuperclass, property_name: str
-) -> list[OntologyIndividualSuperclass]:
+def _get_property_values(entity: OntologyIndividualSuperclass, property_name: str) -> list[OntologyIndividualSuperclass]:
     properties = [prop[entity] for prop in entity.get_properties() if prop.name == property_name]
     if properties:
         if any(not isinstance(prop, OntologyIndividualSuperclass) for prop in properties[0]):

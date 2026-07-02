@@ -209,9 +209,7 @@ def test_rules_to_simpful():
     assesment_3 = FuzzySet(function=Triangular_MF(a=10, b=20, c=20), term="high")
     FS.add_linguistic_variable(
         "sFassessment",
-        LinguisticVariable(
-            [assesment_1, assesment_2, assesment_3], concept="Test conclusion", universe_of_discourse=[0, 20]
-        ),
+        LinguisticVariable([assesment_1, assesment_2, assesment_3], concept="Test conclusion", universe_of_discourse=[0, 20]),
     )
 
     ont = MobileOntologyMeta("tests")
@@ -291,9 +289,7 @@ def test_layered_simpful_with_defuzz():
     Slow = TriangleFuzzySet(0, 25, 50, term="Slow")
     MediumSpeed = TriangleFuzzySet(25, 50, 75, term="Medium")
     Fast = TriangleFuzzySet(50, 75, 100, term="Fast")
-    FS.add_linguistic_variable(
-        "FanSpeed", LinguisticVariable([Slow, MediumSpeed, Fast], universe_of_discourse=[0, 100])
-    )
+    FS.add_linguistic_variable("FanSpeed", LinguisticVariable([Slow, MediumSpeed, Fast], universe_of_discourse=[0, 100]))
 
     # Add rules
     FS.add_rules(

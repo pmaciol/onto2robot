@@ -43,15 +43,10 @@ def make_antecedents(
             universe = np.arange(set_of_values.fuzzy_points[0], set_of_values.fuzzy_points[-1], 1)
             antecedents[variable] = ctrl.Antecedent(universe, variable.name)
             if not membership_functions:
-                if (
-                    len(set_of_values.fuzzy_points) == 3 * len(set_of_values.linguistic_domain)
-                    and not use_auto_membership
-                ):
+                if len(set_of_values.fuzzy_points) == 3 * len(set_of_values.linguistic_domain) and not use_auto_membership:
                     for id, ld in enumerate(set_of_values.linguistic_domain):
                         # Only triangle membership functions are supported in this version
-                        antecedents[variable][ld.name] = trimf(
-                            universe, set_of_values.fuzzy_points[id * 3 : id * 3 + 3]
-                        )
+                        antecedents[variable][ld.name] = trimf(universe, set_of_values.fuzzy_points[id * 3 : id * 3 + 3])
                 else:
                     antecedents[variable].automf(
                         len(set_of_values.linguistic_domain),
@@ -90,15 +85,10 @@ def make_consequents(
         if variable in conclusion_variables and variable not in consequents:
             consequents[variable] = ctrl.Consequent(universe, variable.name, defuzzify_method="mom")
             if not membership_functions:
-                if (
-                    len(set_of_values.fuzzy_points) == 3 * len(set_of_values.linguistic_domain)
-                    and not use_auto_membership
-                ):
+                if len(set_of_values.fuzzy_points) == 3 * len(set_of_values.linguistic_domain) and not use_auto_membership:
                     for id, ld in enumerate(set_of_values.linguistic_domain):
                         # Only triangle membership functions are supported in this version
-                        consequents[variable][ld.name] = trimf(
-                            universe, set_of_values.fuzzy_points[id * 3 : id * 3 + 3]
-                        )
+                        consequents[variable][ld.name] = trimf(universe, set_of_values.fuzzy_points[id * 3 : id * 3 + 3])
                 else:
                     consequents[variable].automf(
                         len(set_of_values.linguistic_domain),
@@ -150,9 +140,7 @@ class ScikitFuzzyWrapper:
             else:
                 ant = next(x for x in self.antecedents if x.name == var_name)
                 if ant:
-                    self.sim.input[var_name] = (
-                        self.antecedents[ant].universe[0] + self.antecedents[ant].universe[-1]
-                    ) / 2
+                    self.sim.input[var_name] = (self.antecedents[ant].universe[0] + self.antecedents[ant].universe[-1]) / 2
                     print(
                         f"Input value for '{var_name}' not provided. Setting to default value "
                         f"{(self.antecedents[ant].universe[0] + self.antecedents[ant].universe[-1]) / 2}."
@@ -199,14 +187,9 @@ class ScikitFuzzyWrapper:
                 fuzzy_value = right
 
                 if fuzzy_variable not in self.antecedents:
-                    raise ValueError(
-                        f"Variable '{fuzzy_variable}' in premise '{premise.name}' is not defined as an antecedent."
-                    )
+                    raise ValueError(f"Variable '{fuzzy_variable}' in premise '{premise.name}' is not defined as an antecedent.")
                 condition = self.antecedents[fuzzy_variable][fuzzy_value.name]
-                if antecedent_conditions is None:
-                    antecedent_conditions = condition
-                else:
-                    antecedent_conditions = antecedent_conditions & condition
+                antecedent_conditions = condition if antecedent_conditions is None else antecedent_conditions & condition
             if conclusions:
                 conclusion = conclusions[0]
                 left, right = _get_left_right_hands(conclusion)

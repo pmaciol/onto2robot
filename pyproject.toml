@@ -28,6 +28,8 @@ dependencies = [
   "scikit-fuzzy>=0.5.0",
   "networkx>=3.6.1",
   "matplotlib>=3.10.8",
+  "pybullet>=3.2.7",
+  "imageio[ffmpeg]>=2.37.3",
 ]
 
 [project.scripts]
@@ -48,7 +50,7 @@ allow-direct-references = true
 [tool.ruff]
 src = ["src", "tests"]
 target-version = "py312"
-line-length = 120
+line-length = 130
 
 [tool.ruff.lint]
 select = [

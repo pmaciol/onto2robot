@@ -49,18 +49,14 @@ class SideBottom2Twist:
         self.right_direction = direction_scale[1]
 
     def _get_speed(self, direction: float) -> float:
-        direction_deviation = 1 - abs(direction - self.front_direction) / (
-            (self.right_direction - self.left_direction) / 2
-        )
+        direction_deviation = 1 - abs(direction - self.front_direction) / ((self.right_direction - self.left_direction) / 2)
         return max(direction_deviation * self.max_forward_speed, self.min_forward_speed)
 
     def _get_angular_velocity(self, direction: float) -> float:
         direction_deviation = (direction - self.front_direction) / ((self.right_direction - self.left_direction) / 2)
         return direction_deviation * self.max_angular_speed
 
-    def update_and_evaluate(
-        self, side_sensors_left_to_right: list[float], bottom_sensors_left_to_right: list[float]
-    ) -> Twist:
+    def update_and_evaluate(self, side_sensors_left_to_right: list[float], bottom_sensors_left_to_right: list[float]) -> Twist:
         if (
             len(side_sensors_left_to_right) != self.side_sensors_count
             or len(bottom_sensors_left_to_right) != self.bottom_sensors_count

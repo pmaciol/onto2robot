@@ -1,0 +1,14 @@
+{
+    "stages": [
+        {
+            "time": 2.0,
+            "direction": "forward",
+            "speed": 5.0
+        },
+        {
+            "time": 2.0,
+            "direction": "backward",
+            "speed": 2.5
+        }
+    ]
+}

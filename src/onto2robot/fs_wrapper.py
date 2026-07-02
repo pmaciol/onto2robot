@@ -63,9 +63,7 @@ class SimpfulFuzzyWrapper:
         return self.goals_inferred.get(self.goal_name)
 
     @staticmethod
-    def _get_triangle_fuzzy_points(
-        set_of_values: LinguisticVariableDomain, universe: list[float]
-    ) -> dict[str, TriangleFuzzySet]:
+    def _get_triangle_fuzzy_points(set_of_values: LinguisticVariableDomain, universe: list[float]) -> dict[str, TriangleFuzzySet]:
         terms = [value.name for value in set_of_values.linguistic_domain]
         sets_no = len(terms)
         if sets_no != 3:
@@ -84,9 +82,7 @@ class SimpfulFuzzyWrapper:
             terms = [value.name for value in set_of_values.linguistic_domain]
             fs_list = [self.fuzzy_sets[term] for term in terms]
             universe = [set_of_values.fuzzy_points[0], set_of_values.fuzzy_points[-1]]
-            self.fs.fs.add_linguistic_variable(
-                variable.name, LinguisticVariable(fs_list, universe_of_discourse=universe)
-            )
+            self.fs.fs.add_linguistic_variable(variable.name, LinguisticVariable(fs_list, universe_of_discourse=universe))
             print(f"Added linguistic variable {variable.name} with terms {terms}")
 
     def _do_reasoning(self, goals: list[str]):
