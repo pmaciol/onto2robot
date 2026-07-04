@@ -310,7 +310,7 @@ class PyBulletSide6Bottom2Program:
                 physicsClientId=self._physics_client_id,
             )
 
-    def set_simulation_step_state(self, stage: MissionStage) -> None:
+    def set_simulation_stage(self, stage: MissionStage) -> None:
         normalized_direction = stage.direction.strip().lower()
         normalized_speed = clamp(stage.speed, 0.0, 1.0)
 

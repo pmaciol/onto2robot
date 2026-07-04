@@ -42,7 +42,7 @@ class CylindricalObstacle:
 
 
 @dataclass(frozen=True, slots=True)
-class WorldConfig:
+class WorldConfigCircular:
     floor_radius: float
     floor_height: float = 0.01
     wall_height: float = 0.10
@@ -58,7 +58,8 @@ class CircularWorld:
     wall_ids: tuple[int, ...]
     obstacle_ids: tuple[int, ...]
     floor_top_z: float
-    config: WorldConfig
+    config: WorldConfigCircular
+    physics_client_id: int
 
 
 def north_polar_to_xy(radius: float, bearing_degrees_from_north: float) -> tuple[float, float]:
@@ -135,7 +136,7 @@ def north_polar_to_xy(radius: float, bearing_degrees_from_north: float) -> tuple
 
 def create_circular_world(
     physics_client_id: int,
-    config: WorldConfig,
+    config: WorldConfigCircular,
     obstacles: Sequence[CylindricalObstacle],
     *,
     gravity_z: float = -9.81,
@@ -258,12 +259,12 @@ def create_circular_world(
         obstacle_ids=tuple(obstacle_ids),
         floor_top_z=0.0,
         config=config,
+        physics_client_id=physics_client_id,
     )
 
 
 def add_robot_from_polar_north(
     world: CircularWorld,
-    physics_client_id: int,
     *,
     start_radius: float,
     start_bearing_degrees_from_north: float,
@@ -288,7 +289,7 @@ def add_robot_from_polar_north(
 
     return PyBulletSide6Bottom2Program(
         dimensions=robot_dimensions,
-        client_id=physics_client_id,
+        client_id=world.physics_client_id,
         base_position=Vec3([x_position, y_position, base_height]),
         base_yaw_degrees=pybullet_yaw_degrees,
         max_wheel_velocity=max_wheel_velocity,

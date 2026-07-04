@@ -57,7 +57,7 @@ def test_north_polar_conversion_uses_y_axis_for_zero_degrees():
 
 def test_create_circular_world_builds_floor_wall_and_obstacles():
     fake_pybullet = FakePyBullet()
-    config = worlds_module.WorldConfig(floor_radius=1.0, wall_segments=12)
+    config = worlds_module.WorldConfigCircular(floor_radius=1.0, wall_segments=12)
     obstacles = [
         worlds_module.CylindricalObstacle(radius=0.1, height=0.2, center_x=0.3, center_y=0.2),
         worlds_module.CylindricalObstacle(radius=0.05, height=0.15, center_x=-0.2, center_y=0.1),
@@ -82,7 +82,7 @@ def test_create_circular_world_builds_floor_wall_and_obstacles():
 
 def test_create_circular_world_uses_continuous_wall_segment_length():
     fake_pybullet = FakePyBullet()
-    config = worlds_module.WorldConfig(floor_radius=1.2, wall_thickness=0.05, wall_segments=24)
+    config = worlds_module.WorldConfigCircular(floor_radius=1.2, wall_thickness=0.05, wall_segments=24)
 
     worlds_module.create_circular_world(
         physics_client_id=5,
@@ -106,7 +106,7 @@ def test_create_circular_world_uses_continuous_wall_segment_length():
 
 def test_create_circular_world_orients_wall_segments_tangentially():
     fake_pybullet = FakePyBullet()
-    config = worlds_module.WorldConfig(floor_radius=1.2, wall_thickness=0.05, wall_segments=24)
+    config = worlds_module.WorldConfigCircular(floor_radius=1.2, wall_thickness=0.05, wall_segments=24)
 
     worlds_module.create_circular_world(
         physics_client_id=5,
@@ -124,7 +124,7 @@ def test_create_circular_world_orients_wall_segments_tangentially():
 
 def test_create_circular_world_rejects_outside_obstacle():
     fake_pybullet = FakePyBullet()
-    config = worlds_module.WorldConfig(floor_radius=0.5)
+    config = worlds_module.WorldConfigCircular(floor_radius=0.5)
     obstacles = [
         worlds_module.CylindricalObstacle(radius=0.2, height=0.2, center_x=0.4, center_y=0.0),
     ]
@@ -152,13 +152,13 @@ def test_add_robot_from_polar_north_places_robot_on_floor(monkeypatch):
         wall_ids=(),
         obstacle_ids=(),
         floor_top_z=0.0,
-        config=worlds_module.WorldConfig(floor_radius=1.0),
+        config=worlds_module.WorldConfigCircular(floor_radius=1.0),
+        physics_client_id=9,
     )
     dimensions = RobotDimensions()
 
     worlds_module.add_robot_from_polar_north(
         world=world,
-        physics_client_id=9,
         start_radius=0.5,
         start_bearing_degrees_from_north=0.0,
         start_yaw_degrees_from_north=0.0,
@@ -186,13 +186,13 @@ def test_add_robot_from_polar_north_rejects_outside_start_radius():
         wall_ids=(),
         obstacle_ids=(),
         floor_top_z=0.0,
-        config=worlds_module.WorldConfig(floor_radius=0.1),
+        config=worlds_module.WorldConfigCircular(floor_radius=0.1),
+        physics_client_id=4,
     )
 
     with pytest.raises(ValueError, match="outside"):
         worlds_module.add_robot_from_polar_north(
             world=world,
-            physics_client_id=4,
             start_radius=0.1,
             start_bearing_degrees_from_north=45.0,
         )

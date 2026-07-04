@@ -14,7 +14,7 @@ from robots_drivers.pybullet_side6_bottom2_program import MissionStage, Vec3
 from robots_drivers.worlds.pybullet_worlds import (
     CircularWorld,
     CylindricalObstacle,
-    WorldConfig,
+    WorldConfigCircular,
     add_robot_from_polar_north,
     create_circular_world,
 )
@@ -27,7 +27,7 @@ class MissionRobotProtocol(Protocol):
     @property
     def client_id(self) -> int: ...
 
-    def set_simulation_step_state(self, stage: MissionStage) -> None: ...
+    def set_simulation_stage(self, stage: MissionStage) -> None: ...
 
     def get_position(self) -> Vec3: ...
 
@@ -109,7 +109,7 @@ def run_mission(
         stage_steps = max(1, ceil(stage.time_seconds / step_time))
 
         for _ in range(stage_steps):
-            robot.set_simulation_step_state(stage)
+            robot.set_simulation_stage(stage)
             pybullet_module.stepSimulation(physicsClientId=robot.client_id)
             executed_steps += 1
             elapsed_time += step_time
@@ -192,6 +192,7 @@ def _build_video_recorder(
     return record_frame, close_recorder
 
 
+# TODO: Implement other obstacles than cylindrical ones
 def load_obstacles(path: Path | None) -> list[CylindricalObstacle]:
     if path is None:
         return []
@@ -276,7 +277,7 @@ def main(argv: list[str] | None = None) -> int:
     close_video_recorder: Callable[[], None] | None = None
 
     try:
-        world_config = WorldConfig(
+        world_config = WorldConfigCircular(
             floor_radius=args.floor_radius,
             floor_height=args.floor_height,
             wall_height=args.wall_height,
@@ -291,7 +292,6 @@ def main(argv: list[str] | None = None) -> int:
         )
         robot = add_robot_from_polar_north(
             world=world,
-            physics_client_id=client_id,
             start_radius=args.robot_start_radius,
             start_bearing_degrees_from_north=args.robot_start_bearing,
             start_yaw_degrees_from_north=args.robot_start_yaw,

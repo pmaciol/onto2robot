@@ -1,7 +1,7 @@
 from robots_drivers.worlds.pybullet_worlds import (
     CircularWorld,
     CylindricalObstacle,
-    WorldConfig,
+    WorldConfigCircular,
     add_robot_from_polar_north,
     create_circular_world,
     north_polar_to_xy,
@@ -10,7 +10,7 @@ from robots_drivers.worlds.pybullet_worlds import (
 __all__ = [
     "CircularWorld",
     "CylindricalObstacle",
-    "WorldConfig",
+    "WorldConfigCircular",
     "add_robot_from_polar_north",
     "create_circular_world",
     "north_polar_to_xy",
