@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from collections.abc import Callable
 from math import ceil
 from pathlib import Path
@@ -11,6 +12,7 @@ import pybullet
 
 from robots_drivers.pybullet_side6_bottom2_program import MissionStage, Vec3
 from robots_drivers.worlds.pybullet_worlds import (
+    CircularWorld,
     CylindricalObstacle,
     WorldConfig,
     add_robot_from_polar_north,
@@ -20,9 +22,35 @@ from robots_drivers.worlds.pybullet_worlds import (
 
 class MissionRobotProtocol(Protocol):
     @property
+    def body_id(self) -> int: ...
+
+    @property
     def client_id(self) -> int: ...
+
     def set_simulation_step_state(self, stage: MissionStage) -> None: ...
+
     def get_position(self) -> Vec3: ...
+
+
+def list_touching_world_obstacles(
+    robot: MissionRobotProtocol,
+    world: CircularWorld,
+    *,
+    pybullet_module=pybullet,
+) -> list[str]:
+    touching_obstacles: list[str] = []
+
+    for obstacle_index, obstacle_id in enumerate(world.obstacle_ids, start=1):
+        contacts = pybullet_module.getContactPoints(robot.body_id, obstacle_id, physicsClientId=robot.client_id)
+        if contacts:
+            touching_obstacles.append(f"obstacle[{obstacle_index}]#{obstacle_id}")
+
+    for wall_segment_index, wall_id in enumerate(world.wall_ids, start=1):
+        contacts = pybullet_module.getContactPoints(robot.body_id, wall_id, physicsClientId=robot.client_id)
+        if contacts:
+            touching_obstacles.append(f"boundary[{wall_segment_index}]#{wall_id}")
+
+    return touching_obstacles
 
 
 def _parse_stage(raw_stage: dict, stage_index: int) -> MissionStage:
@@ -67,6 +95,8 @@ def run_mission(
     stages: list[MissionStage],
     step_time: float,
     position_logger,
+    world: CircularWorld | None = None,
+    touch_logger: Callable[[float, list[str]], None] | None = None,
     pybullet_module=pybullet,
 ) -> int:
     if step_time <= 0.0:
@@ -84,6 +114,10 @@ def run_mission(
             executed_steps += 1
             elapsed_time += step_time
             position_logger(elapsed_time, robot.get_position())
+            if world is not None and touch_logger is not None:
+                touching_obstacles = list_touching_world_obstacles(robot, world, pybullet_module=pybullet_module)
+                if touching_obstacles:
+                    touch_logger(elapsed_time, touching_obstacles)
 
     return executed_steps
 
@@ -269,6 +303,10 @@ def main(argv: list[str] | None = None) -> int:
         if args.video:
             video_recorder, close_video_recorder = _build_video_recorder(args.video, client_id, args.time_step)
 
+        def touch_logger(elapsed_time: float, touching_obstacles: list[str]) -> None:
+            joined_obstacles = ", ".join(touching_obstacles)
+            print(f"touch@{elapsed_time:.3f}: {joined_obstacles}", file=sys.stderr)
+
         if args.output:
             with args.output.open("w", encoding="utf-8") as output_file:
                 base_logger = _build_position_logger(output_file)
@@ -278,7 +316,7 @@ def main(argv: list[str] | None = None) -> int:
                     if video_recorder is not None:
                         video_recorder()
 
-                run_mission(robot, stages, args.time_step, logger)
+                run_mission(robot, stages, args.time_step, logger, world=world, touch_logger=touch_logger)
         else:
             print("time;x;y;z")
             base_logger = _build_position_logger(None)
@@ -288,7 +326,7 @@ def main(argv: list[str] | None = None) -> int:
                 if video_recorder is not None:
                     video_recorder()
 
-            run_mission(robot, stages, args.time_step, logger)
+            run_mission(robot, stages, args.time_step, logger, world=world, touch_logger=touch_logger)
 
         return 0
     finally:

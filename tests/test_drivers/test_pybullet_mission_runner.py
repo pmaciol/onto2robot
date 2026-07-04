@@ -1,7 +1,10 @@
 from pathlib import Path
 
+import pybullet as real_pybullet
+
 import robots_drivers.pybullet_mission_runner as mission_module
 from robots_drivers.pybullet_side6_bottom2_program import Vec3
+from robots_drivers.worlds.pybullet_worlds import CircularWorld, add_robot_from_polar_north, create_circular_world
 
 
 class FakePyBullet:
@@ -131,6 +134,77 @@ def test_load_obstacles_parses_json_file(tmp_path):
     assert obstacles[0].center_y == -0.4
 
 
+def test_list_touching_world_obstacles_includes_loaded_obstacles_and_boundary():
+    class FakeContactPyBullet:
+        def getContactPoints(self, body_a, body_b, physicsClientId=None):
+            del body_a, physicsClientId
+            touching_body_ids = {301, 402}
+            return [object()] if body_b in touching_body_ids else []
+
+    robot = FakeRobot()
+    world = CircularWorld(
+        floor_id=99,
+        wall_ids=(401, 402, 403),
+        obstacle_ids=(301, 302),
+        floor_top_z=0.0,
+        config=mission_module.WorldConfig(floor_radius=1.5),
+    )
+
+    touching = mission_module.list_touching_world_obstacles(robot, world, pybullet_module=FakeContactPyBullet())
+
+    assert touching == ["obstacle[1]#301", "boundary[2]#402"]
+
+
+def test_forward_mission_contact_with_central_obstacle_arises_during_simulation():
+    mission_path = Path(__file__).parent / "data" / "test_forward.json"
+    obstacles_path = Path(__file__).parent / "data" / "sample_world_central_obstacle.json"
+
+    client_id = real_pybullet.connect(real_pybullet.DIRECT)
+    try:
+        step_time = 1.0 / 60.0
+        world = create_circular_world(
+            client_id,
+            mission_module.WorldConfig(floor_radius=1.5),
+            mission_module.load_obstacles(obstacles_path),
+            time_step=step_time,
+        )
+        robot = add_robot_from_polar_north(
+            world,
+            client_id,
+            start_radius=0.25,
+            start_bearing_degrees_from_north=15.0,
+            start_yaw_degrees_from_north=0.0,
+        )
+        stages = mission_module.load_mission_stages(mission_path)
+
+        assert mission_module.list_touching_world_obstacles(robot, world, pybullet_module=real_pybullet) == []
+
+        first_touch_time = None
+        first_touching = None
+        elapsed_time = 0.0
+
+        for stage in stages:
+            stage_steps = max(1, mission_module.ceil(stage.time_seconds / step_time))
+            for _ in range(stage_steps):
+                robot.set_simulation_step_state(stage)
+                real_pybullet.stepSimulation(physicsClientId=robot.client_id)
+                elapsed_time += step_time
+                touching = mission_module.list_touching_world_obstacles(robot, world, pybullet_module=real_pybullet)
+                if touching:
+                    first_touch_time = elapsed_time
+                    first_touching = touching
+                    break
+            if first_touch_time is not None:
+                break
+
+        assert first_touch_time is not None
+        assert first_touch_time > 0.1
+        assert first_touch_time < stages[0].time_seconds
+        assert first_touching == [f"obstacle[1]#{world.obstacle_ids[0]}"]
+    finally:
+        real_pybullet.disconnect(client_id)
+
+
 def test_parser_accepts_world_configuration_arguments():
     parser = mission_module.build_parser()
 
@@ -210,10 +284,12 @@ def test_main_wires_cli_world_config_to_world_and_robot(tmp_path, monkeypatch):
         captured["robot_max_motor_force"] = max_motor_force
         return "robot"
 
-    def fake_run_mission(robot, stages, step_time, position_logger):
+    def fake_run_mission(robot, stages, step_time, position_logger, world=None, touch_logger=None):
         captured["run_robot"] = robot
         captured["run_stages_count"] = len(stages)
         captured["run_step_time"] = step_time
+        captured["run_world"] = world
+        captured["run_has_touch_logger"] = touch_logger is not None
         position_logger(0.125, Vec3([1.0, 2.0, 3.0]))
         return 1
 
@@ -302,6 +378,8 @@ def test_main_wires_cli_world_config_to_world_and_robot(tmp_path, monkeypatch):
     assert captured["run_robot"] == "robot"
     assert captured["run_stages_count"] == 2
     assert captured["run_step_time"] == 0.125
+    assert captured["run_world"] == "world"
+    assert captured["run_has_touch_logger"] is True
 
     assert captured["video_path"] == video_path
     assert captured["video_client_id"] == 17
