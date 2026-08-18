@@ -1,9 +1,11 @@
 from math import isclose, pi, sin
 from typing import ClassVar
 
+import pybullet as real_pybullet
 import pytest
 
 import robots_drivers.worlds.pybullet_worlds as worlds_module
+from robots_drivers.controlers.wheel_controler import mock_decide_wheel_control
 from robots_drivers.pybullet_side6_bottom2_program import RobotDimensions, Vec3
 
 
@@ -18,6 +20,7 @@ class FakePyBullet:
         self.multi_body_calls = []
         self.collision_shape_calls = []
         self.visual_shape_calls = []
+        self.filter_calls = []
 
     def resetSimulation(self, physicsClientId=None):
         self.reset_calls.append(physicsClientId)
@@ -42,6 +45,9 @@ class FakePyBullet:
 
     def getQuaternionFromEuler(self, euler):
         return tuple(euler)
+
+    def setCollisionFilterGroupMask(self, bodyUniqueId, linkIndex, collisionFilterGroup, collisionFilterMask):
+        self.filter_calls.append((bodyUniqueId, linkIndex, collisionFilterGroup, collisionFilterMask))
 
 
 def test_north_polar_conversion_uses_y_axis_for_zero_degrees():
@@ -138,6 +144,62 @@ def test_create_circular_world_rejects_outside_obstacle():
         )
 
 
+def test_create_circular_world_adds_a_painted_path_with_disabled_collision():
+    fake_pybullet = FakePyBullet()
+    config = worlds_module.WorldConfigCircular(floor_radius=1.0)
+    painted_path = worlds_module.PaintedPathConfig(radius_x=0.4, radius_y=0.25, width=0.05, segment_count=16)
+
+    world = worlds_module.create_circular_world(
+        physics_client_id=11,
+        config=config,
+        obstacles=[],
+        painted_path=painted_path,
+        pybullet_module=fake_pybullet,
+    )
+
+    assert len(world.path_ids) == 16
+    assert fake_pybullet.filter_calls == []
+
+    first_visual_call = fake_pybullet.visual_shape_calls[-16]
+    first_visual_kwargs = first_visual_call[1]
+    assert first_visual_call[0][0] == fake_pybullet.GEOM_BOX
+    assert first_visual_kwargs["rgbaColor"] == (1.0, 1.0, 1.0, 1.0)
+
+    first_collision_call = fake_pybullet.collision_shape_calls[-16]
+    first_collision_kwargs = first_collision_call[1]
+    assert first_collision_call[0][0] == fake_pybullet.GEOM_BOX
+    assert first_collision_kwargs["halfExtents"][0] == pytest.approx(painted_path.width / 2.0)
+    assert first_collision_kwargs["halfExtents"][2] == pytest.approx(painted_path.height / 2.0)
+
+
+def test_create_circular_world_builds_white_painted_path_in_real_pybullet():
+    client_id = real_pybullet.connect(real_pybullet.DIRECT)
+    try:
+        config = worlds_module.WorldConfigCircular(floor_radius=1.2)
+        painted_path = worlds_module.PaintedPathConfig(radius_x=0.45, radius_y=0.3, width=0.04, segment_count=12)
+
+        world = worlds_module.create_circular_world(
+            physics_client_id=client_id,
+            config=config,
+            obstacles=[],
+            painted_path=painted_path,
+            pybullet_module=real_pybullet,
+        )
+
+        assert len(world.path_ids) == 12
+
+        visual_data = real_pybullet.getVisualShapeData(world.path_ids[0])
+        collision_data = real_pybullet.getCollisionShapeData(world.path_ids[0], -1)
+
+        assert visual_data
+        assert visual_data[0][7] == (1.0, 1.0, 1.0, 1.0)
+        assert collision_data
+        assert collision_data[0][2] == real_pybullet.GEOM_BOX
+        assert collision_data[0][3][0] == pytest.approx(painted_path.width)
+    finally:
+        real_pybullet.disconnect(client_id)
+
+
 def test_add_robot_from_polar_north_places_robot_on_floor(monkeypatch):
     captured_arguments = {}
 
@@ -165,6 +227,7 @@ def test_add_robot_from_polar_north_places_robot_on_floor(monkeypatch):
         dimensions=dimensions,
         max_wheel_velocity=7.0,
         max_motor_force=3.0,
+        reasoner=mock_decide_wheel_control,
     )
 
     base_position = captured_arguments["base_position"]
@@ -172,7 +235,7 @@ def test_add_robot_from_polar_north_places_robot_on_floor(monkeypatch):
     assert isclose(base_position.x, 0.0, abs_tol=1e-9)
     assert isclose(base_position.y, 0.5, abs_tol=1e-9)
 
-    expected_z = dimensions.wheel_radius + dimensions.body_height / 2.0
+    expected_z = dimensions.body_height / 2.0 + dimensions.wheel_radius / 10.0
     assert isclose(base_position.z, expected_z, abs_tol=1e-9)
     assert isclose(captured_arguments["base_yaw_degrees"], 90.0, abs_tol=1e-9)
     assert captured_arguments["client_id"] == 9
@@ -195,4 +258,5 @@ def test_add_robot_from_polar_north_rejects_outside_start_radius():
             world=world,
             start_radius=0.1,
             start_bearing_degrees_from_north=45.0,
+            reasoner=mock_decide_wheel_control,
         )

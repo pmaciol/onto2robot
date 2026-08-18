@@ -1,8 +1,10 @@
 from pathlib import Path
 
 import pybullet as real_pybullet
+import pytest
 
 import robots_drivers.pybullet_mission_runner as mission_module
+from robots_drivers.controlers.wheel_controler import mock_decide_wheel_control
 from robots_drivers.pybullet_side6_bottom2_program import Vec3
 from robots_drivers.worlds.pybullet_worlds import CircularWorld, add_robot_from_polar_north, create_circular_world
 
@@ -55,7 +57,7 @@ class FakeRobot:
     def advance(self):
         self._step += 1
 
-    def set_simulation_step_state(self, stage):
+    def set_simulation_stage(self, stage):
         direction = stage.direction.strip().lower()
         if direction == "forward":
             left = stage.speed
@@ -82,6 +84,10 @@ class FakeRobot:
     def get_position(self):
         return Vec3([float(self._step), 0.0, 0.04])
 
+    def get_rotation(self):
+        # Yaw=0 in PyBullet means +X; this should map to 90 deg from world north.
+        return (0.0, 0.0, 0.0, 1.0)
+
 
 def test_two_stage_mission_file_is_loaded_and_executed():
     mission_path = Path(__file__).parent / "data" / "two_stage_mission.json"
@@ -98,15 +104,16 @@ def test_two_stage_mission_file_is_loaded_and_executed():
     logged_positions = []
 
     executed_steps = mission_module.run_mission(
-        robot=robot,
+        robot=robot,  # pyright: ignore[reportArgumentType]; FakeRobot keeps this test focused on step counting and logging contract
         stages=stages,
         step_time=0.5,
-        position_logger=lambda elapsed, position: logged_positions.append((elapsed, position)),
+        position_logger=lambda elapsed, position, heading: logged_positions.append((elapsed, position, heading)),
         pybullet_module=fake_pybullet,  # pyright: ignore[reportArgumentType]; fake_pybullet replace a real pybullet module for better control of the test
     )
 
     assert executed_steps == 90
     assert fake_pybullet.step_calls == 90
+    assert logged_positions[0][2] == pytest.approx(90.0)
 
 
 def test_load_obstacles_parses_json_file(tmp_path):
@@ -159,8 +166,9 @@ def test_forward_mission_contact_with_central_obstacle_arises_during_simulation(
         )
         robot = add_robot_from_polar_north(
             world,
-            start_radius=0.25,
+            start_radius=0.55,
             start_bearing_degrees_from_north=15.0,
+            reasoner=mock_decide_wheel_control,
         )
         stages = mission_module.load_mission_stages(mission_path)
 
@@ -226,3 +234,30 @@ def test_parser_accepts_world_configuration_arguments():
     assert args.robot_start_bearing == 30
     assert args.robot_start_yaw == 15
     assert args.video == Path("mission.mp4")
+
+
+def test_parser_accepts_painted_path_arguments():
+    parser = mission_module.build_parser()
+
+    args = parser.parse_args(
+        [
+            "--mission",
+            "mission.json",
+            "--path-radius-x",
+            "0.6",
+            "--path-radius-y",
+            "0.4",
+            "--path-width",
+            "0.05",
+            "--path-segment-count",
+            "48",
+            "--path-height",
+            "0.002",
+        ]
+    )
+
+    assert args.path_radius_x == 0.6
+    assert args.path_radius_y == 0.4
+    assert args.path_width == 0.05
+    assert args.path_segment_count == 48
+    assert args.path_height == 0.002

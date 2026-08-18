@@ -52,6 +52,10 @@ def _get_left_right_hands(
 ) -> tuple[OntologyIndividualSuperclass, OntologyIndividualSuperclass]:
     left_hand = _get_property_values(entity, "hasLeftHand")
     right_hand = _get_property_values(entity, "hasRightHand")
+    if not left_hand or not right_hand:
+        raise ValueError(
+            f"Entity '{entity.name}' does not have both 'hasLeftHand' and 'hasRightHand' properties. {left_hand} {right_hand}"
+        )
     return left_hand[0], right_hand[0]
 
 
@@ -196,28 +200,32 @@ class MobileOntologyMeta:
 
         linguistic_variable_spaces: dict[OntologyIndividualSuperclass, LinguisticVariableSpaces] = {}
         for linguistic_variable_class in linguistic_variable_classes:
-            has_parameters = int(_get_data_property_value(linguistic_variable_class, "hasParameters"))
-            param_values: list[float] = []
-            for i in range(1, has_parameters + 1):
-                param_values.append(float(_get_data_property_value(linguistic_variable_class, f"has{i}.Parameter")))
+            try:
+                has_parameters = int(_get_data_property_value(linguistic_variable_class, "hasParameters"))
+                param_values: list[float] = []
+                for i in range(1, has_parameters + 1):
+                    param_values.append(float(_get_data_property_value(linguistic_variable_class, f"has{i}.Parameter")))
 
-            is_type_of = (
-                _get_property_values(linguistic_variable_class, "isTypeOf")[0]
-                if _get_property_values(linguistic_variable_class, "isTypeOf")
-                else None
-            )
-            if is_type_of is not None:
-                linguistic_variable_spaces[linguistic_variable_class] = LinguisticVariableSpaces(
-                    is_type_of,
-                    param_values,
+                is_type_of = (
+                    _get_property_values(linguistic_variable_class, "isTypeOf")[0]
+                    if _get_property_values(linguistic_variable_class, "isTypeOf")
+                    else None
                 )
-            else:
-                print(
-                    f"Warning: Linguistic variable class '{linguistic_variable_class.name}' "
-                    "does not have 'isTypeOf' property. Skipping."
-                )
-
-            # print(f"Linguistic variable class {linguistic_variable_class.name} has parameters values: {param_values}")
+                if is_type_of is not None:
+                    linguistic_variable_spaces[linguistic_variable_class] = LinguisticVariableSpaces(
+                        is_type_of,
+                        param_values,
+                    )
+                else:
+                    print(
+                        f"Warning: Linguistic variable class '{linguistic_variable_class.name}' "
+                        "does not have 'isTypeOf' property. Skipping."
+                    )
+            except Exception as e:
+                raise Exception(
+                    f"Error while processing linguistic variable classes: {e} {linguistic_variable_class.name} \
+                    {_get_data_property_value(linguistic_variable_class, 'hasParameters')}"
+                ) from e
 
         print("Linguistic variables classes spaces:")
         for vc, sp in linguistic_variable_spaces.items():

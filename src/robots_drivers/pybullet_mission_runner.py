@@ -4,16 +4,18 @@ import argparse
 import json
 import sys
 from collections.abc import Callable
-from math import ceil
+from math import ceil, degrees
 from pathlib import Path
 from typing import Protocol, TextIO
 
 import pybullet
 
+from robots_drivers.controlers.wheel_controler import ReasonerTypes, controller_factory
 from robots_drivers.pybullet_side6_bottom2_program import MissionStage, Vec3
 from robots_drivers.worlds.pybullet_worlds import (
     CircularWorld,
     CylindricalObstacle,
+    PaintedPathConfig,
     WorldConfigCircular,
     add_robot_from_polar_north,
     create_circular_world,
@@ -29,7 +31,11 @@ class MissionRobotProtocol(Protocol):
 
     def set_simulation_stage(self, stage: MissionStage) -> None: ...
 
+    def apply_wheel_controller_step(self) -> object: ...
+
     def get_position(self) -> Vec3: ...
+
+    def get_rotation(self) -> tuple[float, float, float, float]: ...
 
 
 def list_touching_world_obstacles(
@@ -90,6 +96,12 @@ def load_mission_stages(path: Path) -> list[MissionStage]:
     return stages
 
 
+def _heading_degrees_from_north(robot: MissionRobotProtocol, *, pybullet_module=pybullet) -> float:
+    quaternion_to_euler = getattr(pybullet_module, "getEulerFromQuaternion", pybullet.getEulerFromQuaternion)
+    _, _, yaw = quaternion_to_euler(robot.get_rotation())
+    return (90.0 - degrees(yaw)) % 360.0
+
+
 def run_mission(
     robot: MissionRobotProtocol,
     stages: list[MissionStage],
@@ -109,11 +121,18 @@ def run_mission(
         stage_steps = max(1, ceil(stage.time_seconds / step_time))
 
         for _ in range(stage_steps):
-            robot.set_simulation_stage(stage)
-            pybullet_module.stepSimulation(physicsClientId=robot.client_id)
+            if hasattr(robot, "apply_wheel_controller_step"):
+                robot.apply_wheel_controller_step()
+            else:
+                robot.set_simulation_stage(stage)
+                pybullet_module.stepSimulation(physicsClientId=robot.client_id)
             executed_steps += 1
             elapsed_time += step_time
-            position_logger(elapsed_time, robot.get_position())
+            position_logger(
+                elapsed_time,
+                robot.get_position(),
+                _heading_degrees_from_north(robot, pybullet_module=pybullet_module),
+            )
             if world is not None and touch_logger is not None:
                 touching_obstacles = list_touching_world_obstacles(robot, world, pybullet_module=pybullet_module)
                 if touching_obstacles:
@@ -122,22 +141,22 @@ def run_mission(
     return executed_steps
 
 
-def _format_position_line(elapsed_time: float, position: Vec3) -> str:
-    return f"{elapsed_time:.3f};{position.x:.4f};{position.y:.4f};{position.z:.4f}"
+def _format_position_line(elapsed_time: float, position: Vec3, heading_deg_from_north: float) -> str:
+    return f"{elapsed_time:.3f};{position.x:.4f};{position.y:.4f};{position.z:.4f};{heading_deg_from_north:.2f}"
 
 
 def _build_position_logger(output_stream: TextIO | None):
     if output_stream is None:
 
-        def log_to_stdout(elapsed_time: float, position: Vec3) -> None:
-            print(_format_position_line(elapsed_time, position))
+        def log_to_stdout(elapsed_time: float, position: Vec3, heading_deg_from_north: float) -> None:
+            print(_format_position_line(elapsed_time, position, heading_deg_from_north))
 
         return log_to_stdout
 
-    output_stream.write("time;x;y;z\n")
+    output_stream.write("time;x;y;z;heading_deg_from_north\n")
 
-    def log_to_stream(elapsed_time: float, position: Vec3) -> None:
-        output_stream.write(_format_position_line(elapsed_time, position) + "\n")
+    def log_to_stream(elapsed_time: float, position: Vec3, heading_deg_from_north: float) -> None:
+        output_stream.write(_format_position_line(elapsed_time, position, heading_deg_from_north) + "\n")
 
     return log_to_stream
 
@@ -238,6 +257,9 @@ def load_obstacles(path: Path | None) -> list[CylindricalObstacle]:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="pybullet-mission", description="Run staged robot mission in PyBullet")
     parser.add_argument("--mission", type=Path, required=True, help="Path to mission JSON file")
+    parser.add_argument(
+        "--reasoner", type=ReasonerTypes, choices=list(ReasonerTypes), help="Robot reasoner", default=ReasonerTypes.MOCK
+    )
     parser.add_argument("--visualize", action="store_true", help="Run simulation with PyBullet GUI")
     parser.add_argument("--output", type=Path, help="Optional output file for position logs")
     parser.add_argument("--video", type=Path, help="Optional output movie file (for example mission.mp4)")
@@ -249,6 +271,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--wall-height", type=float, default=0.10, help="Boundary wall height")
     parser.add_argument("--wall-thickness", type=float, default=0.03, help="Boundary wall thickness")
     parser.add_argument("--wall-segments", type=int, default=48, help="Boundary wall segment count")
+    parser.add_argument("--path-radius-x", type=float, help="Painted path radius on the world X axis")
+    parser.add_argument("--path-radius-y", type=float, help="Painted path radius on the world Y axis")
+    parser.add_argument("--path-width", type=float, help="Painted path width")
+    parser.add_argument("--path-segment-count", type=int, default=96, help="Painted path segment count")
+    parser.add_argument("--path-height", type=float, default=0.001, help="Painted path height")
     parser.add_argument("--world-obstacles", type=Path, help="Path to world obstacles JSON file")
     parser.add_argument("--robot-start-radius", type=float, default=0.0, help="Robot start radius from world center")
     parser.add_argument(
@@ -277,6 +304,18 @@ def main(argv: list[str] | None = None) -> int:
     close_video_recorder: Callable[[], None] | None = None
 
     try:
+        painted_path = None
+        if args.path_radius_x is not None or args.path_radius_y is not None or args.path_width is not None:
+            if args.path_radius_x is None or args.path_radius_y is None or args.path_width is None:
+                raise ValueError("Painted path requires --path-radius-x, --path-radius-y, and --path-width.")
+            painted_path = PaintedPathConfig(
+                radius_x=args.path_radius_x,
+                radius_y=args.path_radius_y,
+                width=args.path_width,
+                segment_count=args.path_segment_count,
+                height=args.path_height,
+            )
+
         world_config = WorldConfigCircular(
             floor_radius=args.floor_radius,
             floor_height=args.floor_height,
@@ -288,15 +327,18 @@ def main(argv: list[str] | None = None) -> int:
             physics_client_id=client_id,
             config=world_config,
             obstacles=obstacles,
+            painted_path=painted_path,
             time_step=args.time_step,
         )
         robot = add_robot_from_polar_north(
             world=world,
             start_radius=args.robot_start_radius,
             start_bearing_degrees_from_north=args.robot_start_bearing,
-            start_yaw_degrees_from_north=args.robot_start_yaw,
+            # Keep mission-runner launch orientation opposite to the previous behavior.
+            start_yaw_degrees_from_north=(args.robot_start_yaw + 180.0) % 360.0,
             max_wheel_velocity=args.max_wheel_velocity,
             max_motor_force=args.max_motor_force,
+            reasoner=controller_factory(args.reasoner),
         )
 
         video_recorder: Callable[[], None] | None = None
@@ -311,18 +353,18 @@ def main(argv: list[str] | None = None) -> int:
             with args.output.open("w", encoding="utf-8") as output_file:
                 base_logger = _build_position_logger(output_file)
 
-                def logger(elapsed_time: float, position: Vec3) -> None:
-                    base_logger(elapsed_time, position)
+                def logger(elapsed_time: float, position: Vec3, heading_deg_from_north: float) -> None:
+                    base_logger(elapsed_time, position, heading_deg_from_north)
                     if video_recorder is not None:
                         video_recorder()
 
                 run_mission(robot, stages, args.time_step, logger, world=world, touch_logger=touch_logger)
         else:
-            print("time;x;y;z")
+            print("time;x;y;z;heading_deg_from_north")
             base_logger = _build_position_logger(None)
 
-            def logger(elapsed_time: float, position: Vec3) -> None:
-                base_logger(elapsed_time, position)
+            def logger(elapsed_time: float, position: Vec3, heading_deg_from_north: float) -> None:
+                base_logger(elapsed_time, position, heading_deg_from_north)
                 if video_recorder is not None:
                     video_recorder()
 

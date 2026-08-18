@@ -2,11 +2,12 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 from dataclasses import dataclass
-from math import cos, pi, radians, sin
+from math import atan2, cos, pi, radians, sin, sqrt
 from typing import ClassVar, Protocol, cast
 
 import pybullet
 
+from robots_drivers.controlers.wheel_controler import WheelController
 from robots_drivers.pybullet_side6_bottom2_program import PyBulletSide6Bottom2Program, RobotDimensions, Vec3
 
 
@@ -27,6 +28,14 @@ class WorldPyBulletProtocol(Protocol):
     def createMultiBody(self, **kwargs: object) -> int: ...
 
     def getQuaternionFromEuler(self, euler: Sequence[float]) -> Sequence[float]: ...
+
+    def setCollisionFilterGroupMask(
+        self,
+        bodyUniqueId: int,
+        linkIndex: int,
+        collisionFilterGroup: int,
+        collisionFilterMask: int,
+    ) -> None: ...
 
 
 DEFAULT_WORLD_PYBULLET_MODULE: WorldPyBulletProtocol = cast(WorldPyBulletProtocol, pybullet)
@@ -53,6 +62,16 @@ class WorldConfigCircular:
 
 
 @dataclass(frozen=True, slots=True)
+class PaintedPathConfig:
+    radius_x: float
+    radius_y: float
+    width: float
+    segment_count: int = 96
+    height: float = 0.001
+    color: tuple[float, float, float, float] = (1.0, 1.0, 1.0, 1.0)
+
+
+@dataclass(frozen=True, slots=True)
 class CircularWorld:
     floor_id: int
     wall_ids: tuple[int, ...]
@@ -60,6 +79,7 @@ class CircularWorld:
     floor_top_z: float
     config: WorldConfigCircular
     physics_client_id: int
+    path_ids: tuple[int, ...] = ()
 
 
 def north_polar_to_xy(radius: float, bearing_degrees_from_north: float) -> tuple[float, float]:
@@ -74,64 +94,75 @@ def north_polar_to_xy(radius: float, bearing_degrees_from_north: float) -> tuple
     return x_position, y_position
 
 
-# import pybullet as p
-# import math
+def _ellipse_point(radius_x: float, radius_y: float, angle: float) -> tuple[float, float]:
+    return radius_x * cos(angle), radius_y * sin(angle)
 
-# def create_wall_collision(radius, height, thickness=0.1, segments=64, base_position=(0, 0, 0)):
-#     """
-#     Create a continuous circular wall in PyBullet.
 
-#     Args:
-#         radius (float): Radius of the wall (distance from center to wall center).
-#         height (float): Height of the wall.
-#         thickness (float): Thickness of the wall.
-#         segments (int): Number of segments (higher = smoother circle).
-#         base_position (tuple): Center position of the wall (x, y, z).
+def _ellipse_tangent_yaw(radius_x: float, radius_y: float, angle: float) -> float:
+    tangent_x = -radius_x * sin(angle)
+    tangent_y = radius_y * cos(angle)
+    return atan2(tangent_y, tangent_x) - (pi / 2.0)
 
-#     Returns:
-#         list: IDs of created wall segments.
-#     """
 
-#     wall_ids = []
-#     angle_step = 2 * math.pi / segments
+def _point_distance(first: tuple[float, float], second: tuple[float, float]) -> float:
+    return sqrt((first[0] - second[0]) ** 2 + (first[1] - second[1]) ** 2)
 
-#     for i in range(segments):
-#         angle = i * angle_step
 
-#         # Position of each segment
-#         x = base_position[0] + radius * math.cos(angle)
-#         y = base_position[1] + radius * math.sin(angle)
-#         z = base_position[2] + height / 2.0
+def _create_painted_path(
+    physics_client_id: int,
+    floor_top_z: float,
+    config: PaintedPathConfig,
+    pybullet_module: WorldPyBulletProtocol,
+) -> tuple[int, ...]:
+    if config.radius_x <= 0.0:
+        raise ValueError("radius_x must be greater than 0.")
+    if config.radius_y <= 0.0:
+        raise ValueError("radius_y must be greater than 0.")
+    if config.width <= 0.0:
+        raise ValueError("width must be greater than 0.")
+    if config.segment_count < 12:
+        raise ValueError("segment_count must be at least 12.")
+    if config.height <= 0.0:
+        raise ValueError("height must be greater than 0.")
 
-#         # Orientation: rotate each segment tangentially
-#         yaw = angle + math.pi / 2.0
-#         orientation = p.getQuaternionFromEuler([0, 0, yaw])
+    half_height = config.height / 2.0
+    path_ids: list[int] = []
+    angles = [2.0 * pi * index / config.segment_count for index in range(config.segment_count)]
+    points = [_ellipse_point(config.radius_x, config.radius_y, angle) for angle in angles]
 
-#         # Segment length so they connect tightly
-#         segment_length = 2 * radius * math.sin(math.pi / segments)
+    for segment_index, angle in enumerate(angles):
+        point_x, point_y = points[segment_index]
+        previous_point = points[segment_index - 1]
+        next_point = points[(segment_index + 1) % config.segment_count]
+        segment_length = max(_point_distance(previous_point, next_point) / 2.0, config.width)
 
-#         collision_shape = p.createCollisionShape(
-#             shapeType=p.GEOM_BOX,
-#             halfExtents=[segment_length / 2.0, thickness / 2.0, height / 2.0]
-#         )
+        collision_shape = pybullet_module.createCollisionShape(
+            pybullet_module.GEOM_BOX,
+            halfExtents=(config.width / 2.0, segment_length / 2.0, half_height),
+            physicsClientId=physics_client_id,
+        )
+        visual_shape = pybullet_module.createVisualShape(
+            pybullet_module.GEOM_BOX,
+            halfExtents=(config.width / 2.0, segment_length / 2.0, half_height),
+            rgbaColor=config.color,
+            physicsClientId=physics_client_id,
+        )
+        segment_orientation = pybullet_module.getQuaternionFromEuler(
+            (0.0, 0.0, _ellipse_tangent_yaw(config.radius_x, config.radius_y, angle))
+        )
+        path_id = int(
+            pybullet_module.createMultiBody(
+                baseMass=0.0,
+                baseCollisionShapeIndex=collision_shape,
+                baseVisualShapeIndex=visual_shape,
+                basePosition=(point_x, point_y, floor_top_z + half_height),
+                baseOrientation=segment_orientation,
+                physicsClientId=physics_client_id,
+            )
+        )
+        path_ids.append(path_id)
 
-#         visual_shape = p.createVisualShape(
-#             shapeType=p.GEOM_BOX,
-#             halfExtents=[segment_length / 2.0, thickness / 2.0, height / 2.0],
-#             rgbaColor=[0.7, 0.1, 0.1, 1.0]
-#         )
-
-#         wall_id = p.createMultiBody(
-#             baseMass=0,  # static object
-#             baseCollisionShapeIndex=collision_shape,
-#             baseVisualShapeIndex=visual_shape,
-#             basePosition=[x, y, z],
-#             baseOrientation=orientation
-#         )
-
-#         wall_ids.append(wall_id)
-
-#     return wall_ids
+    return tuple(path_ids)
 
 
 def create_circular_world(
@@ -139,6 +170,7 @@ def create_circular_world(
     config: WorldConfigCircular,
     obstacles: Sequence[CylindricalObstacle],
     *,
+    painted_path: PaintedPathConfig | None = None,
     gravity_z: float = -9.81,
     time_step: float = 1.0 / 60.0,
     pybullet_module: WorldPyBulletProtocol = DEFAULT_WORLD_PYBULLET_MODULE,
@@ -253,6 +285,15 @@ def create_circular_world(
         )
         obstacle_ids.append(obstacle_id)
 
+    path_ids: tuple[int, ...] = ()
+    if painted_path is not None:
+        path_ids = _create_painted_path(
+            physics_client_id=physics_client_id,
+            floor_top_z=0.0,
+            config=painted_path,
+            pybullet_module=pybullet_module,
+        )
+
     return CircularWorld(
         floor_id=floor_id,
         wall_ids=tuple(wall_ids),
@@ -260,17 +301,19 @@ def create_circular_world(
         floor_top_z=0.0,
         config=config,
         physics_client_id=physics_client_id,
+        path_ids=path_ids,
     )
 
 
 def add_robot_from_polar_north(
     world: CircularWorld,
     *,
+    reasoner: WheelController,
     start_radius: float,
     start_bearing_degrees_from_north: float,
     start_yaw_degrees_from_north: float = 0.0,
     dimensions: RobotDimensions | None = None,
-    max_wheel_velocity: float = 6.0,
+    max_wheel_velocity: float = 1.0,
     max_motor_force: float = 2.5,
 ) -> PyBulletSide6Bottom2Program:
     if start_radius < 0.0:
@@ -282,7 +325,7 @@ def add_robot_from_polar_north(
         raise ValueError("Requested robot start position is outside floor radius.")
 
     x_position, y_position = north_polar_to_xy(start_radius, start_bearing_degrees_from_north)
-    base_height = world.floor_top_z + robot_dimensions.wheel_radius + robot_dimensions.body_height / 2.0
+    base_height = world.floor_top_z + robot_dimensions.body_height / 2.0 + robot_dimensions.wheel_radius / 10.0
 
     # PyBullet yaw uses +X as 0 degrees; north-based heading uses +Y as 0 degrees.
     pybullet_yaw_degrees = 90.0 - start_yaw_degrees_from_north
@@ -294,4 +337,6 @@ def add_robot_from_polar_north(
         base_yaw_degrees=pybullet_yaw_degrees,
         max_wheel_velocity=max_wheel_velocity,
         max_motor_force=max_motor_force,
+        wheel_controller=reasoner,
+        line_track_body_ids=world.path_ids,
     )
