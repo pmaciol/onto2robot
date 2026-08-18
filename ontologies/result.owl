@@ -1,0 +1,983 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl"
+         xmlns="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#"
+         xmlns:amro="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#">
+
+<owl:Ontology rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl">
+  <owl:imports rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl"/>
+  <owl:imports rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01"/>
+  <owl:imports rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro"/>
+  <owl:imports rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl"/>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="#automatedRobot">
+  <rdfs:subPropertyOf rdf:resource="#robotprocesslink"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#robotprocesslink">
+  <rdfs:subPropertyOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#agent"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Process"/>
+  <rdfs:label xml:lang="en">agentRobot</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#consistsOf">
+  <rdfs:label xml:lang="pl">consistsOf</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#equippedWith">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdfs:domain rdf:resource="#RoboticEnvironment"/>
+  <rdfs:range rdf:resource="#RoboticSystem"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#fullyautonomousRobot">
+  <rdfs:subPropertyOf rdf:resource="#robotprocesslink"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasConclusion">
+  <rdfs:label xml:lang="pl">hasConclusion</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasLeftHand">
+  <rdfs:label xml:lang="pl">hasLeftHand</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasLinguisticValue"/>
+
+<owl:ObjectProperty rdf:about="#hasPremise">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdfs:label xml:lang="pl">hasPremise</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasRightHand">
+  <rdfs:label xml:lang="pl">hasRightHand</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasSIgnal">
+  <rdfs:label xml:lang="pl">hasSignal</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasState">
+  <rdfs:label xml:lang="pl">hasState</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isConnectedTo">
+  <rdfs:label xml:lang="pl">isConnectedTo</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isFuzzyTerm">
+  <rdfs:label xml:lang="pl">isFuzzyTerm</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isOneOff">
+  <rdfs:label xml:lang="pl">isOneOf</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isPartOf">
+  <rdfs:label xml:lang="pl">isPartOf</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isRepresentedBy">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  <rdfs:label xml:lang="pl">isRepresentedBy</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isSupportedBy">
+  <owl:inverseOf rdf:resource="#support"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#support">
+  <rdfs:domain rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
+  <rdfs:range rdf:resource="#RoboticSystem"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isUsedIn">
+  <rdfs:label xml:lang="pl">IsUsedIn</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isValueOf">
+  <rdfs:label xml:lang="pl">isValueOf</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#remotecontrolledRobot">
+  <rdfs:subPropertyOf rdf:resource="#robotprocesslink"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#resultsIn">
+  <rdfs:label xml:lang="pl">resultsIn</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#robotPart">
+  <rdfs:subPropertyOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#part"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdfs:domain rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
+  <rdfs:range rdf:resource="#Robot"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#part"/>
+
+<owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#agent"/>
+
+<owl:ObjectProperty rdf:about="#semiautonomousRobot">
+  <rdfs:subPropertyOf rdf:resource="#robotprocesslink"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#teleoperatedRobot">
+  <rdfs:subPropertyOf rdf:resource="#robotprocesslink"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#hasPart"/>
+
+<owl:ObjectProperty rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#member"/>
+
+<owl:DatatypeProperty rdf:about="#direction">
+  <rdfs:label xml:lang="pl">direction</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#has1.Parameter">
+  <rdfs:label xml:lang="pl">has1.Parameter</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#has2.Parameter">
+  <rdfs:label xml:lang="pl">has2.Parameter</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#has3.Parameter">
+  <rdfs:label xml:lang="pl">has3Parameter</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasValue">
+  <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  <rdfs:label xml:lang="pl">hasValue</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#isEvaluated">
+  <rdfs:label xml:lang="pl">isEvaluated</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#linguistic">
+  <rdfs:label xml:lang="pl">linguistic</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#signal">
+  <rdfs:label xml:lang="pl">signal</rdfs:label>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#RoboticEnvironment">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#PhysicalEnvironment"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#equippedWith"/>
+      <owl:onClass rdf:resource="#RoboticSystem"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#RoboticSystem">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#ArtificialSystem"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isSupportedBy"/>
+      <owl:onClass>
+        <owl:Class>
+          <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
+            <owl:Class>
+              <owl:complementOf rdf:resource="#Robot"/>
+            </owl:Class>
+          </owl:intersectionOf>
+        </owl:Class>
+      </owl:onClass>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#hasPart"/>
+      <owl:onClass rdf:resource="#Robot"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#hasPart"/>
+      <owl:onClass>
+        <owl:Class>
+          <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
+            <owl:Class>
+              <owl:complementOf rdf:resource="#Robot"/>
+            </owl:Class>
+          </owl:intersectionOf>
+        </owl:Class>
+      </owl:onClass>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
+
+<owl:Class rdf:about="#Robot">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Agent"/>
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Process"/>
+
+<owl:Class rdf:about="#Action">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Process"/>
+  <owl:disjointWith rdf:resource="#ConclusionsAssessment"/>
+  <rdfs:label xml:lang="pl">Action</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConclusionsAssessment">
+  <rdfs:subClassOf rdf:resource="#Project"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasConclusion"/>
+      <owl:onClass rdf:resource="#Conclusion"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isEvaluated"/>
+      <owl:onDataRange rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <owl:disjointWith rdf:resource="#SensorsState"/>
+  <owl:disjointWith rdf:resource="#SensorsStateLinguistic"/>
+  <rdfs:label xml:lang="pl">ConclusionsAssessments</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActiveSensor">
+  <rdfs:subClassOf rdf:resource="#Sensor"/>
+  <rdfs:label xml:lang="pl">ActiveSensors</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Sensor">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Artifact"/>
+  <rdfs:label xml:lang="pl">Sensor</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Back">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
+  <rdfs:label xml:lang="pl">Back</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
+
+<owl:Class rdf:about="#Bottom">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
+  <rdfs:label xml:lang="pl">Bottom</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Camera">
+  <rdfs:subClassOf rdf:resource="#ActiveSensor"/>
+  <rdfs:label xml:lang="pl">Camera</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CollectiveRoboticSystem">
+  <rdfs:subClassOf rdf:resource="#RoboticSystem"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#hasPart"/>
+      <owl:onClass rdf:resource="#Robot"/>
+      <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#hasPart"/>
+      <owl:onClass rdf:resource="#RobotGroup"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <owl:disjointWith rdf:resource="#SingleRoboticSystem"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RobotGroup">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Group"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#member"/>
+      <owl:allValuesFrom rdf:resource="#Robot"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#SingleRoboticSystem">
+  <rdfs:subClassOf rdf:resource="#RoboticSystem"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#hasPart"/>
+      <owl:onClass rdf:resource="#Robot"/>
+      <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#Conclusion">
+  <rdfs:subClassOf rdf:resource="#Rules"/>
+  <rdfs:label xml:lang="pl">Conclusion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Rules">
+  <rdfs:label xml:lang="pl">Rules</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Project">
+  <rdfs:label xml:lang="pl">Project</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SensorsState">
+  <rdfs:subClassOf rdf:resource="#Project"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#signal"/>
+      <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label xml:lang="pl">SensorsState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SensorsStateLinguistic">
+  <rdfs:subClassOf rdf:resource="#Project"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasLinguisticValue"/>
+      <owl:onClass rdf:resource="#FuzzyVariable"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label xml:lang="pl">SensorsStateLinguistic</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Front">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
+  <rdfs:label xml:lang="pl">Front</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FuzzyHeader">
+  <rdfs:subClassOf rdf:resource="#FuzzyVariable"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#consistsOf"/>
+      <owl:someValuesFrom rdf:resource="#FuzzyTerms"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label xml:lang="pl">FuzzyHeader</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FuzzyVariable">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Abstract"/>
+  <rdfs:label xml:lang="pl">FuzzyVariable</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FuzzyTerms">
+  <rdfs:subClassOf rdf:resource="#FuzzyVariable"/>
+  <rdfs:label xml:lang="pl">FuzzyTerms</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FuzzyNumbers">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Abstract"/>
+  <rdfs:label xml:lang="pl">FuzzyNumbers</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Abstract"/>
+
+<owl:Class rdf:about="#InfraredSensors">
+  <rdfs:subClassOf rdf:resource="#ActiveSensor"/>
+  <rdfs:label xml:lang="pl">InfraredSensors</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LMH">
+  <rdfs:subClassOf rdf:resource="#FuzzyNumbers"/>
+  <rdfs:label xml:lang="pl">LMH</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LeftSide">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
+  <rdfs:label xml:lang="pl">LeftSide</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LinguisticTerms">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Abstract"/>
+  <rdfs:label xml:lang="pl">LinguisticTerms</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OWLClass_90368529_023f_4505_afbe_58b0a5c0a054">
+  <rdfs:subClassOf rdf:resource="#OWLClass_c3dd24e3_b8fd_48be_8f34_557cd951333f"/>
+  <rdfs:label xml:lang="pl">Obstacle</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OWLClass_c3dd24e3_b8fd_48be_8f34_557cd951333f">
+  <rdfs:label xml:lang="pl">World</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Premise">
+  <rdfs:subClassOf rdf:resource="#Rules"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isValueOf"/>
+      <owl:someValuesFrom rdf:resource="#ConclusionsAssessment"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isValueOf"/>
+      <owl:someValuesFrom rdf:resource="#SensorsStateLinguistic"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Premise</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RightSide">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
+  <rdfs:label xml:lang="pl">RightSide</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Agent"/>
+
+<owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Group"/>
+
+<owl:Class rdf:about="#RobotInterface">
+  <rdfs:subClassOf rdf:resource="#Robot"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#PhysicalEnvironment"/>
+
+<owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/coraX.owl#ArtificialSystem"/>
+
+<owl:Class rdf:about="#RobotsRegion">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isOneOff"/>
+      <owl:onClass rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isPartOf"/>
+      <owl:onClass rdf:resource="#Robot"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label xml:lang="pl">RobotsRegion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RuleHeader">
+  <rdfs:subClassOf rdf:resource="#Rules"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasPremise"/>
+      <owl:someValuesFrom rdf:resource="#Premise"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasConclusion"/>
+      <owl:onClass rdf:resource="#Conclusion"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label xml:lang="pl">RuleHeader</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Artifact"/>
+
+<owl:Class rdf:about="#SensorUsed">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Device"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasState"/>
+      <owl:onClass rdf:resource="#SensorsState"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isSupportedBy"/>
+      <owl:onClass rdf:resource="#Sensor"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isUsedIn"/>
+      <owl:onClass rdf:resource="#RobotsRegion"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#direction"/>
+      <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label xml:lang="pl">SensorUsed</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Turn">
+  <rdfs:subClassOf rdf:resource="#Action"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#direction"/>
+      <owl:onDataRange rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label xml:lang="pl">Turn</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Upper">
+  <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Region"/>
+  <rdfs:label xml:lang="pl">Upper</rdfs:label>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#FV01">
+  <rdf:type rdf:resource="#FuzzyHeader"/>
+  <consistsOf rdf:resource="#FuzzyTerm01"/>
+  <consistsOf rdf:resource="#FuzzyTerm02"/>
+  <consistsOf rdf:resource="#OWLNamedIndividual_d91de5aa_a60a_4ef1_aff8_613ffaa1046d"/>
+  <rdfs:label xml:lang="pl">FV01</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FuzzyTerm01">
+  <rdf:type rdf:resource="#FuzzyTerms"/>
+  <hasLinguisticValue rdf:resource="#low"/>
+  <isFuzzyTerm rdf:resource="#triangular"/>
+  <has1.Parameter rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</has1.Parameter>
+  <has2.Parameter rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">300.0</has2.Parameter>
+  <has3.Parameter rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">600.0</has3.Parameter>
+  <rdfs:label xml:lang="pl">FuzzyTerm01</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FuzzyTerm02">
+  <rdf:type rdf:resource="#FuzzyTerms"/>
+  <hasLinguisticValue rdf:resource="#middle"/>
+  <isFuzzyTerm rdf:resource="#triangular"/>
+  <has1.Parameter rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">500.0</has1.Parameter>
+  <has2.Parameter rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1200.0</has2.Parameter>
+  <has3.Parameter rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1600.0</has3.Parameter>
+  <rdfs:label xml:lang="pl">FuzzyTerm02</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OWLNamedIndividual_d91de5aa_a60a_4ef1_aff8_613ffaa1046d">
+  <rdf:type rdf:resource="#FuzzyTerms"/>
+  <hasLinguisticValue rdf:resource="#high"/>
+  <isFuzzyTerm rdf:resource="#triangular"/>
+  <has1.Parameter rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1500.0</has1.Parameter>
+  <has2.Parameter rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1800.0</has2.Parameter>
+  <has3.Parameter rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2000.0</has3.Parameter>
+  <rdfs:label xml:lang="pl">FuzzyTerm03</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#low">
+  <rdf:type rdf:resource="#LMH"/>
+  <rdfs:label xml:lang="pl">low</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#triangular">
+  <rdf:type rdf:resource="#LinguisticTerms"/>
+  <rdfs:label xml:lang="pl">triangular</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#middle">
+  <rdf:type rdf:resource="#LMH"/>
+  <rdfs:label xml:lang="pl">middle</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LHT01">
+  <rdfs:label xml:lang="pl">LHT01</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LHT02">
+  <rdfs:label xml:lang="pl">LHT02</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#high">
+  <rdf:type rdf:resource="#LMH"/>
+  <rdfs:label xml:lang="pl">high</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OWLNamedIndividual_e16fa5aa_f387_4a61_bac6_ba6851afc932">
+  <rdf:type rdf:resource="#Premise"/>
+  <hasLeftHand rdf:resource="#sFR"/>
+  <hasRightHand rdf:resource="#high"/>
+  <rdfs:label xml:lang="pl">premise06</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sFR">
+  <rdf:type rdf:resource="#SensorUsed"/>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isSupportedBy"/>
+      <owl:onClass rdf:resource="#InfraredSensors"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdf:type>
+  <isRepresentedBy rdf:resource="#FV01"/>
+  <isUsedIn rdf:resource="#front"/>
+  <direction rdf:datatype="http://www.w3.org/2001/XMLSchema#string">right</direction>
+  <rdfs:label xml:lang="pl">sFR</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#R01">
+  <rdf:type rdf:resource="#RuleHeader"/>
+  <hasConclusion rdf:resource="#conclusion01"/>
+  <hasPremise rdf:resource="#premise01"/>
+  <hasPremise rdf:resource="#premise04"/>
+  <hasPremise rdf:resource="#premise07"/>
+  <rdfs:label xml:lang="pl">R01</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#conclusion01">
+  <rdf:type rdf:resource="#Conclusion"/>
+  <hasLeftHand rdf:resource="#sFassessment"/>
+  <hasRightHand rdf:resource="#low"/>
+  <rdfs:label xml:lang="pl">conclusion01</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#premise01">
+  <rdf:type rdf:resource="#Premise"/>
+  <hasLeftHand rdf:resource="#sFL"/>
+  <hasRightHand rdf:resource="#low"/>
+  <rdfs:label xml:lang="pl">premise01</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#premise04">
+  <rdf:type rdf:resource="#Premise"/>
+  <hasLeftHand rdf:resource="#sFR"/>
+  <hasRightHand rdf:resource="#low"/>
+  <rdfs:label xml:lang="pl">premise04</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#R02">
+  <rdf:type rdf:resource="#RuleHeader"/>
+  <hasConclusion rdf:resource="#conclusion01"/>
+  <hasPremise rdf:resource="#premise01"/>
+  <hasPremise rdf:resource="#premise05"/>
+  <rdfs:label xml:lang="pl">R02</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#premise05">
+  <rdf:type rdf:resource="#Premise"/>
+  <hasLeftHand rdf:resource="#sFR"/>
+  <hasRightHand rdf:resource="#middle"/>
+  <rdfs:label xml:lang="pl">premise05</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#R03">
+  <rdf:type rdf:resource="#RuleHeader"/>
+  <hasConclusion rdf:resource="#conclusion02"/>
+  <hasPremise rdf:resource="#OWLNamedIndividual_e16fa5aa_f387_4a61_bac6_ba6851afc932"/>
+  <hasPremise rdf:resource="#premise01"/>
+  <rdfs:label xml:lang="pl">R03</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#conclusion02">
+  <rdf:type rdf:resource="#Conclusion"/>
+  <hasLeftHand rdf:resource="#sFassessment"/>
+  <hasRightHand rdf:resource="#middle"/>
+  <rdfs:label xml:lang="pl">conclusion02</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#R04">
+  <rdf:type rdf:resource="#RuleHeader"/>
+  <hasConclusion rdf:resource="#conclusion02"/>
+  <hasPremise rdf:resource="#premise02"/>
+  <hasPremise rdf:resource="#premise04"/>
+  <rdfs:label xml:lang="pl">R04</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#premise02">
+  <rdf:type rdf:resource="#Premise"/>
+  <hasLeftHand rdf:resource="#sFL"/>
+  <hasRightHand rdf:resource="#middle"/>
+  <rdfs:label xml:lang="pl">premise02</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#R05">
+  <rdf:type rdf:resource="#RuleHeader"/>
+  <hasConclusion rdf:resource="#conclusion02"/>
+  <hasPremise rdf:resource="#premise02"/>
+  <hasPremise rdf:resource="#premise05"/>
+  <rdfs:label xml:lang="pl">R05</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#R06">
+  <rdf:type rdf:resource="#RuleHeader"/>
+  <hasConclusion rdf:resource="#conclusion03"/>
+  <hasPremise rdf:resource="#OWLNamedIndividual_e16fa5aa_f387_4a61_bac6_ba6851afc932"/>
+  <hasPremise rdf:resource="#premise02"/>
+  <rdfs:label xml:lang="pl">R06</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#conclusion03">
+  <rdf:type rdf:resource="#Conclusion"/>
+  <hasLeftHand rdf:resource="#sFassessment"/>
+  <hasRightHand rdf:resource="#high"/>
+  <rdfs:label xml:lang="pl">conclusion03</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#R07">
+  <rdf:type rdf:resource="#RuleHeader"/>
+  <hasConclusion rdf:resource="#conclusion02"/>
+  <hasPremise rdf:resource="#premise03"/>
+  <hasPremise rdf:resource="#premise04"/>
+  <rdfs:label xml:lang="pl">R07</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#premise03">
+  <rdf:type rdf:resource="#Premise"/>
+  <hasLeftHand rdf:resource="#sFL"/>
+  <hasRightHand rdf:resource="#high"/>
+  <rdfs:label xml:lang="pl">premise03</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#R08">
+  <rdf:type rdf:resource="#RuleHeader"/>
+  <hasConclusion rdf:resource="#conclusion03"/>
+  <hasPremise rdf:resource="#premise03"/>
+  <hasPremise rdf:resource="#premise05"/>
+  <rdfs:label xml:lang="pl">R08</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#R09">
+  <rdf:type rdf:resource="#RuleHeader"/>
+  <hasConclusion rdf:resource="#conclusion03"/>
+  <hasPremise rdf:resource="#OWLNamedIndividual_e16fa5aa_f387_4a61_bac6_ba6851afc932"/>
+  <hasPremise rdf:resource="#premise03"/>
+  <rdfs:label xml:lang="pl">R09</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Rob01">
+  <rdf:type rdf:resource="#Robot"/>
+  <rdfs:label xml:lang="pl">Rob01</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#bLlinguistic">
+  <rdfs:label xml:lang="pl">bLlinguistic</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#bLsignal">
+  <signal rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</signal>
+  <rdfs:label xml:lang="pl">bLsignal</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#bR">
+  <rdf:type rdf:resource="#SensorUsed"/>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isSupportedBy"/>
+      <owl:onClass rdf:resource="#InfraredSensors"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdf:type>
+  <isUsedIn rdf:resource="#bottom"/>
+  <direction rdf:datatype="http://www.w3.org/2001/XMLSchema#string">right</direction>
+  <rdfs:label xml:lang="pl">bR</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#bottom">
+  <rdf:type rdf:resource="#RobotsRegion"/>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isOneOff"/>
+      <owl:onClass rdf:resource="#Bottom"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdf:type>
+  <isPartOf rdf:resource="#Rob01"/>
+  <rdfs:label xml:lang="pl">bottom</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#bl">
+  <rdf:type rdf:resource="#SensorUsed"/>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isSupportedBy"/>
+      <owl:onClass rdf:resource="#InfraredSensors"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdf:type>
+  <hasLinguisticValue rdf:resource="#bLlinguistic"/>
+  <hasSIgnal rdf:resource="#bLsignal"/>
+  <isUsedIn rdf:resource="#bottom"/>
+  <direction rdf:datatype="http://www.w3.org/2001/XMLSchema#string">left</direction>
+  <rdfs:label xml:lang="pl">bL</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sFassessment">
+  <rdf:type rdf:resource="#ConclusionsAssessment"/>
+  <isRepresentedBy rdf:resource="#FV01"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</hasValue>
+  <rdfs:label xml:lang="pl">sFassessment</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#front">
+  <rdf:type rdf:resource="#RobotsRegion"/>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isOneOff"/>
+      <owl:onClass rdf:resource="#Front"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdf:type>
+  <isPartOf rdf:resource="#Rob01"/>
+  <rdfs:label xml:lang="pl">front</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#left">
+  <rdf:type rdf:resource="#RobotsRegion"/>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isOneOff"/>
+      <owl:onClass rdf:resource="#LeftSide"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdf:type>
+  <isPartOf rdf:resource="#Rob01"/>
+  <rdfs:label xml:lang="pl">left</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#linguisticValue">
+  <rdfs:label xml:lang="pl">linquisticValue</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sFL">
+  <rdf:type rdf:resource="#SensorUsed"/>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isSupportedBy"/>
+      <owl:onClass rdf:resource="#InfraredSensors"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdf:type>
+  <isRepresentedBy rdf:resource="#FV01"/>
+  <isUsedIn rdf:resource="#front"/>
+  <direction rdf:datatype="http://www.w3.org/2001/XMLSchema#string">left</direction>
+  <rdfs:label xml:lang="pl">sFL</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#right">
+  <rdf:type rdf:resource="#RobotsRegion"/>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isOneOff"/>
+      <owl:onClass rdf:resource="#RightSide"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdf:type>
+  <isPartOf rdf:resource="#Rob01"/>
+  <rdfs:label xml:lang="pl">right</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sFLlinguistic">
+  <rdf:type rdf:resource="#SensorsStateLinguistic"/>
+  <hasLinguisticValue rdf:resource="#low"/>
+  <rdfs:label xml:lang="pl">sFLlinguistic</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sFLsignal">
+  <rdf:type rdf:resource="#SensorsState"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</hasValue>
+  <rdfs:label xml:lang="pl">sFLsignal</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sFRlinguistic">
+  <rdf:type rdf:resource="#SensorsStateLinguistic"/>
+  <hasLinguisticValue rdf:resource="#low"/>
+  <rdfs:label xml:lang="pl">sFRlinguistic</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sLF">
+  <rdf:type rdf:resource="#SensorUsed"/>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isSupportedBy"/>
+      <owl:onClass rdf:resource="#InfraredSensors"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdf:type>
+  <isUsedIn rdf:resource="#left"/>
+  <direction rdf:datatype="http://www.w3.org/2001/XMLSchema#string">forward</direction>
+  <rdfs:label xml:lang="pl">sLF</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sLS">
+  <rdf:type rdf:resource="#SensorUsed"/>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isSupportedBy"/>
+      <owl:onClass rdf:resource="#InfraredSensors"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdf:type>
+  <isUsedIn rdf:resource="#left"/>
+  <direction rdf:datatype="http://www.w3.org/2001/XMLSchema#string">side</direction>
+  <rdfs:label xml:lang="pl">sLS</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sRF">
+  <rdf:type rdf:resource="#SensorUsed"/>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isSupportedBy"/>
+      <owl:onClass rdf:resource="#InfraredSensors"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdf:type>
+  <isUsedIn rdf:resource="#right"/>
+  <direction rdf:datatype="http://www.w3.org/2001/XMLSchema#string">forward</direction>
+  <rdfs:label xml:lang="pl">sRF</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sRLsignal">
+  <rdf:type rdf:resource="#SensorsState"/>
+  <hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</hasValue>
+  <rdfs:label xml:lang="pl">sRLsignal</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sRS">
+  <rdf:type rdf:resource="#SensorUsed"/>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#isSupportedBy"/>
+      <owl:onClass rdf:resource="#InfraredSensors"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </rdf:type>
+  <isUsedIn rdf:resource="#right"/>
+  <direction rdf:datatype="http://www.w3.org/2001/XMLSchema#string">side</direction>
+  <rdfs:label xml:lang="pl">sRS</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sRlinguistic">
+  <hasLinguisticValue rdf:resource="#low"/>
+  <rdfs:label xml:lang="pl">sRlinguistic</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#premise07">
+  <rdf:type rdf:resource="#Premise"/>
+  <amro:hasLeftHand rdf:resource="#sRF"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">premise07</rdfs:label>
+</owl:NamedIndividual>
+
+<rdfs:Datatype rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+
+
+</rdf:RDF>

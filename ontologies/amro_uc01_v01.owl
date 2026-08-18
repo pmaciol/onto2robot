@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01/"
-     xml:base="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01/"
+<rdf:RDF xmlns="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01"
+     xml:base="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -9,6 +9,9 @@
      xmlns:amro="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#"
      xmlns:cora="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:amro_uc01="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#"
+     xmlns:cora-bare="http://purl.org/ieee1872-owl/cora-bare#"
+     xmlns:sumo-cora="http://purl.org/ieee1872-owl/sumo-cora#"
      xmlns:annotation="http://purl.org/ieee1872-owl/annotation#"
      xmlns:amro_uc01_v01="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#"
      xmlns:amro_uc01_v011="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#">
@@ -305,19 +308,31 @@
 
 
 
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#null -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#null"/>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#stop -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#stop"/>
+
+
+
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#FinalMove -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#FinalMove">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RulesSets"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R33"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R34"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R35"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R36"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R37"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R38"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R39"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R40"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R41"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R320"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R330"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R350"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R360"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R370"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R380"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R390"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R400"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R410"/>
         <rdfs:label xml:lang="pl">FinalMoving</rdfs:label>
     </owl:NamedIndividual>
 
@@ -327,13 +342,13 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#FrontSensors">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RulesSets"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R01"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R02"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R03"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R04"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R05"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R06"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R07"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R010"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R020"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R030"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R040"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R050"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R060"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R070"/>
         <amro:OWLObjectProperty_fa6166c4_87bf_4c39_89c1_7e186cccf750 rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#Moving"/>
         <rdfs:label xml:lang="pl">FrontSensors</rdfs:label>
     </owl:NamedIndividual>
@@ -344,11 +359,11 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#LeftSensors">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RulesSets"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R08"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R09"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R10"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R11"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R12"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R100"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R110"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R120"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R130"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R140"/>
         <amro:OWLObjectProperty_fa6166c4_87bf_4c39_89c1_7e186cccf750 rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#Moving"/>
         <rdfs:label xml:lang="pl">LeftSensors</rdfs:label>
     </owl:NamedIndividual>
@@ -359,34 +374,33 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#Moving">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RulesSets"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R18"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R080"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R090"/>
         <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R19"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R20"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R21"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R22"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R23"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R24"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R25"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R26"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R27"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R28"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R29"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R30"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R31"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R200"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R220"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R230"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R240"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R250"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R260"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R270"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R280"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R290"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R310"/>
         <amro:OWLObjectProperty_fa6166c4_87bf_4c39_89c1_7e186cccf750 rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#FinalMove"/>
         <rdfs:label>Moving</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R01 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R010 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R01">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R010">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion01"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise01"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise04"/>
-        <rdfs:label xml:lang="pl">R01</rdfs:label>
+        <rdfs:label xml:lang="pl">R010</rdfs:label>
     </owl:NamedIndividual>
 
 
@@ -487,201 +501,203 @@
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R02 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R020 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R02">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R020">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion02"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise01"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise05"/>
-        <rdfs:label xml:lang="pl">R02</rdfs:label>
+        <rdfs:label xml:lang="pl">R020</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R03 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R030 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R03">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R030">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion02"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise01"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise06"/>
-        <rdfs:label xml:lang="pl">R03</rdfs:label>
+        <rdfs:label xml:lang="pl">R030</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R04 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R040 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R04">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R040">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion03"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise02"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise04"/>
-        <rdfs:label xml:lang="pl">R04</rdfs:label>
+        <rdfs:label xml:lang="pl">R040</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R05 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R050 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R05">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R050">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion03"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise02"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise05"/>
-        <rdfs:label xml:lang="pl">R05</rdfs:label>
+        <rdfs:label xml:lang="pl">R050</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R06 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R060 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R06">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R060">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion02"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise02"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise06"/>
-        <rdfs:label xml:lang="pl">R06</rdfs:label>
+        <rdfs:label xml:lang="pl">R060</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R07 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R070 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R07">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R070">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion03"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise03"/>
-        <rdfs:label xml:lang="pl">R07</rdfs:label>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise04"/>
+        <rdfs:label xml:lang="pl">R070</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R08 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R080 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R08">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R080">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion03"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise03"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise05"/>
+        <rdfs:label>R080</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R090 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R090">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise03"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise06"/>
+        <rdfs:label>R090</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R100 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R100">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion04"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise07"/>
-        <rdfs:label xml:lang="pl">R08</rdfs:label>
+        <rdfs:label xml:lang="pl">R100</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R09 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R110 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R09">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R110">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion05"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise08"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise10"/>
-        <rdfs:label xml:lang="pl">R09</rdfs:label>
+        <rdfs:label xml:lang="pl">R110</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R10 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R120 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R10">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R120">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion05"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise08"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise11"/>
-        <rdfs:label xml:lang="pl">R10</rdfs:label>
+        <rdfs:label xml:lang="pl">R120</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R11 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R130 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R11">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R130">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion06"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise08"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise12"/>
+        <rdfs:label>R130</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R12 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R140 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R12">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R140">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion06"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise09"/>
-        <rdfs:label xml:lang="pl">R12</rdfs:label>
+        <rdfs:label xml:lang="pl">R140</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R13 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R150 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R13">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R150">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion07"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise13"/>
-        <rdfs:label>R13</rdfs:label>
+        <rdfs:label>R150</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R14 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R160 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R14">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R160">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion08"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise14"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise16"/>
-        <rdfs:label>R14</rdfs:label>
+        <rdfs:label>R160</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R15 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R170 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R15">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R170">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion08"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise14"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise17"/>
-        <rdfs:label>R15</rdfs:label>
+        <rdfs:label>R170</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R16 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R180 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R16">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R180">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion09"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise14"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise18"/>
-        <rdfs:label xml:lang="pl">R16</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R17 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R17">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion09"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise15"/>
-        <rdfs:label>R17</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R18 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R18">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise19"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise22"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise25"/>
-        <rdfs:label>R18</rdfs:label>
+        <rdfs:label xml:lang="pl">R180</rdfs:label>
     </owl:NamedIndividual>
 
 
@@ -689,289 +705,274 @@
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R19 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R19">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion11"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise19"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise22"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise26"/>
         <rdfs:label>R19</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R20 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R190 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R20">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R190">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion12"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise19"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise23"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise25"/>
-        <rdfs:label>R20</rdfs:label>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion09"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise15"/>
+        <rdfs:label>R190</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R21 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R200 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R21">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R200">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise19"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise23"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise26"/>
-        <rdfs:label>R21</rdfs:label>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion01"/>
+        <rdfs:label>R200</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R22 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R220 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R22">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R220">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion12"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise20"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise22"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise25"/>
-        <rdfs:label>R22</rdfs:label>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion11"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion03"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion08"/>
+        <rdfs:label>R220</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R23 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R230 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R23">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R230">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise20"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise22"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise26"/>
-        <rdfs:label>R23</rdfs:label>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion03"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion09"/>
+        <rdfs:label>R230</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R24 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R240 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R24">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R240">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion12"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise20"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise23"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise25"/>
-        <rdfs:label>R24</rdfs:label>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion02"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion04"/>
+        <rdfs:label>R240</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R25 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R250 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R25">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R250">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion12"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise20"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise23"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise26"/>
-        <rdfs:label>R25</rdfs:label>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion02"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion05"/>
+        <rdfs:label>R250</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R26 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R260 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R26">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion11"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise21"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise22"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise25"/>
-        <rdfs:label>R26</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R27 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R27">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion11"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise21"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise22"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise26"/>
-        <rdfs:label>R27</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R28 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R28">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R260">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise21"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise23"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise25"/>
-        <rdfs:label>R28</rdfs:label>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion02"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion06"/>
+        <rdfs:label>R260</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R29 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R270 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R29">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R270">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion11"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise21"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise23"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise26"/>
-        <rdfs:label>R29</rdfs:label>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion17"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise30"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise33"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
+        <rdfs:label>R270</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R30 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R280 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R30">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R280">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion12"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise24"/>
-        <rdfs:label>R30</rdfs:label>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise30"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise32"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
+        <rdfs:label>R280</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R31 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R290 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R31">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R290">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion11"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise22"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise27"/>
-        <rdfs:label>R31</rdfs:label>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise30"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise31"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
+        <rdfs:label>R290</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R32 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R310 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R32">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R310">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion11"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise23"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise27"/>
-        <rdfs:label xml:lang="pl">R32</rdfs:label>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise33"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise29"/>
+        <rdfs:label>R310</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R33 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R320 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R33">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R320">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise28"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise34"/>
-        <rdfs:label xml:lang="pl">R33</rdfs:label>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise33"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
+        <rdfs:label xml:lang="pl">R320</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R34 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R330 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R34">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise29"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise31"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise34"/>
-        <rdfs:label xml:lang="pl">R34</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R35 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R35">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R330">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise29"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise28"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise32"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise34"/>
-        <rdfs:label xml:lang="pl">R35</rdfs:label>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
+        <rdfs:label xml:lang="pl">R330</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R36 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R340 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R36">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R340">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise29"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise33"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise34"/>
-        <rdfs:label xml:lang="pl">R36</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R37 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R37">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise30"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise31"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise34"/>
-        <rdfs:label xml:lang="pl">R37</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R38 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R38">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise30"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise32"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise34"/>
-        <rdfs:label xml:lang="pl">R38</rdfs:label>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise29"/>
+        <rdfs:label xml:lang="pl">R340</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R39 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R350 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R39">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R350">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion13"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise30"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise33"/>
-        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise34"/>
-        <rdfs:label xml:lang="pl">R39</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R40 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R40">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
-        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise32"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise35"/>
-        <rdfs:label xml:lang="pl">R40</rdfs:label>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise29"/>
+        <rdfs:label xml:lang="pl">R350</rdfs:label>
     </owl:NamedIndividual>
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R41 -->
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R360 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R41">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R360">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise32"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise36"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise29"/>
+        <rdfs:label xml:lang="pl">R360</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R370 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R370">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
         <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise28"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise31"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise34"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
+        <rdfs:label xml:lang="pl">R370</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R380 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R380">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise28"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise31"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise35"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
+        <rdfs:label xml:lang="pl">R380</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R390 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R390">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise28"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise31"/>
         <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise36"/>
-        <rdfs:label xml:lang="pl">R41</rdfs:label>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
+        <rdfs:label xml:lang="pl">R390</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R400 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R400">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion12"/>
+        <rdfs:label xml:lang="pl">R400</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R410 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R410">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion11"/>
+        <rdfs:label xml:lang="pl">R410</rdfs:label>
     </owl:NamedIndividual>
 
 
@@ -980,11 +981,11 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#RightSensors">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RulesSets"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R13"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R14"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R15"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R16"/>
-        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R17"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R150"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R160"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R170"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R180"/>
+        <amro:contains rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R190"/>
         <amro:OWLObjectProperty_fa6166c4_87bf_4c39_89c1_7e186cccf750 rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#Moving"/>
         <rdfs:label>RightSensors</rdfs:label>
     </owl:NamedIndividual>
@@ -996,7 +997,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion01">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Conclusion"/>
         <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#sFassessment"/>
-        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#forward"/>
+        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#null"/>
         <rdfs:label xml:lang="pl">conclusion01</rdfs:label>
     </owl:NamedIndividual>
 
@@ -1106,7 +1107,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion11">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Conclusion"/>
         <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#move"/>
-        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#left"/>
+        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#right"/>
         <rdfs:label>conclusion11</rdfs:label>
     </owl:NamedIndividual>
 
@@ -1117,7 +1118,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion12">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Conclusion"/>
         <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#move"/>
-        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#right"/>
+        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#left"/>
         <rdfs:label>conclusion12</rdfs:label>
     </owl:NamedIndividual>
 
@@ -1343,105 +1344,6 @@
 
 
 
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise19 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise19">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Premise"/>
-        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#sFassessment"/>
-        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#forward"/>
-        <rdfs:label>premise19</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise20 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise20">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Premise"/>
-        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#sFassessment"/>
-        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#right"/>
-        <rdfs:label>premise20</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise21 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise21">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Premise"/>
-        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#sFassessment"/>
-        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#left"/>
-        <rdfs:label>premise21</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise22 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise22">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Premise"/>
-        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#sLassessment"/>
-        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#low"/>
-        <rdfs:label>premise22</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise23 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise23">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Premise"/>
-        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#sLassessment"/>
-        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#middle"/>
-        <rdfs:label>premise23</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise24 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise24">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Premise"/>
-        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#sLassessment"/>
-        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#high"/>
-        <rdfs:label>premise24</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise25 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise25">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Premise"/>
-        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#sRassessment"/>
-        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#low"/>
-        <rdfs:label>premise25</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise26 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise26">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Premise"/>
-        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#sRassessment"/>
-        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#middle"/>
-        <rdfs:label>premise26</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise27 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise27">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Premise"/>
-        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#sRassessment"/>
-        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#high"/>
-        <rdfs:label>premise27</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise28 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise28">
@@ -1449,18 +1351,6 @@
         <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R01sBL"/>
         <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#low"/>
         <rdfs:label xml:lang="pl">premise28</rdfs:label>
-    </owl:NamedIndividual>
-
-
-
-    <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise29 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise29">
-        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Premise"/>
-        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R01sBL"/>
-        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#middle"/>
-        <rdfs:label xml:lang="pl">premise28</rdfs:label>
-        <rdfs:label xml:lang="pl">premise29</rdfs:label>
     </owl:NamedIndividual>
 
 
@@ -1513,8 +1403,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise34">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Premise"/>
-        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#move"/>
-        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#forward"/>
+        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#anteriorMovementsHistory"/>
+        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#null"/>
         <rdfs:label xml:lang="pl">premise34</rdfs:label>
     </owl:NamedIndividual>
 
@@ -1524,7 +1414,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise35">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Premise"/>
-        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#move"/>
+        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#anteriorMovementsHistory"/>
         <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#left"/>
         <rdfs:label xml:lang="pl">premise35</rdfs:label>
     </owl:NamedIndividual>
@@ -1534,7 +1424,7 @@
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise36 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise36">
-        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#move"/>
+        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#anteriorMovementsHistory"/>
         <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#right"/>
         <rdfs:label xml:lang="pl">premise36</rdfs:label>
     </owl:NamedIndividual>
@@ -1545,7 +1435,6 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#sFassessment">
         <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#ConclusionsAssessment"/>
-        <amro:isRepresentedBy rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#LFR01"/>
     </owl:NamedIndividual>
 
 
@@ -1570,6 +1459,355 @@
 
 
 
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R200 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R200">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion11"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion03"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion07"/>
+        <rdfs:label xml:lang="pl">R210</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R300 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R300">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise31"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise29"/>
+        <rdfs:label xml:lang="pl">R300</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R420 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R420">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion13"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise30"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise33"/>
+        <rdfs:label xml:lang="pl">R420</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R430 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R430">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise30"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise32"/>
+        <rdfs:label xml:lang="pl">R430</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R440 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R440">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise30"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise31"/>
+        <rdfs:label xml:lang="pl">R440</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R450 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R450">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise31"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise29"/>
+        <rdfs:label xml:lang="pl">R450</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R460 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R460">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise33"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise29"/>
+        <rdfs:label xml:lang="pl">R460</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R470 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R470">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise28"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise33"/>
+        <rdfs:label xml:lang="pl">R470</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R480 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R480">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise28"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise32"/>
+        <rdfs:label xml:lang="pl">R480</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R490 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R490">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise32"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise34"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise29"/>
+        <rdfs:label xml:lang="pl">R490</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R500 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R500">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise32"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise35"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise29"/>
+        <rdfs:label xml:lang="pl">R500</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R510 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R510">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise32"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise36"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise29"/>
+        <rdfs:label xml:lang="pl">R510</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R520 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R520">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise28"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise31"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise34"/>
+        <rdfs:label xml:lang="pl">R520</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R530 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R530">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise28"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise31"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise35"/>
+        <rdfs:label xml:lang="pl">R530</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R540 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R540">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion10"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise28"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise31"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise36"/>
+        <rdfs:label xml:lang="pl">R540</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R550 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R550">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise30"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise33"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise36"/>
+        <rdfs:label xml:lang="pl">R550</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R560 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R560">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion18"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise30"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise33"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise36"/>
+        <rdfs:label xml:lang="pl">R560</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R570 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R570">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise30"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise33"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise35"/>
+        <rdfs:label xml:lang="pl">R570</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R580 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R580">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion18"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise30"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise33"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise35"/>
+        <rdfs:label xml:lang="pl">R580</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R590 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R590">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion19"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion14"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise34"/>
+        <rdfs:label xml:lang="pl">R590</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R600 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#R600">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#RuleHeader"/>
+        <amro:hasConclusion rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion20"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#conclusion15"/>
+        <amro:hasPremise rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#premise34"/>
+        <rdfs:label xml:lang="pl">R600</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#anteriorMovementsHistory -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#anteriorMovementsHistory">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Turn"/>
+        <rdfs:label xml:lang="pl">anteriorMovementsHistory</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion16">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Conclusion"/>
+        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#sFassessment"/>
+        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#stop"/>
+        <rdfs:label xml:lang="pl">conclusion16</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion17 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion17">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Conclusion"/>
+        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#finalMove"/>
+        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#stop"/>
+        <rdfs:label xml:lang="pl">conclusion17</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion18 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion18">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Conclusion"/>
+        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#movementsHistory"/>
+        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01#null"/>
+        <rdfs:label xml:lang="pl">conclusion18</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion19 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion19">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Conclusion"/>
+        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#movementsHistory"/>
+        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#left"/>
+        <rdfs:label xml:lang="pl">conclusion19</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion20 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#conclusion20">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Conclusion"/>
+        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#movementsHistory"/>
+        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#right"/>
+        <rdfs:label xml:lang="pl">conclusion20</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#movementsHistory -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#movementsHistory">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Turn"/>
+        <rdfs:label xml:lang="pl">movementsHistory</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
     <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise05 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise05">
@@ -1577,6 +1815,17 @@
         <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R01sFR"/>
         <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#middle"/>
         <rdfs:label xml:lang="pl">premise05</rdfs:label>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise29 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/amaci/ontologies/2026/1/amro_uc01_v01#premise29">
+        <rdf:type rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#Premise"/>
+        <amro:hasLeftHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro_uc01_v01#R01sBL"/>
+        <amro:hasRightHand rdf:resource="http://www.semanticweb.org/amaci/ontologies/2026/0/amro#middle"/>
+        <rdfs:label xml:lang="pl">premise29</rdfs:label>
     </owl:NamedIndividual>
     <rdf:Description>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">
